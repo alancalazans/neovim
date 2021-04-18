@@ -1,0 +1,27 @@
+Instruções instalação e configuração
+
+Baixar: https://github.com/neovim/neovim/releases/tag/v0.3.0
+
+Extraia o neovim em:
+
+	C:\Neovim
+
+	Nota: Copie o arquivo 'nv.bat' para o diretório 'C:\Neovim\bin'
+				inclua este 'path' nas variável de ambiente do sistema.
+
+Extraia o arquivo _config_nvim.zip (na pasta: custom/) em:
+
+	C:\Users\<usuário>\AppData\Local\
+
+	Nota: Ficando: C:\Users\<usuário>\AppData\Local\nvim\
+
+No arquivo 'init.vim' em:
+
+	C:\Users\<usuário>\AppData\Local\nvim\
+
+Descomente e comente a fonte conforme abaixo:
+
+	elseif has("gui_win32")
+		" Para Windows
+		set guifont=Consolas:h12:cANSI
+		" set guifont=Consolas:h11
