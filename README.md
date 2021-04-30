@@ -6,7 +6,7 @@ Parte traduzida de: [Neovim, Instalación y Configuración Básica](https://stse
 
 A seguir, você aprenderá o básico para começar a usar o Neovim como editor de código. A princípio, parecerá que é contraproducente e que você precisa digitar muito para realizar uma ação simples; Existem outras maneiras mais eficientes de fazer isso, mas o objetivo é se familiarizar com a edição de texto antes de passar para coisas mais avançadas. Ao final da postagem você encontrará diversos recursos para saber mais sobre o Neovim / Vim.
 
-Observação: Tudo o que você aprende nesta seção também é válido para o Vim.
+**Obs.:** Tudo o que você aprende nesta seção também é válido para o Vim.
 
 #### Modos
 
@@ -25,7 +25,7 @@ Para entrar e sair de cada modo:
 
 Quando você abre o Neovim, o modo padrão é normal.
 
-Observação: Sempre que você sentir que perdeu uma etapa, pressione **`Esc`** pelo menos três vezes para voltar ao ++modo normal++ e reiniciar.
+**Obs.:** Sempre que você sentir que perdeu uma etapa, pressione **`Esc`** pelo menos três vezes para voltar ao ++modo normal++ e reiniciar.
 
 #### Abra um arquivo
 
@@ -39,10 +39,10 @@ nvim mi-archivo.txt
 
 Anteriormente, eu disse que você pode usar as teclas de seta para se mover, mas não é o mais eficiente quando você usa o Neovim, as teclas de seta estão longe de sua linha inicial. Você pode usar as seguintes teclas para mover dentro do modo normal.
 
-**`h`** - esquerda
-**`j`** - a baixo
-**`k`** - a cima
-**`l`** - direita
+**`h`** - esquerda  
+**`j`** - a baixo  
+**`k`** - a cima  
+**`l`** - direita  
 
 ![Teclas movimentação](img/hjkl.png)
 
@@ -102,13 +102,9 @@ Parece familiar, não é? Você já o usou para salvar e sair! Para entrar neste
 
 A partir de agora, quando você vir caracteres precedidos por **`:`** você saberá que quero dizer que você executa um comando no modo de linha de comando. Por exemplo, para salvar **`:w`**.
 
-##### Observação
+**Obs.1:** Enquanto estiver no modo de linha de comando, você pode usar **`Tab`** para autocompletar.
 
-Enquanto estiver no modo de linha de comando, você pode usar **`Tab`** para autocompletar.
-
-##### Observação
-
-O comando **`:w`** é a abreviação de **`:write`**, teste-o!
+**Obs.2:** O comando **`:w`** é a abreviação de **`:write`**, teste-o!
 
 #### Trabalhar com vários arquivos
 
@@ -124,9 +120,7 @@ Ou se você já está com o Neovim aberto, pode usar o comando **`:e <arquivo>`*
 
 Pode parecer que não há nenhum outro arquivo aberto, mas há. Você pode listar todos os buffers com **`:ls`**; para mudar para o próximo buffer use **`:bnext`** e para o anterior **`:bprevious`**; para fechar o buffer atual **`:bdelete`**.
 
-##### Observação
-
-Os comandos **`:bn`** e **`:bp`** são abreviações de **`:bnext`** e **`:bprevious`**.
+**Obs.:** Os comandos **`:bn`** e **`:bp`** são abreviações de **`:bnext`** e **`:bprevious`**.
 
 ##### Buscar
 
@@ -136,9 +130,7 @@ No modo normal, pressione **`/`**, digite a palavra a ser pesquisada e pressione
 
 Para obter ajuda, você pode usar o comando **`:help [tópico]`**, por exemplo **`:help :w`** para obter ajuda sobre o comando **`:w`**.
 
-##### Observação
-
-O comando **`:help`** pode ser abreviado como **`:h`**.
+**Obs.:** O comando **`:help`** pode ser abreviado como **`:h`**.
 
 ##### Aprendendo com Neovim
 
@@ -152,9 +144,7 @@ Se você fechar o Neovim, todas as configurações serão perdidas, para mantê-
 
 #### init.vim
 
-##### Observação
-
-Se você usar o ***Vim***, este arquivo terá a mesma função do arquivo ***.vimrc***.
+**Obs.:** Se você usar o ***Vim***, este arquivo terá a mesma função do arquivo ***.vimrc***.
 
 Este arquivo está localizado em **`~/.config/nvim/init.vim`**, se não existir, crie-o.
 
@@ -174,9 +164,7 @@ Para que as alterações tenham efeito, você deve reabrir o Neovim ou pode exec
 
 O arquivo de configuração pode ficar muito grande, então tente documentar tudo que você colocou nele (você pode adicionar comentários com "), e não copie e cole nenhuma configuração sem entendê-la, então você terá um ***init.vim*** bacana.
 
-##### Observação
-
-É recomendado colocar seu ***init.vim*** no topo de um sistema de controle de versão, como o git.
+**Obs.:** É recomendado colocar seu ***init.vim*** no topo de um sistema de controle de versão, como o git.
 
 Abaixo você tem um ***init.vim*** com algumas configurações mínimas.
 
@@ -209,13 +197,9 @@ set background=light  " Fundo do tema: claro ou escuro
 colorscheme zellner  " Nome do tema
 ```
 
-##### Observação
+**Obs.1:** Para que as alterações do set termguicolors tenham efeito, você deve reabrir o Neovim.
 
-Para que as alterações do set termguicolors tenham efeito, você deve reabrir o Neovim.
-
-##### Observação
-
-Para ver todos os temas digite **`:colorscheme`** dê um espaço e use a tecla **`Tab`** para iterar sobre eles.
+**Obs.2:** Para ver todos os temas digite **`:colorscheme`** dê um espaço e use a tecla **`Tab`** para iterar sobre eles.
 
 #### Mapeamentos
 
