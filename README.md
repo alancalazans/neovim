@@ -37,7 +37,7 @@ nvim mi-archivo.txt
 
 #### Movendo-se no editor
 
-Anteriormente, eu disse que você pode usar as teclas de seta para se mover, mas não é o mais eficiente quando você usa o Neovim, as teclas de seta estão longe de sua linha inicial. Você pode usar as seguintes teclas para mover dentro do modo normal.
+Anteriormente, eu disse que você pode usar as teclas de seta para se mover, mas não é o mais eficiente quando você usa o Neovim, as teclas de seta estão longe de sua linha inicial. Você pode usar as seguintes teclas para mover dentro do *modo normal*.
 
 **`h`** - esquerda  
 **`j`** - a baixo  
@@ -54,43 +54,42 @@ No início será difícil não fazer isso com as setas do teclado, tente pratica
 
 Para começar a escrever, você deve entrar no modo de inserção com **`i`**. Observe como a forma do cursor mudou, insira algum texto e, quando terminar, pressione **`Esc`** para retornar ao modo normal.
 
-- ##### Salvar
+- #### Salvar
 
 No modo normal, pressione **`:`**, digite **`w`** e pressione enter.
 
-- ##### Sair
+- #### Sair
 
 No modo normal, pressione **`:`** e, em seguida, digite **`q`** e pressione **`enter`** (para sair sem salvar as alterações, você deve digitar **`q!`**).
 
-- ##### Selecionar texto
+- #### Selecionar texto
 
 Pressione **`v`** para entrar no modo visual, mova o cursor para fazer a seleção. Pressione **`Esc`** para retornar ao modo normal.
 
-- ##### Copiar e colar
+- #### Copiar e colar
 
 Selecione um texto usando o modo visual e pressione **`y`**. Pressione **`p`** para colar depois do cursor ou **`P`** para colar antes do cursor.
 
 Para copiar uma palavra, no modo normal, pressione **`yiw`** ou, para copiar a linha atual, pressione **`yy`**.
 
-- ##### recortar
+- #### recortar
 
 Selecione um texto usando o modo visual e pressione **`d`**. Para recortar uma palavra, no modo normal pressione **`diw`** ou para recortar a linha atual pressione **`dd`**.
 
 Para colar o texto recortado, pressione **`p`**.
 
-##### Copiar e colar da área de transferência
+- #### Copiar e colar da área de transferência
 
 Se você tentou colar texto fora do Neovim, ou colar algo que copiou para a área de transferência, pode ter percebido que não funciona. Para usar a área de transferência, você deve copiar usando **`"+y`**, e colar da área de transferência **`"+p`**.
 
-- ##### Desfazer e refazer
+- #### Desfazer e refazer
 
 Para desfazer, no modo normal, pressione **`u`**; e para refazer **`Ctrl + r`**.
 
-> ##### Aviso
+> #### Aviso:
+Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
 
-> Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
-
-- ##### Auto completar
+- #### Auto completar
 
 No modo de inserção, digite o início de uma palavra e pressione **`Crtl + p`** ou **`Ctrl + n`** para repetir as sugestões.
 
