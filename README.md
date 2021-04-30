@@ -18,14 +18,14 @@ Neovim tem 3 modos principais:
 
 Para entrar e sair de cada modo:
 
-- Para <u>entrar</u> no <u>modo de inserção</u>, pressione  **`i`**.
-- Para <u>sair</u> do <u>modo de inserção</u>, pressione  **`Esc`**.
-- Para <u>entrar</u> no <u>modo visual</u>, pressione  **`v`**.
-- Para <u>sair</u> do <u>modo visual</u>, pressione  **`Esc`**.
+- Para *entrar* no *modo de inserção*, pressione  **`i`**.
+- Para *sair* do *modo de inserção*, pressione  **`Esc`**.
+- Para *entrar* no *modo visual*, pressione  **`v`**.
+- Para *sair* do *modo visual*, pressione  **`Esc`**.
 
 Quando você abre o Neovim, o modo padrão é normal.
 
-> **Obs.:** Sempre que você sentir que perdeu uma etapa, pressione **`Esc`** pelo menos três vezes para voltar ao <u>modo normal</u> e reiniciar.
+> **Obs.:** Sempre que você sentir que perdeu uma etapa, pressione **`Esc`** pelo menos três vezes para voltar ao *modo normal* e reiniciar.
 
 #### Abra um arquivo
 
@@ -44,7 +44,7 @@ Anteriormente, eu disse que você pode usar as teclas de seta para se mover, mas
 **`k`** - a cima  
 **`l`** - direita  
 
-<div style="width: 300px; margin: 0 auto;>">![Teclas movimentação](img/hjkl.png)</div>
+![Teclas movimentação](img/hjkl.png)
 
 Você também pode usar **`w`** e **`b`** para se mover entre as palavras.
 
