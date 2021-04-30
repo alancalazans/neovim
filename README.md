@@ -86,8 +86,7 @@ Se você tentou colar texto fora do Neovim, ou colar algo que copiou para a áre
 
 Para desfazer, no modo normal, pressione **`u`**; e para refazer **`Ctrl + r`**.
 
-> #### Aviso:
-Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
+> **Aviso:** Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
 
 - #### Auto completar
 
