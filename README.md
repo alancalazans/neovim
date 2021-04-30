@@ -8,7 +8,7 @@ A seguir, você aprenderá o básico para começar a usar o Neovim como editor d
 
 **Obs.:** Tudo o que você aprende nesta seção também é válido para o Vim.
 
-#### Modos
+### Modos
 
 Neovim tem 3 modos principais:
 
@@ -50,51 +50,51 @@ Você também pode usar **`w`** e **`b`** para se mover entre as palavras.
 
 No início será difícil não fazer isso com as setas do teclado, tente praticar até se sentir confortável, sem perder a cabeça nem as teclas.
 
-#### Gravar em um arquivo
+### Gravar em um arquivo
 
 Para começar a escrever, você deve entrar no modo de inserção com **`i`**. Observe como a forma do cursor mudou, insira algum texto e, quando terminar, pressione **`Esc`** para retornar ao modo normal.
 
-##### Salvar
+##### ==Salvar==
 
 No modo normal, pressione **`:`**, digite **`w`** e pressione enter.
 
-##### Sair
+##### ==Sair==
 
 No modo normal, pressione **`:`** e, em seguida, digite **`q`** e pressione **`enter`** (para sair sem salvar as alterações, você deve digitar **`q!`**).
 
-##### Selecionar texto
+##### ==Selecionar texto==
 
 Pressione **`v`** para entrar no modo visual, mova o cursor para fazer a seleção. Pressione **`Esc`** para retornar ao modo normal.
 
-##### Copiar e colar
+##### ==Copiar e colar==
 
 Selecione um texto usando o modo visual e pressione **`y`**. Pressione **`p`** para colar depois do cursor ou **`P`** para colar antes do cursor.
 
 Para copiar uma palavra, no modo normal, pressione **`yiw`** ou, para copiar a linha atual, pressione **`yy`**.
 
-##### recortar
+##### ==recortar==
 
 Selecione um texto usando o modo visual e pressione **`d`**. Para recortar uma palavra, no modo normal pressione **`diw`** ou para recortar a linha atual pressione **`dd`**.
 
 Para colar o texto recortado, pressione **`p`**.
 
-##### Copiar e colar da área de transferência
+##### ==Copiar e colar da área de transferência==
 
 Se você tentou colar texto fora do Neovim, ou colar algo que copiou para a área de transferência, pode ter percebido que não funciona. Para usar a área de transferência, você deve copiar usando **`"+y`**, e colar da área de transferência **`"+p`**.
 
-##### Desfazer e refazer
+##### ==Desfazer e refazer==
 
 Para desfazer, no modo normal, pressione **`u`**; e para refazer **`Ctrl + r`**.
 
-##### Aviso
+##### ==Aviso==
 
 Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
 
-##### Auto completar
+##### ==Auto completar==
 
 No modo de inserção, digite o início de uma palavra e pressione **`Crtl + p`** ou **`Ctrl + n`** para repetir as sugestões.
 
-##### Modo de linha de comando
+### Modo de linha de comando
 
 O Neovim tem outro modo, o modo de linha de comando. Ele aparece abaixo do editor onde você pode inserir um comando, após executá-lo (com Enter) o editor retorna ao modo normal.
 
@@ -106,7 +106,7 @@ A partir de agora, quando você vir caracteres precedidos por **`:`** você sabe
 
 **Obs.2:** O comando **`:w`** é a abreviação de **`:write`**, teste-o!
 
-#### Trabalhar com vários arquivos
+### Trabalhar com vários arquivos
 
 Para trabalhar com vários arquivos costumamos usar abas, o Neovim tem abas, mas não são exatamente as mesmas que nos outros editores, em vez disso usaremos buffers.
 
@@ -122,27 +122,27 @@ Pode parecer que não há nenhum outro arquivo aberto, mas há. Você pode lista
 
 **Obs.:** Os comandos **`:bn`** e **`:bp`** são abreviações de **`:bnext`** e **`:bprevious`**.
 
-##### Buscar
+### Buscar
 
 No modo normal, pressione **`/`**, digite a palavra a ser pesquisada e pressione **`Enter`**. Mova para a próxima correspondência ou anterior com **`n`** e **`N`**.
 
-##### Obtendo ajuda
+### Obtendo ajuda
 
 Para obter ajuda, você pode usar o comando **`:help [tópico]`**, por exemplo **`:help :w`** para obter ajuda sobre o comando **`:w`**.
 
 **Obs.:** O comando **`:help`** pode ser abreviado como **`:h`**.
 
-##### Aprendendo com Neovim
+### Aprendendo com Neovim
 
 Neovim inclui um tutorial interativo, execute o comando **`:Tutor`** para começar.
 
-##### Configurando o Neovim
+### Configurando o Neovim
 
 O Neovim pode ser configurado no modo de linha de comando, teste exibindo os números da linha executando **`:set number`**. Quer ver o nome do arquivo que está editando na janela do terminal? **`:set title`**.
 
 Se você fechar o Neovim, todas as configurações serão perdidas, para mantê-las um arquivo ***init.vim*** é usado, que é carregado toda vez que o Neovim é iniciado.
 
-#### init.vim
+### init.vim
 
 **Obs.:** Se você usar o ***Vim***, este arquivo terá a mesma função do arquivo ***.vimrc***.
 
@@ -201,7 +201,7 @@ colorscheme zellner  " Nome do tema
 
 **Obs.2:** Para ver todos os temas digite **`:colorscheme`** dê um espaço e use a tecla **`Tab`** para iterar sobre eles.
 
-#### Mapeamentos
+### Mapeamentos
 
 Vários comandos foram usados para interagir com o Neovim, mas ter que digitá-los a cada vez para alterar os buffers ou salvar um arquivo não parece ser tão produtivo.
 
