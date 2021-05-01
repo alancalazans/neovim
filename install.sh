@@ -3,8 +3,10 @@ chmod +x nvim.appimage
 ./nvim.appimage --appimage-extract
 sudo mv squashfs-root/ /opt/nvim
 sudo ln -sf /opt/nvim/usr/bin/nvim /usr/bin/nvim
-unzip _nvim.zip -d $HOME/.config/
-sudo unzip _nvim.zip -d /root/.config/
+tar -Jxvf _nvim.tar.xz -C $HOME/.config/
+cp init.vim $HOME/.config/nvim/
+sudo tar -Jxvf _nvim.tar.xz -C /root/.config/
+sudo cp init.vim /root/.config/nvim/
 clear
 echo '[Desktop Entry]
 Version=0.4.4

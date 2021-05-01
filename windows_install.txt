@@ -1,6 +1,6 @@
 Instruções instalação e configuração
 
-Baixar: https://github.com/neovim/neovim/releases/tag/v0.3.0
+Baixar: https://github.com/neovim/neovim/releases/tag/v0.4.4
 
 Extraia o neovim em:
 
@@ -9,7 +9,7 @@ Extraia o neovim em:
 	Nota: Copie o arquivo 'nv.bat' para o diretório 'C:\Neovim\bin'
 				inclua este 'path' nas variável de ambiente do sistema.
 
-Extraia o arquivo _config_nvim.zip (na pasta: custom/) em:
+Extraia o arquivo _nvim.zip em:
 
 	C:\Users\<usuário>\AppData\Local\
 
