@@ -1,7 +1,7 @@
 "==============================================================================
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
-" Last Update: Sex 30 Abr 2021 15:04:00 BRT
+" Last Update: Dom 02 Mai 2021 10:58:00 BRT
 " Created: Sex 30 Abr 2021 15:04:00 BRT
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
@@ -64,24 +64,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 "set encoding=iso-8859-1
 "set fileencoding=iso-8859-1
-"==============================================================================
-"			 Retira os ^M que ficam no final de arquivos salvos pelo windows.
-"==============================================================================
-nmap \/ :%s/\r//g<cr>
-"==============================================================================
-"					 Remove espaços redundantes no fim das linhas com \e
-"==============================================================================
-nmap \e mz:%s/\s\+$//g<cr>`z
-"==============================================================================
-"							 Mapeia a tecla \c para compilar o programa em C
-"==============================================================================
-"au BufNewFile,BufRead *.c nmap \c :!gcc "%" -Wall -o "%<"<cr>
-au BufNewFile,BufRead *.c nmap \c :!gcc -Wall "%"<cr>
-"==============================================================================
-"								  Mapeia a tecla \x para executar o programa
-"==============================================================================
-"nmap \x :!./"%<"<cr>
-nmap \x :!./a.out<cr>
 "==============================================================================
 "						  Configuração de fonte (tamanho e nome) para o GVim
 "==============================================================================
@@ -163,35 +145,6 @@ nmap <silent>\t :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "==============================================================================
 set shortmess+=I
 "==============================================================================
-"								  Recarrega o arquivo de configuração vimrc
-"			  Seja a fonte o arquivo .vimrc ou _vimrc, dependendo do sistema
-"==============================================================================
-if &term == "win32" || "pcterm" || has("gui_win32")
-"	map ,v :e C:\gVimPortable\Data\settings\_vimrc <cr>
-"	nmap ,v :<c-u>source C:\gVimPortable\Data\settings\_vimrc<bar>echo "Vimrc recarregando!"<cr>
-	nmap ,v :source $MYVIMRC<cr>
-else
-"	map ,v :e ~/.vimrc<cr>
-"	nmap ,v :<c-u>source ~/.vimrc<bar>echo "Vimrc recarregando!"<cr>
-	nmap ,v :source $MYVIMRC<cr>
-endif
-"==============================================================================
-"					 Sidebar de navegação (NERDTree) em off na carga do GVim
-"==============================================================================
-let g:nerdtree_tabs_open_on_gui_startup=0
-"==============================================================================
-"							 Atalho p/ sidebar de navegação (plugin NERDTree)
-"==============================================================================
-nmap \b :NERDTreeTabsToggle<cr>
-"==============================================================================
-"													Mostra ou não a identacão
-"==============================================================================
-"set listchars=tab:¦·,trail:·,eol:$
-"set listchars=tab:▸·,trail:·,eol:¬
-set listchars=tab:¦\ ,trail:·,eol:¬
-"set list
-nmap \i :set list!<cr>
-"==============================================================================
 "													 Ativa e Desativa DrawIt
 "==============================================================================
 nmap [[ :call ToggleDrawIt('true')<cr>
@@ -218,12 +171,6 @@ endfunction
 "let g:multi_cursor_prev_key            = '<C-p>'
 "let g:multi_cursor_skip_key            = '<C-x>'
 "let g:multi_cursor_quit_key            = '<Esc>'
-"==============================================================================
-"														 Alinhamento de texto
-"==============================================================================
-nmap \, <esc>:left<cr>
-nmap \; <esc>:center<cr>
-nmap \. <esc>:right<cr>
 "==============================================================================
 "												  Opções da linha de status
 "==============================================================================
@@ -269,10 +216,6 @@ if has("autocmd") && exists("+omnifunc")
 endif
 imap <c-e> <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
-"==============================================================================
-"																	  Emmet
-"==============================================================================
-"imap <c-n> <c-y>,
 "==============================================================================
 "									Definindo sintaxe para algumas extenções.
 "==============================================================================
@@ -345,13 +288,6 @@ vmap <s-tab> <lt>
 imap <c-t> <esc>:tabnew<cr>i
 nmap <c-t> :tabnew<cr>
 "==============================================================================
-"				Abrir, Salvar Como arquivo; Localizar e substituir no arquivo
-"==============================================================================
-nmap \a :browse confirm e<cr>
-nmap \w :browse confirm saveas<cr>
-nmap \f :promptfind<cr>
-nmap \s :promptrepl<cr>
-"==============================================================================
 "										 'Ctrl+PageUp' pula para próxima aba
 "==============================================================================
 imap <c-pageup> <esc>:tabnext<cr>i
@@ -377,81 +313,133 @@ set selection=exclusive
 "==============================================================================
 let g:mapleader = ' '
 "==============================================================================
+"					 Sidebar de navegação (NERDTree) em off na carga do GVim
+"==============================================================================
+let g:nerdtree_tabs_open_on_gui_startup=0
+"==============================================================================
+"							 Atalho p/ sidebar de navegação (plugin NERDTree)
+"==============================================================================
+nmap <leader>n :NERDTreeTabsToggle<cr>
+"==============================================================================
+"													Mostra ou não a identacão
+"==============================================================================
+"set listchars=tab:¦·,trail:·,eol:$
+"set listchars=tab:▸·,trail:·,eol:¬
+set listchars=tab:¦\ ,trail:·,eol:¬
+"set list
+nmap <leader>i :set list!<cr>
+"==============================================================================
 "								  Backspace no modo de visão apaga a seleção
 "==============================================================================
 vmap <bs> d
 "==============================================================================
 "													 CTRL-X e SHIFT-Del corta
 "==============================================================================
-nnoremap <c-x> d
-vnoremap <c-x> <c-c>d
-inoremap <c-x> <c-o>d
+nmap <c-x> d
+vmap <c-x> <c-c>d
+imap <c-x> <c-o>d
 "==============================================================================
 "												  CTRL-C e CTRL-insert copia
 "==============================================================================
-vnoremap <c-c> "+y
+vmap <c-c> "+y
 "==============================================================================
 "												  CTRL-V e SHIFT-insert cola
 "==============================================================================
-nnoremap <c-v> "+p
-vnoremap <c-v> <c-c>"+p
-inoremap <c-v> <c-o>"+p
+nmap <c-v> "+p
+vmap <c-v> <c-c>"+p
+imap <c-v> <c-o>"+p
 "==============================================================================
 "																 CTRL-S salva
 "==============================================================================
-nnoremap <c-s> :w<cr>
-vnoremap <c-s> <c-c>:w<cr>
-inoremap <c-s> <c-o>:w<cr>
+nmap <c-s> :w<cr>
+vmap <c-s> <c-c>:w<cr>
+imap <c-s> <c-o>:w<cr>
 "==============================================================================
 "															  CTRL-Z desfaz
 "==============================================================================
-nnoremap <c-z> u
-vnoremap <c-z> <c-c>u
-inoremap <c-z> <c-o>u
+nmap <c-z> u
+vmap <c-z> <c-c>u
+imap <c-z> <c-o>u
 "==============================================================================
 "																 CTRL-Y refaz
 "==============================================================================
-nnoremap <c-y> <c-r>
-vnoremap <c-y> <c-c><c-r>
-inoremap <c-y> <c-o><c-r>
+nmap <c-y> <c-r>
+vmap <c-y> <c-c><c-r>
+imap <c-y> <c-o><c-r>
 "==============================================================================
 "									Mova para o próximo buffer com <líder> + l
 "==============================================================================
-nnoremap <leader>l :bnext<cr>
-vnoremap <leader>l <c-c>:bnext<cr>
+nmap <leader>l :bnext<cr>
+vmap <leader>l <c-c>:bnext<cr>
 "==============================================================================
 "								 Mova para o buffer anterior com <líder> + j
 "==============================================================================
-nnoremap <leader>j :bprevious<cr>
-vnoremap <leader>j <c-c>:bprevious<cr>
+nmap <leader>j :bprevious<cr>
+vmap <leader>j <c-c>:bprevious<cr>
 "==============================================================================
 "										Fechar o buffer atual com <líder> + q
 "==============================================================================
-nnoremap <leader>q :bdelete<cr>
-vnoremap <leader>q <c-c>:bdelete<cr>
+nmap <leader>q :bdelete<cr>
+vmap <leader>q <c-c>:bdelete<cr>
+"==============================================================================
+"														 Alinhamento de texto
+"==============================================================================
+nmap <leader>, <esc>:left<cr>
+nmap <leader>. <esc>:right<cr>
+nmap <leader>; <esc>:center<cr>
+"==============================================================================
+"																	  Emmet
+"==============================================================================
+imap <leader>e <c-y>,
+"==============================================================================
+"			 Retira os ^M que ficam no final de arquivos salvos pelo windows.
+"==============================================================================
+nmap <leader>m :%s/\r//g<cr>
+"==============================================================================
+"					 Remove espaços redundantes no fim das linhas com \e
+"==============================================================================
+nmap <leader>s mz:%s/\s\+$//g<cr>`z
+"==============================================================================
+"													 Limpa o buffer de buscas
+"==============================================================================
+nmap <leader>b :let @/=""<cr>
+"==============================================================================
+"								  Recarrega o arquivo de configuração
+"==============================================================================
+nmap <leader>v :source $MYVIMRC<cr>
+"==============================================================================
+"							 Mapeia a tecla \c para compilar o programa em C
+"==============================================================================
+"au BufNewFile,BufRead *.c nmap \c :!gcc "%" -Wall -o "%<"<cr>
+au BufNewFile,BufRead *.c nmap \c :!gcc -Wall "%"<cr>
+"==============================================================================
+"								  Mapeia a tecla \x para executar o programa
+"==============================================================================
+"nmap \x :!./"%<"<cr>
+nmap \x :!./a.out<cr>
 "==============================================================================
 "																Fechar Editor
 "==============================================================================
-nnoremap <c-q> :q<cr>
-vnoremap <c-q> <c-c>:q<cr>
-inoremap <c-q> <c-o>:q<cr>
+nmap <c-q> :q<cr>
+vmap <c-q> <c-c>:q<cr>
+imap <c-q> <c-o>:q<cr>
 "==============================================================================
 "													  CTRL-A seleciona tudo
 "==============================================================================
-nnoremap <c-a> gggH<c-o>G
-inoremap <c-a> <c-o>gg<c-o>gH<c-o>G
-cnoremap <c-a> <c-c>gggH<c-o>G
-onoremap <c-a> <c-c>gggH<c-o>G
-snoremap <c-a> <c-c>gggH<c-o>G
-xnoremap <c-a> <c-c>ggVG
+nmap <c-a> gggH<c-o>G
+imap <c-a> <c-o>gg<c-o>gH<c-o>G
+cmap <c-a> <c-c>gggH<c-o>G
+omap <c-a> <c-c>gggH<c-o>G
+smap <c-a> <c-c>gggH<c-o>G
+xmap <c-a> <c-c>ggVG
 map <c-a> <esc>ggvG
 "==============================================================================
 "													  CTRL-F4 fecha a janela
 "==============================================================================
-nnoremap <c-F4> <c-w>c
-inoremap <c-F4> <c-o><c-w>c
-cnoremap <c-F4> <c-c><c-w>c
-onoremap <c-F4> <c-c><c-w>c
+nmap <c-F4> <c-w>c
+imap <c-F4> <c-o><c-w>c
+cmap <c-F4> <c-c><c-w>c
+omap <c-F4> <c-c><c-w>c
 "==============================================================================
 "						 mostra o inicio de um bloco recem fechado {}, [], ()
 "==============================================================================
@@ -516,10 +504,6 @@ vmap <c-d> :<c-u>call Duplicate()<cr>
 "										  Fechamento automático de tags HTML
 "==============================================================================
 imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
-"==============================================================================
-"										  ,l limpa o buffer de buscas
-"==============================================================================
-nmap ,l :let @/=""<cr>
 "==============================================================================
 "									 Entra no modo visual para tabular bloco
 "==============================================================================
