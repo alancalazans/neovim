@@ -1,8 +1,16 @@
 "==============================================================================
+"  _   _        __      ___           
+" | \ | |       \ \    / (_)          
+" |  \| | ___  __\ \  / / _ _ __ ___  
+" | . ` |/ _ \/ _ \ \/ / | | '_ ` _ \ 
+" | |\  |  __/ (_) \  /  | | | | | | |
+" |_| \_|\___|\___/ \/   |_|_| |_| |_|
+"
+"==============================================================================
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
-" Last Update: Dom 02 Mai 2021 10:58:00 BRT
-" Created: Sex 30 Abr 2021 15:04:00 BRT
+" Last Update: Ter 04 Mai 2021
+" Created: Sex 30 Abr 2021
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
 "          <http://www.gnu.org/licenses/gpl.html>
