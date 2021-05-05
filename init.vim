@@ -81,12 +81,12 @@ if has("gui_running")
     " Para GTK2
     " Ajustando o tamanho da fonte de acordo com o tamanho da resolução
     " Adicionando no ~/.bashrc as linhas :
-    " #--------------------------------------------------------------------
+    " #
     " # Definindo variável de screen para o vim
-    " #--------------------------------------------------------------------
+    " #
     "  export SCREENSIZE=$(xdpyinfo  | grep 'dim'\
     "                     | sed -e 's/x.*//g' -e 's/^.*[a-z]: *//g')
-    " #--------------------------------------------------------------------
+    " #
     " A beleza dessas linhas é que elas observam o tamanho da resolução do
     " computador cliente, e não do host. Apenas o tamanho horizontal é
     " utilizado como referência, ou seja, 1280x1024, apenas 1280 é
@@ -291,7 +291,6 @@ vmap <tab> >>
 vmap <s-tab> <lt>
 "=======================================
 " Atalhos Abas
-"------------------------------------------------------------------------------
 " 'Ctrl+t' abre uma nova aba
 "=======================================
 imap <c-t> <esc>:tabnew<cr>i
@@ -310,7 +309,6 @@ imap <c-pagedown> <esc>:tabprevious<cr>i
 imap <c-e> <esc>:tabclose<cr>i
 "=======================================
 " Atalhos comuns de teclado
-"------------------------------------------------------------------------------
 " Permite selecionar com SHIFT + SETA como no Windows
 "=======================================
 set selectmode=mouse,key
