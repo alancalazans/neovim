@@ -72,7 +72,7 @@ Selecione um texto usando o modo visual e pressione **`y`**. Pressione **`p`** p
 
 Para copiar uma palavra, no modo normal, pressione **`yiw`** ou, para copiar a linha atual, pressione **`yy`**.
 
-- #### recortar
+- #### Recortar
 
 Selecione um texto usando o modo visual e pressione **`d`**. Para recortar uma palavra, no modo normal pressione **`diw`** ou para recortar a linha atual pressione **`dd`**.
 
