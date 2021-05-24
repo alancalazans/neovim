@@ -1,4 +1,5 @@
 # Declare os arquivos que sempre terão delimitadores de linha CRLF ao fazer checkout.
 install.sh text eol=lf
+init.vim text eol=lf
 nv.bat text eol=cr
 instalar_no_windows.txt text eol=cr

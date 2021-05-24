@@ -318,7 +318,7 @@ set selection=exclusive
 "=======================================
 " Defina o espaço como tecla líder
 "=======================================
-let g:mapleader = ' '
+let g:mapleader = ','
 "=======================================
 " Sidebar de navegação (NERDTree) em off na carga do GVim
 "=======================================
