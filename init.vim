@@ -9,7 +9,6 @@
 "=======================================
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
-" Last Update: Qua 05 Mai 2021
 " Created: Sex 30 Abr 2021
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
@@ -318,7 +317,7 @@ set selection=exclusive
 "=======================================
 " Defina o espaço como tecla líder
 "=======================================
-let g:mapleader = ','
+let g:mapleader = '\'
 "=======================================
 " Sidebar de navegação (NERDTree) em off na carga do GVim
 "=======================================
