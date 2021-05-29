@@ -319,6 +319,10 @@ set selection=exclusive
 "=======================================
 let g:mapleader = '\'
 "=======================================
+" Flag tab para 2<->4
+"=======================================
+let g:tab = 'true'
+"=======================================
 " Sidebar de navegação (NERDTree) em off na carga do GVim
 "=======================================
 let g:nerdtree_tabs_open_on_gui_startup=0
@@ -413,6 +417,23 @@ nmap <leader>b :let @/=""<cr>
 " Recarrega o arquivo de configuração
 "=======================================
 nmap <leader>v :source $MYVIMRC<cr>
+"=======================================
+" Tab 2<->4
+"=======================================
+nmap <leader>t :call ToggleTab(g:tab)<cr>
+function! ToggleTab(tab)
+  if g:tab=='true'
+		set tabstop=4
+		set shiftwidth=4
+		set softtabstop=4
+		let g:tab='false'
+  else
+		set tabstop=2
+		set shiftwidth=2
+		set softtabstop=2
+		let g:tab='true'
+  endif
+endfunction
 "=======================================
 " Mapeia a tecla \c para compilar o programa em C
 "=======================================
