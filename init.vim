@@ -131,11 +131,11 @@ endif " Conclui sobre a existência de uma interface gráfica
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme southernlights
+colorscheme cyberpunk 
 function! ToggleColorscheme()
-  if g:colors_name == 'southernlights'
-    colorscheme cyberpunk
-  elseif g:colors_name == 'cyberpunk'
+  if g:colors_name == 'cyberpunk'
+    colorscheme southernlights
+  elseif g:colors_name == 'southernlights'
     colorscheme midnight
   elseif g:colors_name == 'midnight'
     colorscheme turbo
@@ -144,26 +144,56 @@ function! ToggleColorscheme()
   elseif g:colors_name == 'borland'
     colorscheme greens
   elseif g:colors_name == 'greens'
-    colorscheme southernlights
+    colorscheme cyberpunk
   endif
 endfunction
-nmap <silent>\t :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
+nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "=======================================
 " Suprime a mensagem inicial do GVim
 "=======================================
 set shortmess+=I
 "=======================================
+" Defina o '\' como tecla líder
+"=======================================
+let g:mapleader = '\'
+"=======================================
+" Flag tab para 2<->4
+"=======================================
+let g:tab = 'tab2'
+"=======================================
+" Flag DrawIt
+"=======================================
+let g:di = 'stop'
+"=======================================
 " Ativa e Desativa DrawIt
 "=======================================
-nmap [[ :call ToggleDrawIt('true')<cr>
-nmap ]] :call ToggleDrawIt('false')<cr>
-function! ToggleDrawIt(draw)
-  if a:draw=='true'
+function! ToggleDrawIt()
+  if g:di=='stop'
     :DIstart
+    let g:di='start'
   else
     :DIstop
+    let g:di='stop'
   endif
 endfunction
+nmap <silent><leader>[ :call ToggleDrawIt()<cr>:echo g:di<cr>
+"=======================================
+" Tab 2<->4
+"=======================================
+function! ToggleTab()
+  if g:tab=='tab2'
+		set tabstop=4
+		set shiftwidth=4
+		set softtabstop=4
+		let g:tab='tab4'
+  else
+		set tabstop=2
+		set shiftwidth=2
+		set softtabstop=2
+		let g:tab='tab2'
+  endif
+endfunction
+nmap <silent><leader>t :call ToggleTab()<cr>:echo g:tab<cr>
 "=======================================
 " Multiple Cursors
 " https://github.com/terryma/vim-multiple-cursors#installation
@@ -315,14 +345,6 @@ set mousemodel=popup
 set keymodel=startsel,stopsel
 set selection=exclusive
 "=======================================
-" Defina o espaço como tecla líder
-"=======================================
-let g:mapleader = '\'
-"=======================================
-" Flag tab para 2<->4
-"=======================================
-let g:tab = 'true'
-"=======================================
 " Sidebar de navegação (NERDTree) em off na carga do GVim
 "=======================================
 let g:nerdtree_tabs_open_on_gui_startup=0
@@ -417,23 +439,6 @@ nmap <leader>b :let @/=""<cr>
 " Recarrega o arquivo de configuração
 "=======================================
 nmap <leader>v :source $MYVIMRC<cr>
-"=======================================
-" Tab 2<->4
-"=======================================
-nmap <leader>t :call ToggleTab(g:tab)<cr>
-function! ToggleTab(tab)
-  if g:tab=='true'
-		set tabstop=4
-		set shiftwidth=4
-		set softtabstop=4
-		let g:tab='false'
-  else
-		set tabstop=2
-		set shiftwidth=2
-		set softtabstop=2
-		let g:tab='true'
-  endif
-endfunction
 "=======================================
 " Mapeia a tecla \c para compilar o programa em C
 "=======================================
