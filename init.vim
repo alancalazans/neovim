@@ -263,6 +263,8 @@ au BufRead,BufNewFile *.ep set filetype=html
 au BufRead,BufNewFile *.pl6 set filetype=perl
 au BufRead,BufNewFile *.ts set filetype=javascript
 au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.exs setf erlang
+au BufRead,BufNewFile *.ex setf erlang
 "=======================================
 " Remover barra de menu, barra rolagem e etc do gVim
 "=======================================
@@ -361,31 +363,47 @@ set listchars=tab:¦\ ,trail:·,eol:¬
 "set list
 nmap <leader>i :set list!<cr>
 "=======================================
+" CTRL-A seleciona tudo
+"=======================================
+nmap <c-a> gggH<c-o>G
+imap <c-a> <c-o>gg<c-o>gH<c-o>G
+cmap <c-a> <c-c>gggH<c-o>G
+omap <c-a> <c-c>gggH<c-o>G
+smap <c-a> <c-c>gggH<c-o>G
+xmap <c-a> <c-c>ggVG
+map <c-a> <esc>ggvG
+"=======================================
 " Backspace no modo de visão apaga a seleção
 "=======================================
 vmap <bs> d
 "=======================================
 " CTRL-X e SHIFT-Del corta
 "=======================================
-nmap <c-x> d
-vmap <c-x> <c-c>d
-imap <c-x> <c-o>d
+vmap <c-x> "+x
+"---------------------------------------
+vmap <s-del> "+x
 "=======================================
 " CTRL-C e CTRL-insert copia
 "=======================================
 vmap <c-c> "+y
+"---------------------------------------
+vmap <c-insert> "+y
 "=======================================
 " CTRL-V e SHIFT-insert cola
 "=======================================
-nmap <c-v> "+p
-vmap <c-v> <c-c>"+p
-imap <c-v> <c-o>"+p
+nmap <c-v> "+gP
+vmap <c-v> <c-c>"+gP
+imap <c-v> <c-o>:set nosi<cr><c-r>+<c-o>:set si<cr>
+"---------------------------------------
+nmap <s-insert> "+gP
+imap <s-insert> <c-r>+
+cmap <s-insert> <c-r>+
 "=======================================
 " CTRL-S salva
 "=======================================
-nmap <c-s> :w<cr>
-vmap <c-s> <c-c>:w<cr>
-imap <c-s> <c-o>:w<cr>
+nmap <c-s> :update<cr>
+vmap <c-s> <c-c>:update<cr>
+imap <c-s> <c-o>:update<cr>
 "=======================================
 " CTRL-Z desfaz
 "=======================================
@@ -398,6 +416,19 @@ imap <c-z> <c-o>u
 nmap <c-y> <c-r>
 vmap <c-y> <c-c><c-r>
 imap <c-y> <c-o><c-r>
+"=======================================
+" Fechar Editor
+"=======================================
+nmap <c-q> :q<cr>
+vmap <c-q> <c-c>:q<cr>
+imap <c-q> <c-o>:q<cr>
+"=======================================
+" CTRL-F4 fecha a janela
+"=======================================
+nmap <c-F4> <c-w>c
+imap <c-F4> <c-o><c-w>c
+cmap <c-F4> <c-c><c-w>c
+omap <c-F4> <c-c><c-w>c
 "=======================================
 " Mova para o próximo buffer com <líder> + l
 "=======================================
@@ -443,35 +474,12 @@ nmap <leader>v :source $MYVIMRC<cr>
 " Mapeia a tecla \c para compilar o programa em C
 "=======================================
 "au BufNewFile,BufRead *.c nmap \c :!gcc "%" -Wall -o "%<"<cr>
-au BufNewFile,BufRead *.c nmap \c :!gcc -Wall "%"<cr>
+"au BufNewFile,BufRead *.c nmap \c :!gcc -Wall "%"<cr>
 "=======================================
 " Mapeia a tecla \x para executar o programa
 "=======================================
 "nmap \x :!./"%<"<cr>
-nmap \x :!./a.out<cr>
-"=======================================
-" Fechar Editor
-"=======================================
-nmap <c-q> :q<cr>
-vmap <c-q> <c-c>:q<cr>
-imap <c-q> <c-o>:q<cr>
-"=======================================
-" CTRL-A seleciona tudo
-"=======================================
-nmap <c-a> gggH<c-o>G
-imap <c-a> <c-o>gg<c-o>gH<c-o>G
-cmap <c-a> <c-c>gggH<c-o>G
-omap <c-a> <c-c>gggH<c-o>G
-smap <c-a> <c-c>gggH<c-o>G
-xmap <c-a> <c-c>ggVG
-map <c-a> <esc>ggvG
-"=======================================
-" CTRL-F4 fecha a janela
-"=======================================
-nmap <c-F4> <c-w>c
-imap <c-F4> <c-o><c-w>c
-cmap <c-F4> <c-c><c-w>c
-omap <c-F4> <c-c><c-w>c
+"nmap \x :!./a.out<cr>
 "=======================================
 " mostra o inicio de um bloco recem fechado {}, [], ()
 "=======================================
