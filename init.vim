@@ -176,7 +176,7 @@ function! ToggleDrawIt()
     let g:di='stop'
   endif
 endfunction
-nmap <silent><leader>[ :call ToggleDrawIt()<cr>:echo g:di<cr>
+nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 "=======================================
 " Tab 2<->4
 "=======================================
@@ -252,7 +252,7 @@ if has("autocmd") && exists("+omnifunc")
   \  setlocal omnifunc=syntaxcomplete#Complete |
   \ endif
 endif
-imap <c-e> <c-x> <c-o>
+imap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
 "=======================================
 " Definindo sintaxe para algumas extenções.
@@ -324,20 +324,20 @@ vmap <s-tab> <lt>
 " Atalhos Abas
 " 'Ctrl+t' abre uma nova aba
 "=======================================
-imap <c-t> <esc>:tabnew<cr>i
+imap <c-t> <esc>:tabnew<cr>
 nmap <c-t> :tabnew<cr>
 "=======================================
 " 'Ctrl+PageUp' pula para próxima aba
 "=======================================
-imap <c-pageup> <esc>:tabnext<cr>i
+imap <c-pageup> <esc>:tabnext<cr>
 "=======================================
 " 'Ctrl+PageDown' volta para aba anterior
 "=======================================
-imap <c-pagedown> <esc>:tabprevious<cr>i
+imap <c-pagedown> <esc>:tabprevious<cr>
 "=======================================
 " 'Ctrl+e' fecha a aba corrente
 "=======================================
-imap <c-e> <esc>:tabclose<cr>i
+imap <c-e> <esc>:tabclose<cr>
 "=======================================
 " Atalhos comuns de teclado
 " Permite selecionar com SHIFT + SETA como no Windows
@@ -354,6 +354,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " Atalho p/ sidebar de navegação (plugin NERDTree)
 "=======================================
 nmap <leader>n :NERDTreeTabsToggle<cr>
+imap <leader>n <esc>:NERDTreeTabsToggle<cr>
 "=======================================
 " Mostra ou não a identacão
 "=======================================
@@ -362,6 +363,7 @@ nmap <leader>n :NERDTreeTabsToggle<cr>
 set listchars=tab:¦\ ,trail:·,eol:¬
 "set list
 nmap <leader>i :set list!<cr>
+imap <leader>i <esc>:set list!<cr>
 "=======================================
 " CTRL-A seleciona tudo
 "=======================================
@@ -447,9 +449,12 @@ vmap <leader>q <c-c>:bdelete<cr>
 "=======================================
 " Alinhamento de texto
 "=======================================
-nmap <leader>, <esc>:left<cr>
-nmap <leader>. <esc>:right<cr>
-nmap <leader>; <esc>:center<cr>
+nmap <leader>, :left<cr>
+nmap <leader>. :right<cr>
+nmap <leader>; :center<cr>
+imap <leader>, <esc>:left<cr>
+imap <leader>. <esc>:right<cr>
+imap <leader>; <esc>:center<cr>
 "=======================================
 " Emmet
 "=======================================
@@ -458,18 +463,29 @@ imap <leader>e <c-y>,
 " Retira os ^M que ficam no final de arquivos salvos pelo windows.
 "=======================================
 nmap <leader>m :%s/\r//g<cr>
+imap <leader>m <esc>:%s/\r//g<cr>
 "=======================================
-" Remove espaços redundantes no fim das linhas com \e
+" Remove espaços redundantes no fim das linhas com \s
 "=======================================
 nmap <leader>s mz:%s/\s\+$//g<cr>`z
+imap <leader>s <esc>mz:%s/\s\+$//g<cr>`z
 "=======================================
 " Limpa o buffer de buscas
 "=======================================
 nmap <leader>b :let @/=""<cr>
+imap <leader>b <esc>:let @/=""<cr>
 "=======================================
 " Recarrega o arquivo de configuração
 "=======================================
 nmap <leader>v :source $MYVIMRC<cr>
+imap <leader>v <esc>:source $MYVIMRC<cr>
+"=======================================
+" Convert <tab> em <spaces> e vice-versa
+"=======================================
+nmap <leader>[ :set expandtab<cr> :retab<cr>
+imap <leader>[ <esc>:set expandtab<cr> :retab<cr>
+nmap <leader>] :%s/\s\{2,}/\t/g<cr>
+imap <leader>] <esc>:%s/\s\{2,}/\t/g<cr>
 "=======================================
 " Mapeia a tecla \c para compilar o programa em C
 "=======================================
