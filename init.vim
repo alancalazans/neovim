@@ -20,6 +20,7 @@
 "        .vimrc made by Sérgio Luiz Araújo Silva  (voyeg3r) and
 "        .vimrc made by J. F. Mitre <jfmitre (at) gmail.com>
 "=======================================
+set termguicolors  " Ativar true colors no terminal
 set noautochdir " Definir diretorio atual automaticamente
 set nostartofline " Não resetar o cursor para o inicio da linha
 set autoread " Ler arquivo automaticamente caso ele for modificado externalmente
