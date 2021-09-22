@@ -154,9 +154,9 @@ nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "=======================================
 set shortmess+=I
 "=======================================
-" Defina o '\' como tecla líder
+" Defina o ',' como tecla líder
 "=======================================
-let g:mapleader = '\'
+let g:mapleader = ','
 "=======================================
 " Flag tab para 2<->4
 "=======================================
@@ -253,7 +253,7 @@ if has("autocmd") && exists("+omnifunc")
   \  setlocal omnifunc=syntaxcomplete#Complete |
   \ endif
 endif
-imap <leader>a <c-x> <c-o>
+nmap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
 "=======================================
 " Definindo sintaxe para algumas extenções.
@@ -355,7 +355,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " Atalho p/ sidebar de navegação (plugin NERDTree)
 "=======================================
 nmap <leader>n :NERDTreeTabsToggle<cr>
-imap <leader>n <esc>:NERDTreeTabsToggle<cr>
 "=======================================
 " Mostra ou não a identacão
 "=======================================
@@ -364,7 +363,6 @@ imap <leader>n <esc>:NERDTreeTabsToggle<cr>
 set listchars=tab:¦\ ,trail:·,eol:¬
 "set list
 nmap <leader>i :set list!<cr>
-imap <leader>i <esc>:set list!<cr>
 "=======================================
 " CTRL-A seleciona tudo
 "=======================================
@@ -453,40 +451,31 @@ vmap <leader>q <c-c>:bdelete<cr>
 nmap <leader>, :left<cr>
 nmap <leader>. :right<cr>
 nmap <leader>; :center<cr>
-imap <leader>, <esc>:left<cr>
-imap <leader>. <esc>:right<cr>
-imap <leader>; <esc>:center<cr>
 "=======================================
 " Emmet
 "=======================================
-imap <leader>e <c-y>,
+nmap <leader>e <c-y>,
 "=======================================
 " Retira os ^M que ficam no final de arquivos salvos pelo windows.
 "=======================================
 nmap <leader>m :%s/\r//g<cr>
-imap <leader>m <esc>:%s/\r//g<cr>
 "=======================================
 " Remove espaços redundantes no fim das linhas com \s
 "=======================================
 nmap <leader>s mz:%s/\s\+$//g<cr>`z
-imap <leader>s <esc>mz:%s/\s\+$//g<cr>`z
 "=======================================
 " Limpa o buffer de buscas
 "=======================================
 nmap <leader>b :let @/=""<cr>
-imap <leader>b <esc>:let @/=""<cr>
 "=======================================
 " Recarrega o arquivo de configuração
 "=======================================
 nmap <leader>v :source $MYVIMRC<cr>
-imap <leader>v <esc>:source $MYVIMRC<cr>
 "=======================================
 " Convert <tab> em <spaces> e vice-versa
 "=======================================
 nmap <leader>[ :set expandtab<cr> :retab<cr>
-imap <leader>[ <esc>:set expandtab<cr> :retab<cr>
 nmap <leader>] :%s/\s\{2,}/\t/g<cr>
-imap <leader>] <esc>:%s/\s\{2,}/\t/g<cr>
 "=======================================
 " Mapeia a tecla \c para compilar o programa em C
 "=======================================
