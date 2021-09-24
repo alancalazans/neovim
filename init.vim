@@ -378,28 +378,6 @@ map <c-a> <esc>ggvG
 "=======================================
 vmap <bs> d
 "=======================================
-" CTRL-X e SHIFT-Del corta
-"=======================================
-vmap <c-x> "+x
-"---------------------------------------
-vmap <s-del> "+x
-"=======================================
-" CTRL-C e CTRL-insert copia
-"=======================================
-vmap <c-c> "+y
-"---------------------------------------
-vmap <c-insert> "+y
-"=======================================
-" CTRL-V e SHIFT-insert cola
-"=======================================
-nmap <c-v> "+gP
-vmap <c-v> <c-c>"+gP
-imap <c-v> <c-o>:set nosi<cr><c-r>+<c-o>:set si<cr>
-"---------------------------------------
-nmap <s-insert> "+gP
-imap <s-insert> <c-r>+
-cmap <s-insert> <c-r>+
-"=======================================
 " CTRL-S salva
 "=======================================
 nmap <c-s> :update<cr>
@@ -494,10 +472,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 " Outra forma de pular fora dos parênteses, colchetes e chaves, mover o cursor
 " no modo insert
 "=======================================
-imap <c-l> <right>
-imap <c-h> <left>
-imap <c-[> <up>
-imap <c-]> <down>
+imap <m-l> <right>
+imap <m-h> <left>
+imap <m-i> <up>
+imap <m-m> <down>
 "=======================================
 " Habilita auto-indentação
 "=======================================
@@ -556,3 +534,42 @@ imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
 " Entra no modo visual para tabular bloco
 "=======================================
 "imap <f11> <esc><s-v>
+"=======================================
+" Abreviações
+"=======================================
+iab http http://
+iab a. ª
+iab o. º
+iab no. nº
+iab No. Nº
+iab 1a. 1ª
+iab 2a. 2ª
+iab 3a. 3ª
+iab 4a. 4ª
+iab 5a. 5ª
+iab 6a. 6ª
+iab 7a. 7ª
+iab 8a. 8ª
+iab 9a. 9ª
+iab 10a. 10ª
+iab 11a. 11ª
+iab 12a. 12ª
+iab 13a. 13ª
+iab 14a. 14ª
+iab 15a. 15ª
+"-------------------------------------------
+" Paste system clipboard with Ctrl + v
+inoremap <C-v> <ESC>"+gP
+"nnoremap <C-v> "+gP<ESC>
+vnoremap <C-v> d"+gP<ESC>
+cnoremap <C-v> <C-r>+
+"-------------------------------------------
+" Cut to system clipboard with Ctrl + x
+vnoremap <C-x> "+d
+"nnoremap <C-x> "+dd
+inoremap <C-x> <ESC>"+ddi
+"-------------------------------------------
+" Copy to system clipboard with Ctr + c
+vnoremap <C-c> "+y
+nnoremap <C-c> "+yy
+inoremap <C-c> <ESC>"+yy
