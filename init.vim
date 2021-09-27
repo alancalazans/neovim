@@ -539,16 +539,16 @@ imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
 "=======================================
 iab http http://
 iab https https://
-iab ah á
-iab Ah Á
-iab eh é
-iab Eh É
-iab ih í
-iab Ih Í
-iab oh ó
-iab Oh Ó
-iab uh ú
-iab Uh Ú
+iab ´a á
+iab ´A Á
+iab ´e é
+iab ´E É
+iab ´i í
+iab ´I Í
+iab ´o ó
+iab ´O Ó
+iab ´u ú
+iab ´U Ú
 iab a. ª
 iab o. º
 iab no. nº
