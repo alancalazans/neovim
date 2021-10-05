@@ -568,6 +568,7 @@ iab 12a. 12ª
 iab 13a. 13ª
 iab 14a. 14ª
 iab 15a. 15ª
+set clipboard+=unnamedplus " use system clipboard
 "-------------------------------------------
 " Paste system clipboard with Ctrl + v
 inoremap <C-v> <ESC>"+gP
