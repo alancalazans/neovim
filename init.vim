@@ -568,20 +568,22 @@ iab 12a. 12ª
 iab 13a. 13ª
 iab 14a. 14ª
 iab 15a. 15ª
-set clipboard+=unnamedplus " use system clipboard
+"-------------------------------------------
+" Habilitar área de transferência do sistema
+"-------------------------------------------
+"set clipboard=unnamed " No Windows
+set clipboard=unnamedplus " No Linux
 "-------------------------------------------
 " Paste system clipboard with Ctrl + v
-inoremap <C-v> <ESC>"+gP
-"nnoremap <C-v> "+gP<ESC>
-vnoremap <C-v> d"+gP<ESC>
-cnoremap <C-v> <C-r>+
+imap <c-v> <c-r><c-o>+
+vmap <c-v> d"+gP<ESC>
+cmap <c-v> <c-r>+
 "-------------------------------------------
 " Cut to system clipboard with Ctrl + x
-vnoremap <C-x> "+d
-"nnoremap <C-x> "+dd
-inoremap <C-x> <ESC>"+ddi
+vmap <c-x> "+d
+imap <c-x> <ESC>"+ddi
 "-------------------------------------------
 " Copy to system clipboard with Ctr + c
-vnoremap <C-c> "+y
-nnoremap <C-c> "+yy
-inoremap <C-c> <ESC>"+yy
+vmap <c-c> "+y
+nmap <c-c> "+yy
+imap <c-c> <ESC>"+yy
