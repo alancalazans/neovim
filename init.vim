@@ -472,10 +472,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 " Outra forma de pular fora dos parênteses, colchetes e chaves, mover o cursor
 " no modo insert
 "=======================================
-imap <m-l> <right>
-imap <m-h> <left>
-imap <m-i> <up>
-imap <m-m> <down>
+imap <c-l> <right>
+imap <c-h> <left>
+imap <m-[> <up>
+imap <m-]> <down>
 "=======================================
 " Habilita auto-indentação
 "=======================================
