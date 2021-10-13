@@ -1,0 +1,779 @@
+# Some useful Unicode entities
+# Non-Breaking Space
+snippet 1s
+	&nbsp;
+snippet 2s
+	&nbsp;&nbsp;
+snippet 4s
+	&nbsp;&nbsp;&nbsp;&nbsp;
+snippet 8s
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+snippet 12s
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# &
+snippet &
+	&amp;
+# <
+snippet lt
+	&lt;
+# >
+snippet gt
+	&gt;
+# ←
+snippet left
+	&#x2190;
+# →
+snippet right
+	&#x2192;
+# ↑
+snippet up
+	&#x2191;
+# ↓
+snippet down
+	&#x2193;
+# ↩
+snippet return
+	&#x21A9;
+# ⇤
+snippet backtab
+	&#x21E4;
+# ⇥
+snippet tab
+	&#x21E5;
+# ⇧
+snippet shift
+	&#x21E7;
+# ⌃
+snippet control
+	&#x2303;
+# ⌅
+snippet enter
+	&#x2305;
+# ⌘
+snippet command
+	&#x2318;
+# ⌥
+snippet option-char
+	&#x2325;
+# ⌦
+snippet delete
+	&#x2326;
+# ⌫
+snippet backspace
+	&#x232B;
+snippet escape
+	&#x238B;
+snippet favicon
+	<link rel="shortcut icon" href="assets/img/favicon/favicon.png">
+#=======================================
+# bootstrap4
+#=======================================
+snippet bootstrap
+	<!doctype html>
+	<html lang="pt-br">
+	<head>
+		<!-- Meta tags -->
+		<meta charset="utf-8">
+		<meta name="author" content="">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- <link rel="shortcut icon" href="assets/img/favicon/favicon.png"> -->
+
+		<title>${1:title}</title>
+
+		<!-- Principal CSS do Bootstrap -->
+		<link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.min.css">
+		<!-- Move o conteúdo 3.5rem para baixo, porque usamos uma navbar fixa que tem altura de 3.5rem -->
+		<link rel="stylesheet" href="assets/lib/bootstrap/jumbotron.css">
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Desativado</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown01">
+							<a class="dropdown-item" href="#">Item</a>
+							<a class="dropdown-item" href="#">Outro item</a>
+							<a class="dropdown-item" href="#">Algum outro item</a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+				</form>
+			</div>
+		</nav>
+
+		<!--
+		Extra small <576px | Small ≥576px | Medium ≥768px | Large ≥992px | Extra large ≥1200px
+		===================|==============|===============|==============|====================
+		░░░░░░░col-░░░░░░░░|░░░.col-sm-░░░|░░░░.col-md-░░░|░░░.col-lg-░░░|░░░░░░.col-xl-░░░░░░ -->
+
+		<main role="main">
+
+			<div class="container">
+				<!-- Exemplo de linha de colunas -->
+				<div class="row">
+					<div class="col-md-4">
+					<h2>Título</h2>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+					<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Título</h2>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+					<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Título</h2>
+					<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+				</div>
+			</div>
+
+		</main>
+
+		<footer class="container">
+			<p>&copy; Companhia 2017-2018</p>
+		</footer>
+
+		<!-- Principal JavaScript do Bootstrap
+		======================================= -->
+		<!-- Foi colocado no final para a página carregar mais rápido -->
+		<script src="assets/lib/bootstrap/jquery-3.3.1.slim.min.js"></script>
+		<script src="assets/lib/bootstrap/popper.min.js"></script>
+		<script src="assets/lib/bootstrap/bootstrap.min.js"></script>
+	</body>
+	</html>
+# coluna
+snippet coluna
+	<div class="col-${1:lg}-${2:12}">
+		<div class="row">
+			${3}
+		</div>
+	</div>
+# grid
+snippet grid
+	<!--
+		Extra small <576px | Small ≥576px | Medium ≥768px | Large ≥992px | Extra large ≥1200px
+		===================|==============|===============|==============|====================
+		░░░░░░░col-░░░░░░░░|░░░.col-sm-░░░|░░░░.col-md-░░░|░░░.col-lg-░░░|░░░░░░.col-xl-░░░░░░ -->
+
+		<div class="container">
+			<!-- Exemplo de linha de colunas -->
+			<div class="row">
+				<div class="col-md-4">
+				<h2>Título</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+			</div>
+			<div class="col-md-4">
+				<h2>Título</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+			</div>
+			<div class="col-md-4">
+				<h2>Título</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+				<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+			</div>
+		</div>
+#=======================================
+# html5
+#=======================================
+snippet documentation
+	<!--
+	=======================================
+	 File: ${1:index.html}
+	 Author: ${2:webmaster <webmaster@gmail.com>}
+	 Last Update: ${3:Sex 06 Mai 2016 07:22:00 BRT}
+	 Created: ${4:Sex 22 Mai 2009 10:01:22 BRT}
+	 Version: ${5}
+	 Notes: ${6}
+	=======================================
+	-->
+snippet a
+	<a href="${1:#}">${2}</a>
+snippet abbr
+	<abbr>${1}</abbr>
+snippet address
+	<address>${1}</address>
+snippet area
+	<area shape="${1:default, rect, circle, poly}" coords="${2}" href="${3}" alt="${4}"/>
+snippet audio
+	<!-- Outros parâmetros: autoplay loop -->
+	<audio controls>
+		<source src="assets/audio/audio.mp3" type="audio/mp3" />
+	</audio>
+snippet b
+	<b>${1}</b>
+snippet base
+	<base ${1:target, href}="${2}"/>
+snippet baset
+	<base target="${1}"/>
+snippet baseh
+	<base href="${1}"/>
+snippet bdo
+	<bdo dir="${1:ltr, rtl}">${2}</bdo>
+snippet blockquote
+	<blockquote>${1}</blockquote>
+snippet body
+	<body>
+		${1}
+	</body>
+snippet br
+	<br>
+snippet button
+	<button type="${1:button, reset, submit}">${2:label}</button>
+snippet cmt
+	<!-- ${1} -->
+snippet cmts
+	<!--
+	=======================================
+	${1}
+	=======================================
+	-->
+snippet caption
+	<caption>${1}</caption>
+snippet cdata
+	<![CDATA[%0]]>
+snippet checkbox
+	<input type="checkbox" name="${1}" value="${2}" />
+snippet cite
+	<cite>${1}</cite>
+snippet code
+	<code>${1}</code>
+snippet col
+	<col align="${1:left, right, center, justify, or char}"/>
+snippet colgroup
+	<colgroup>${1}</colgroup>
+snippet style
+	<style>
+
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+				 -moz-box-sizing: border-box;
+							box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Trebuchet MS', Helvetica, sans-serif;
+			font-size: 14px;
+			//font-weight: bold;
+		}
+
+	</style>
+snippet style-src
+	<link rel="stylesheet" href="assets/${1}">
+snippet dd
+	<dd>${1}</dd>
+snippet del
+	<del>${1}</del>
+snippet dfn
+	<dfn>${1}</dfn>
+snippet div
+	<div>
+		${1}
+	</div>
+snippet div-clear
+	<div class="clear"></div>
+snippet dl
+	<dl>${1}</dl>
+snippet dt
+	<dt>${1}</dt>
+snippet em
+	<em>${1}</em>
+snippet fieldset
+	<fieldset>
+	<legend>${1}</legend>
+		${2}
+	</fieldset>
+snippet form
+	<form action="${1:url}" method="${2:get or post}">
+
+		<input type="submit" value="${3:send value}">
+
+	</form>
+snippet frame
+	<!--
+	rows = x; linhas
+	cols = y; colunas
+	border = largura; da borda
+	frameborder = 0(não) ou 1(sim)
+	-->
+	<frameset rows="15%,85%">
+		<frame name =“moldura1” src=""/>
+		<frameset cols="30%,70%">
+			<frame name =“moldura2” src=""/>
+			<frame name =“moldura3” src=""/>
+		</frameset>
+	</frameset>
+snippet frameset
+	<frameset>
+	<frame src="${1}" />
+	${2}
+	</frameset>
+snippet h1
+	<h1>${1}</h1>
+snippet h2
+	<h2>${1}</h2>
+snippet h3
+	<h3>${1}</h3>
+snippet h4
+	<h4>${1}</h4>
+snippet h5
+	<h5>${1}</h5>
+snippet h6
+	<h6>${1}</h6>
+snippet head
+	<head>
+		${1}
+	</head>
+snippet hr
+	<hr style="height: 5px; border: none; color: #7A7879; background-color: #7A7879;">
+snippet html5
+	<!DOCTYPE HTML>
+	<html lang="pt-br">
+		<head>
+			<!-- Meta tags -->
+			<meta charset="UTF-8">
+			<title>${1:Title}</title>
+			<meta name="description" content="description">
+			<link rel="canonical" href="url">
+			<meta name="author" content="author">
+			<meta name="robots" content="index, nofollow">
+			<meta http-equiv="X-UA-Compatible" content="IE-edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+			<!-- <link rel="icon" href="assets/img/favicon/favicon.png"> -->
+
+		</head>
+		<body>
+			${2:content}
+		</body>
+	</html>
+snippet i
+	<i>${1}</i>
+snippet ie7
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+snippet iframe
+	<div ${1:id or class}="${2}">
+	<iframe src="http://www.google.com" width="400px" height="400px" frameborder="1" scrolling="yes"></iframe>
+	</div>
+snippet img
+	<img src="${1}" width="${2}" height="${3}" title="${4}" alt="${5}">
+snippet input
+	<input type="text" id="${1}" name="${2}" value="${3}" placeholder="${4}" required>
+snippet ins
+	<ins>${1}</ins>
+snippet $
+	$(() => {
+		${1}
+	});
+snippet script
+	<script>
+		${1}
+	</script>
+snippet script-src
+	<script src="assets/js/${1:script}.js"></script>
+snippet kbd
+	<kbd>${1}</kbd>
+snippet label
+	<label for="${1}">${2}</label>
+snippet legend
+	<legend>${1}</legend>
+snippet li
+	<li>${1}</li>
+snippet map
+	<map name="${1}">${2}</map>
+snippet meta
+	<meta name="${1}" content="${2}" />
+snippet metah
+	<meta http-equiv="${1}" content="${2}" />
+snippet noframes
+	<noframes>${1}</noframes>
+snippet noscript
+	<noscript>${1}</noscript>
+snippet object
+	<object>${1}</object>
+snippet ol
+	<ol>
+		<li>${1}</li>
+	</ol>
+snippet optgroup
+	<optgroup label="${1}">
+		<option value="${2}">${3}</option>
+	</optgroup>
+snippet option
+	<option>${1}</option>
+snippet p
+	<p>${1}</p>
+snippet param
+	<param name="${1}" value="${2}" />
+snippet pass
+	<input type="password" id="${1}" name="${2}" />
+snippet pre
+	<pre>${1}</pre>
+snippet precode
+	<pre class="prettyprint">
+	${1}
+	</pre>
+snippet precodeln
+	<pre class="prettyprint linenums">
+	${1}
+	</pre>
+snippet q
+	<q>${1}</q>
+snippet radio
+	<input type="radio" name="${1}" value="${2}" />
+snippet refresh
+	<meta http-equiv="refresh" content="2;url=${1}" />
+snippet rss
+	<link rel="alternate" type="application/rss+xml" title="${1}" href="${2}" />
+snippet samp
+	<samp>${1}</samp>
+snippet select
+	<select id="${1}" name="${2}">
+	<optgroup label="${3}">
+		<option value="${4}">${5}</option>
+	</optgroup>
+	</select>
+snippet small
+	<small>${1}</small>
+snippet span
+	<span class="${1}">${2}</span>
+snippet strong
+	<strong>${1}</strong>
+snippet sub
+	<sub>${1}</sub>
+snippet sup
+	<sup>${1}</sup>
+snippet table
+	<table border="1" width="300" height="300" bgcolor="yellow">
+	<caption>${1:title}</caption>
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</tfoot>
+	</table>
+snippet tbody
+	<tbody>
+		<tr>${1}</tr>
+	</tbody>
+snippet td
+	<td>${1}</td>
+snippet textarea
+	<textarea id="${1}" name="${2}" cols="50" rows="10" >${3}</textarea>
+snippet tfoot
+	<tfoot>
+		<tr>${1}</tr>
+	</tfoot>
+snippet th
+	<th>${1}</th>
+snippet thead
+	<thead>
+		<tr>${1}</tr>
+	</thead>
+snippet title
+	<title>${1}</title>
+snippet tr
+	<tr>
+		<td>${1}</td>
+	</tr>
+snippet thumb
+	<a href="${1}"><img src="${2}" alt="${3}" title="${4}" /></a>
+snippet ul
+	<ul>
+		<li>${1}</li>
+	</ul>
+snippet utf
+	<meta http-equiv="Content-Type" content="text/html; charset=${1:UTF-8}" />
+snippet var
+	<var>${1}</var>
+snippet video
+	<!-- Outros parâmetros: poster="star.png" autoplay loop tabindex="0" -->
+	<video width="320" height="240" controls>
+		<source src="assets/video/movie.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+		<source src="assets/video/movie.webm" type='video/webm; codecs="vp8, vorbis"' />
+		<source src="assets/video/movie.ogv" type='video/ogg; codecs="theora, vorbis"' />
+		<p>Seu navegador não suporta HTML5.</p>
+	</video>
+snippet lorem
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit
+	enim, sagittis at facilisis vitae, tempus sit amet felis. Cras elementum magna
+	ac sapien venenatis molestie. Suspendisse sit amet urna sem, vitae rutrum
+	urna. Mauris rutrum nulla vel magna egestas ornare. Maecenas eget enim est,
+	vitae molestie ligula. Sed vel fermentum ante. Aenean pharetra nisi nec mi
+	ultrices porta. Nullam porttitor urna sit amet quam placerat imperdiet. Ut
+	viverra dictum mauris, sollicitudin elementum magna placerat id. Proin
+	pharetra, quam in sollicitudin facilisis, mi purus pharetra ipsum, sed gravida
+	sapien lectus eu metus.</p>
+snippet lorem-ipsum
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit
+	enim, sagittis at facilisis vitae, tempus sit amet felis. Cras elementum magna
+	ac sapien venenatis molestie. Suspendisse sit amet urna sem, vitae rutrum
+	urna. Mauris rutrum nulla vel magna egestas ornare. Maecenas eget enim est,
+	vitae molestie ligula. Sed vel fermentum ante. Aenean pharetra nisi nec mi
+	ultrices porta. Nullam porttitor urna sit amet quam placerat imperdiet. Ut
+	viverra dictum mauris, sollicitudin elementum magna placerat id. Proin
+	pharetra, quam in sollicitudin facilisis, mi purus pharetra ipsum, sed gravida
+	sapien lectus eu metus.</p>
+	<p>Suspendisse scelerisque erat vitae mauris ultricies tristique quis vel
+	turpis. Etiam rhoncus iaculis condimentum. Nullam vitae dui vel eros volutpat
+	tempor ac et massa. Fusce ullamcorper consectetur justo et pellentesque. Morbi
+	nisi dolor, viverra ut feugiat vel, venenatis nec nisi. Nullam et nulla magna,
+	sit amet faucibus enim. Aenean in massa quis sem fermentum sodales. Nam diam
+	orci, pulvinar non tempus sed, ullamcorper in felis. Morbi ac odio justo,
+	gravida tempor elit. Suspendisse at metus arcu. Pellentesque libero diam,
+	sodales nec vehicula sit amet, sodales vitae neque. Pellentesque habitant
+	morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+	<p>Cras blandit eleifend mi, id condimentum elit vehicula ac. Mauris nisl
+	quam, laoreet eget condimentum vitae, vulputate nec augue. Aliquam at odio
+	velit. Aliquam fermentum auctor elementum. Quisque sagittis tortor non velit
+	imperdiet mollis sit amet vel libero. Pellentesque semper viverra arcu, vitae
+	consequat lorem ullamcorper non. Duis vitae sagittis massa. Nunc fermentum
+	consequat dui, vitae rutrum diam fringilla in. Suspendisse potenti. Aenean
+	iaculis mauris ac tortor convallis rutrum. Morbi convallis scelerisque
+	feugiat. Sed laoreet vestibulum ante sed ullamcorper. Pellentesque ut quam ac
+	diam tempus dignissim. Maecenas tincidunt pulvinar magna vel consectetur.
+	Donec odio mi, vehicula et bibendum sed, pellentesque sed eros.</p>
+	<p>Vestibulum risus lectus, vestibulum in scelerisque eu, lobortis quis risus.
+	Aenean congue felis nec arcu ornare dapibus. Morbi sed odio justo, et placerat
+	orci. Praesent viverra, diam ut congue volutpat, sem libero placerat elit, eu
+	viverra purus orci at lacus. Nullam vel purus sapien. Class aptent taciti
+	sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc
+	ullamcorper auctor tortor nec tincidunt. Vivamus nec ipsum leo, vel ornare
+	nisi. Curabitur odio metus, ultricies eu pellentesque id, tempor eu enim.
+	Morbi iaculis vestibulum venenatis. Vivamus vitae augue quis nisi semper
+	fringilla a vulputate diam. Cras a est nisi. Ut iaculis bibendum sem, ut
+	iaculis odio tincidunt nec. Aliquam eget leo diam. Pellentesque at congue
+	tortor. Fusce convallis ornare lacus nec lobortis. Nullam non odio vitae nisi
+	vulputate tristique vel non quam. Mauris feugiat mi dignissim felis laoreet
+	pharetra. Cras molestie odio at velit rhoncus consequat. Sed suscipit
+	condimentum dui eu dictum.</p>
+	<p>Nullam pretium nunc arcu, ac scelerisque nulla. Sed pharetra feugiat
+	pulvinar. Nulla posuere ligula ipsum. Donec arcu lectus, congue eget
+	scelerisque eu, egestas a augue. Cras vel nisl enim. Aliquam erat volutpat.
+	Integer auctor consectetur elit sed dignissim. Duis posuere pulvinar mauris,
+	id condimentum nulla pharetra vitae. Donec pellentesque mauris ut nisl
+	facilisis id pellentesque ipsum volutpat. Nulla facilisi. Nunc blandit porta
+	lectus at luctus. Aenean interdum mi nec dolor aliquet facilisis. Quisque in
+	dolor elit, vel tempor tortor.</p>
+snippet cmt-css
+	/* ${1} */
+snippet cmts-css
+	/*=======================================
+	* ${1}
+	**=======================================*/
+snippet hide
+	text-indent: 9999em; line-height: 9999em; overflow: hidden;
+#=======================================
+# Vue
+#=======================================
+snippet vue
+	/*
+	const routes = [
+		{ path: '/',
+			component: {
+					template: template,
+				mounted () {
+					fun();
+				}
+			}
+		},
+		{ path: '/help',
+			component: {
+				template: template
+			}
+		}
+	]
+
+	const router = new VueRouter({
+		routes
+	})
+	*/
+
+	const app = new Vue({
+		history: true,
+		el: '#app'
+		//router
+
+		//data: {},
+
+		//methods: {},
+
+		//computed: {},
+
+		//watch: {},
+
+		//filters: {}
+	});
+#=======================================
+# RevealJS
+#=======================================
+snippet revealjs
+	<!doctype html>
+	<html lang="pt-br">
+	<head>
+		<!-- Meta tags -->
+		<meta charset="utf-8">
+		<title>RevealJS</title>
+		<meta name="author" content="">
+		<meta name="description" content="">
+
+		<link rel="stylesheet" href="assets/css/reveal.css">
+		<link rel="stylesheet" href="assets/css/theme/moon.css" id="theme">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Slide Horizontal Simples</section>
+				<section>
+					<section>Slide Veritical 1</section>
+					<section>Slide Veritical 2</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="assets/js/head.min.js"></script>
+		<script src="assets/js/reveal.min.js"></script>
+
+		<script>
+			// Veja todas as configurações em:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true, // mostra as setinhas na parte inferior
+				progress: true, // mostra uma barra de progresso
+				center: true, // centraliza os slides
+				transition: 'slide' // none/fade/slide/convex/concave/zoom
+			});
+		</script>
+
+	</body>
+	</html>
+#=======================================
+# window.onload
+#=======================================
+snippet window.onload
+	window.onload = () => {
+		${1}
+	}
+#=======================================
+# ReactJS
+#=======================================
+snippet react-libs
+	<script src="assets/js/lib/reactjs/react.production.min.js"></script>
+	<script src="assets/js/lib/reactjs/react-dom.production.min.js"></script>
+	<script src="assets/js/lib/reactjs/babel.min.js"></script>
+snippet react-class
+	<script type="text/babel">
+
+		const root = document.getElementById('root');
+
+		class MyComponent extends React.Component {
+			render() {
+				return(
+					<div>
+						<p>Teste</p>
+					</div>
+				)
+			}
+		}
+
+		ReactDOM.render(<MyComponent />, root);
+
+	</script>
+snippet react-form
+	<script type="text/babel">
+		class App extends React.Component {
+			constructor() {
+				super()
+
+				this.state = {
+					username: '',
+					password: ''
+				}
+
+			}
+
+			alterarUsername = e => {
+				this.setState({username: e.target.value})
+			}
+
+			alterarPassword = e => {
+				this.setState({password: e.target.value})
+			}
+
+			submeterForm = e => {
+				console.log("Username: " + this.state.username)
+				console.log("Password: " + this.state.password)
+				e.preventDefault()
+			}
+
+			render() {
+				return(
+					<form onSubmit={this.submeterForm}>
+						<input type="text" value={this.state.username} onChange={this.alterarUsername} placeholder="username" />
+						<br />
+						<input type="password" value={this.state.password} onChange={this.alterarPassword} placeholder="password" />
+						<br />
+						<input type="submit" value="Entrar" />
+					</form>
+				)
+			}
+		}
+
+		ReactDOM.render(
+			<App />,
+			document.getElementById('root')
+		)
+	</script>
+snippet react-f-props
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		let Ola = (props) => {
+			return(
+				<div>
+					<p>Olá, {props.nome} {props.sobrenome}.</p>
+				</div>
+			)
+		}
+
+		ReactDOM.render(<Ola nome="Fulano" sobrenome="de Tal" />, root);
+	</script>
