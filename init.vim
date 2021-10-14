@@ -129,23 +129,27 @@ endif " Conclui sobre a existência de uma interface gráfica
 "set lines=42 columns=80
 "set wildmenu
 "=======================================
+" Defina o ',' como tecla líder
+"=======================================
+let g:mapleader = ','
+"=======================================
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme cyberpunk 
+colorscheme aylin 
 function! ToggleColorscheme()
-  if g:colors_name == 'cyberpunk'
-    colorscheme southernlights
-  elseif g:colors_name == 'southernlights'
+  if g:colors_name == 'aylin'
+    colorscheme snazzy
+  elseif g:colors_name == 'snazzy'
     colorscheme midnight
   elseif g:colors_name == 'midnight'
-    colorscheme turbo
-  elseif g:colors_name == 'turbo'
-    colorscheme borland
-  elseif g:colors_name == 'borland'
-    colorscheme greens
-  elseif g:colors_name == 'greens'
-    colorscheme cyberpunk
+    colorscheme southernlights
+  elseif g:colors_name == 'southernlights'
+    colorscheme aurora
+  elseif g:colors_name == 'aurora'
+    colorscheme nvcode
+  elseif g:colors_name == 'nvcode'
+    colorscheme aylin
   endif
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
@@ -153,10 +157,6 @@ nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 " Suprime a mensagem inicial do GVim
 "=======================================
 set shortmess+=I
-"=======================================
-" Defina o ',' como tecla líder
-"=======================================
-let g:mapleader = ','
 "=======================================
 " Flag tab para 2<->4
 "=======================================
