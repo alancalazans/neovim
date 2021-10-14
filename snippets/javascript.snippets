@@ -204,7 +204,48 @@ snippet prop
 #------------------------------------------------
 # ReactJS
 #------------------------------------------------
-snippet react-form
+snippet rClass
+	const root = document.getElementById('root');
+
+	class MyComponent extends React.Component {
+		render() {
+			return(
+				<div>
+					<p>Teste</p>
+				</div>
+			)
+		}
+	}
+
+	ReactDOM.render(<MyComponent />, root);
+#------------------------------------------------
+snippet rFunction
+	const root = document.getElementById('root');
+
+	let MyComponent = () => {
+		return(
+			<div>
+				<p>Teste</p>
+			</div>
+		)
+	}
+
+	ReactDOM.render(<MyComponent />, root);
+#------------------------------------------------
+snippet rfProps
+	const root = document.getElementById('root');
+
+	let Ola = (props) => {
+		return(
+			<div>
+				<p>Olá, {props.nome} {props.sobrenome}.</p>
+			</div>
+		)
+	}
+
+	ReactDOM.render(<Ola nome="Fulano" sobrenome="de Tal" />, root);
+#------------------------------------------------
+snippet rForm
 	class App extends React.Component {
 		constructor() {
 			super()
@@ -248,43 +289,53 @@ snippet react-form
 		document.getElementById('root')
 	)
 #------------------------------------------------
-snippet react-class
+snippet rMap
 	const root = document.getElementById('root');
 
-	class MyComponent extends React.Component {
+	class App extends React.Component {
+		render() {
+			return(<div>
+							<h2>Notícias</h2>
+							<hr />
+							{final}
+						 </div>)
+		}
+	}
+
+	class Noticia extends React.Component {
+		constructor(props) {
+			super(props)
+		}
+
 		render() {
 			return(
 				<div>
-					<p>Teste</p>
+					<h3>{this.props.noticia.titulo}</h3>
+					<p>{this.props.noticia.texto}</p>
+					<small><i>{this.props.noticia.autor}</i></small>
 				</div>
 			)
 		}
 	}
 
-	ReactDOM.render(<MyComponent />, root);
-#------------------------------------------------
-snippet react-function
-	const root = document.getElementById('root');
+	const noticias = [
+		{
+			titulo: "Notícia 1",
+			texto: "Texto da notícia 1",
+			autor: "Autor 1"
+		},
+		{
+			titulo: "Notícia 2",
+			texto: "Texto da notícia 2",
+			autor: "Autor 2"
+		},
+		{
+			titulo: "Notícia 3",
+			texto: "Texto da notícia 3",
+			autor: "Autor 3"
+		}
+	]
 
-	let MyComponent = () => {
-		return(
-			<div>
-				<p>Teste</p>
-			</div>
-		)
-	}
+	let final = noticias.map(n => <Noticia noticia={n} />)
 
-	ReactDOM.render(<MyComponent />, root);
-#------------------------------------------------
-snippet react-f-props
-	const root = document.getElementById('root');
-
-	let Ola = (props) => {
-		return(
-			<div>
-				<p>Olá, {props.nome} {props.sobrenome}.</p>
-			</div>
-		)
-	}
-
-	ReactDOM.render(<Ola nome="Fulano" sobrenome="de Tal" />, root);
+	ReactDOM.render(<App />, root);

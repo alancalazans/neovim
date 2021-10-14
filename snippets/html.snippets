@@ -355,6 +355,21 @@ snippet html5
 	<!DOCTYPE HTML>
 	<html lang="pt-br">
 		<head>
+			<meta charset="UTF-8">
+			<title>${1:Title}</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+			<!-- <link rel="icon" href="assets/img/favicon/favicon.png"> -->
+
+		</head>
+		<body>
+			${2:content}
+		</body>
+	</html>
+snippet html5Metas
+	<!DOCTYPE HTML>
+	<html lang="pt-br">
+		<head>
 			<!-- Meta tags -->
 			<meta charset="UTF-8">
 			<title>${1:Title}</title>
@@ -693,14 +708,18 @@ snippet window.onload
 	window.onload = () => {
 		${1}
 	}
-#=======================================
+#------------------------------------------------
 # ReactJS
-#=======================================
-snippet react-libs
+#------------------------------------------------
+snippet rLibs
 	<script src="assets/js/lib/reactjs/react.production.min.js"></script>
 	<script src="assets/js/lib/reactjs/react-dom.production.min.js"></script>
 	<script src="assets/js/lib/reactjs/babel.min.js"></script>
-snippet react-class
+#------------------------------------------------
+snippet rJsx
+	rJsx=<script type="text/babel" src="assets/js/${1}.js"></script>
+#------------------------------------------------
+snippet rClass
 	<script type="text/babel">
 
 		const root = document.getElementById('root');
@@ -718,7 +737,38 @@ snippet react-class
 		ReactDOM.render(<MyComponent />, root);
 
 	</script>
-snippet react-form
+#------------------------------------------------
+snippet rFunction
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		let MyComponent = () => {
+			return(
+				<div>
+					<p>Teste</p>
+				</div>
+			)
+		}
+
+		ReactDOM.render(<MyComponent />, root);
+	</script>
+#------------------------------------------------
+snippet rfProps
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		let Ola = (props) => {
+			return(
+				<div>
+					<p>Olá, {props.nome} {props.sobrenome}.</p>
+				</div>
+			)
+		}
+
+		ReactDOM.render(<Ola nome="Fulano" sobrenome="de Tal" />, root);
+	</script>
+#------------------------------------------------
+snippet rForm
 	<script type="text/babel">
 		class App extends React.Component {
 			constructor() {
@@ -763,17 +813,58 @@ snippet react-form
 			document.getElementById('root')
 		)
 	</script>
-snippet react-f-props
+#------------------------------------------------
+snippet rMap
 	<script type="text/babel">
+
 		const root = document.getElementById('root');
 
-		let Ola = (props) => {
-			return(
-				<div>
-					<p>Olá, {props.nome} {props.sobrenome}.</p>
-				</div>
-			)
+		class App extends React.Component {
+			render() {
+				return(<div>
+								<h2>Notícias</h2>
+								<hr />
+								{final}
+							 </div>)
+			}
 		}
 
-		ReactDOM.render(<Ola nome="Fulano" sobrenome="de Tal" />, root);
+		class Noticia extends React.Component {
+			constructor(props) {
+				super(props)
+			}
+
+			render() {
+				return(
+					<div>
+						<h3>{this.props.noticia.titulo}</h3>
+						<p>{this.props.noticia.texto}</p>
+						<small><i>{this.props.noticia.autor}</i></small>
+					</div>
+				)
+			}
+		}
+
+		const noticias = [
+			{
+				titulo: "Notícia 1",
+				texto: "Texto da notícia 1",
+				autor: "Autor 1"
+			},
+			{
+				titulo: "Notícia 2",
+				texto: "Texto da notícia 2",
+				autor: "Autor 2"
+			},
+			{
+				titulo: "Notícia 3",
+				texto: "Texto da notícia 3",
+				autor: "Autor 3"
+			}
+		]
+
+		let final = noticias.map(n => <Noticia noticia={n} />)
+
+		ReactDOM.render(<App />, root);
+
 	</script>
