@@ -136,20 +136,20 @@ let g:mapleader = ','
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme aylin 
+colorscheme OceanicNext 
 function! ToggleColorscheme()
-  if g:colors_name == 'aylin'
-    colorscheme snazzy
-  elseif g:colors_name == 'snazzy'
-    colorscheme midnight
-  elseif g:colors_name == 'midnight'
-    colorscheme southernlights
-  elseif g:colors_name == 'southernlights'
-    colorscheme aurora
-  elseif g:colors_name == 'aurora'
+  if g:colors_name == 'OceanicNext'
+    colorscheme ayu
+  elseif g:colors_name == 'ayu'
     colorscheme nvcode
   elseif g:colors_name == 'nvcode'
     colorscheme aylin
+  elseif g:colors_name == 'aylin'
+    colorscheme midnight
+  elseif g:colors_name == 'midnight'
+    colorscheme borland
+  elseif g:colors_name == 'borland'
+    colorscheme OceanicNext
   endif
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
