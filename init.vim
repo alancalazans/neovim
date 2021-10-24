@@ -574,16 +574,14 @@ iab 15a. 15ª
 "set clipboard=unnamed " No Windows
 set clipboard=unnamedplus " No Linux
 "-------------------------------------------
-" Paste system clipboard with Ctrl + v
-imap <c-v> <c-r><c-o>+
-vmap <c-v> d"+gP<ESC>
-cmap <c-v> <c-r>+
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
 "-------------------------------------------
-" Cut to system clipboard with Ctrl + x
-vmap <c-x> "+d
-imap <c-x> <ESC>"+ddi
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V> "+gP
+map <S-Insert> "+gP
 "-------------------------------------------
-" Copy to system clipboard with Ctr + c
-vmap <c-c> "+y
-nmap <c-c> "+yy
-imap <c-c> <ESC>"+yy
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
