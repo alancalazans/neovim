@@ -572,16 +572,16 @@ iab 15a. 15ª
 " Habilitar área de transferência do sistema
 "-------------------------------------------
 "set clipboard=unnamed " No Windows
-set clipboard=unnamedplus " No Linux
+set clipboard+=unnamedplus " No Linux
 "-------------------------------------------
 " CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
+vmap <C-c> "+yi
+vmap <C-Insert> "+yi
 "-------------------------------------------
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V> "+gP
-map <S-Insert> "+gP
+imap <C-v> <ESC>"+p
+imap <S-Insert> <ESC>"+p
 "-------------------------------------------
 " CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
+vmap <C-x> "+c
+vmap <S-Del> "+c
