@@ -575,12 +575,12 @@ iab 15a. 15ª
 set clipboard+=unnamedplus " No Linux
 "-------------------------------------------
 " CTRL-C and CTRL-Insert are Copy
-vmap <C-c> "+yi
-vmap <C-Insert> "+yi
+vmap <C-c> "+y A
+vmap <C-Insert> "+y A
 "-------------------------------------------
 " CTRL-V and SHIFT-Insert are Paste
-imap <C-v> <ESC>"+p
-imap <S-Insert> <ESC>"+p
+imap <C-v> <ESC>"+p A
+imap <S-Insert> <ESC>"+p A
 "-------------------------------------------
 " CTRL-X and SHIFT-Del are Cut
 vmap <C-x> "+c
