@@ -585,3 +585,8 @@ imap <S-Insert> <ESC>"+p A
 " CTRL-X and SHIFT-Del are Cut
 vmap <C-x> "+c
 vmap <S-Del> "+c
+"-------------------------------------------
+" VIM-PLUG
+call plug#begin('~/.config/nvim/plugged')
+Plug 'gko/vim-coloresque'
+call plug#end()
