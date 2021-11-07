@@ -5,7 +5,7 @@ sudo mv squashfs-root/ /opt/nvim
 sudo ln -sf /opt/nvim/usr/bin/nvim /usr/bin/nvim
 tar -Jxvf _nvim.tar.xz -C $HOME/.config/
 cp init.vim $HOME/.config/nvim/
-cp snippets/*.snippets $HOME/.config/snippets/
+cp snippets/*.snippets $HOME/.config/nvim/snippets/
 sudo tar -Jxvf _nvim.tar.xz -C /root/.config/
 sudo cp init.vim /root/.config/nvim/
 sudo cp snippets/*.snippets /root/.config/nvim/snippets/
