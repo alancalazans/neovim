@@ -589,4 +589,5 @@ vmap <S-Del> "+c
 " VIM-PLUG
 call plug#begin('~/.config/nvim/plugged')
 Plug 'gko/vim-coloresque'
+Plug 'dense-analysis/ale'
 call plug#end()
