@@ -85,25 +85,27 @@ set guifont=Monospace\ 11
 "=======================================
 " Defina o ',' como tecla líder
 "=======================================
-let g:mapleader = ','
+let g:mapleader = ' '
 "=======================================
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme OceanicNext 
+colorscheme gruvbox 
 function! ToggleColorscheme()
-  if g:colors_name == 'OceanicNext'
+  if g:colors_name == 'gruvbox'
+    colorscheme OceanicNext
+  elseif g:colors_name == 'OceanicNext'
     colorscheme ayu
   elseif g:colors_name == 'ayu'
     colorscheme nvcode
   elseif g:colors_name == 'nvcode'
-    colorscheme aylin
-  elseif g:colors_name == 'aylin'
     colorscheme midnight
   elseif g:colors_name == 'midnight'
     colorscheme borland
   elseif g:colors_name == 'borland'
-    colorscheme OceanicNext
+    colorscheme aylin
+  elseif g:colors_name == 'aylin'
+    colorscheme gruvbox
   endif
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
@@ -302,13 +304,31 @@ set mousemodel=popup
 set keymodel=startsel,stopsel
 set selection=exclusive
 "=======================================
-" Sidebar de navegação (NERDTree) em off na carga do GVim
+"NERDTree : https://github.com/preservim/nerdtree
 "=======================================
-let g:nerdtree_tabs_open_on_gui_startup=0
 "=======================================
 " Atalho p/ sidebar de navegação (plugin NERDTree)
 "=======================================
-nmap <leader>n :NERDTreeTabsToggle<cr>
+nmap <leader>n :NERDTreeToggle<cr>
+"nerdtree - configurações básicas
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeIgnore = []
+let NERDTreeStatusline = ''
+"nerdtree-git-plugin
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 "=======================================
 " Mostra ou não a identacão
 "=======================================
@@ -542,6 +562,16 @@ vmap <S-Del> "+c
 "-------------------------------------------
 " VIM-PLUG
 call plug#begin('~/.config/nvim/plugged')
+"https://github.com/gko/vim-coloresque
 Plug 'gko/vim-coloresque'
+"https://github.com/dense-analysis/ale
 Plug 'dense-analysis/ale'
+"https://github.com/preservim/nerdtree
+Plug 'preservim/nerdtree'
+"https://github.com/ryanoasis/vim-devicons
+Plug 'ryanoasis/vim-devicons'
+"https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"https://github.com/morhetz/gruvbox/wiki/Installation
+Plug 'morhetz/gruvbox'
 call plug#end()
