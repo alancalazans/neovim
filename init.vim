@@ -74,55 +74,9 @@ set fileencoding=utf-8
 "set encoding=iso-8859-1
 "set fileencoding=iso-8859-1
 "=======================================
-" Configuração de fonte (tamanho e nome) para o GVim
+" Configuração de fonte
 "=======================================
-if has("gui_running")
-  if has("gui_gtk2")
-    " Para GTK2
-    " Ajustando o tamanho da fonte de acordo com o tamanho da resolução
-    " Adicionando no ~/.bashrc as linhas :
-    " #
-    " # Definindo variável de screen para o vim
-    " #
-    "  export SCREENSIZE=$(xdpyinfo  | grep 'dim'\
-    "                     | sed -e 's/x.*//g' -e 's/^.*[a-z]: *//g')
-    " #
-    " A beleza dessas linhas é que elas observam o tamanho da resolução do
-    " computador cliente, e não do host. Apenas o tamanho horizontal é
-    " utilizado como referência, ou seja, 1280x1024, apenas 1280 é
-    " verificado para determinar o tamanho da fonte. Isso não funciona bem
-    " em monitores cujo o maior tamanho seja o vertical.
-    if exists("$SCREENSIZE")
-      " se existe a variável $SCREENSIZE
-      if ($SCREENSIZE > 1300)
-        " se $SCREENSIZE é maior que 1300
-        set guifont=Monospace\ 14
-      elseif ($SCREENSIZE < 850)
-        " se $SCREENSIZE é menor que 850
-        set guifont=Monospace\ 8
-      else
-        " se $SCREENSIZE é maior que 850 e menor que 1300
-        set guifont=Monospace\ 11
-      endif " Existe SCREENSIZE, e com base nele define-se guifont
-      else
-        " caso a variável $SCREENSIZE não exista, use...
-        " set guifont=DejaVu\ Sans\ Mono\ Book\ 10
-        set guifont=Monospace\ 11
-    endif  " Define tamanho se existe ou não $SCREENSIZE
-  elseif has("x11")
-    " Para GTK
-    "set guifont=DejaVu\ Sans\ Mono\ Book\ 11
-    set guifont=Monospace\ 11
-    "set guifont=Courier\ New\ 11
-  elseif has("gui_win32")
-    " Para Windows
-    " set guifont=Consolas:h12:cANSI
-    set guifont=Courier\ New:h12:cANSI
-  else
-    " Para todos as outras gui use ...
-    set guifont=Monospace\ 11
-  endif " Conclui a verificação do tipo de interface gráfica
-endif " Conclui sobre a existência de uma interface gráfica
+set guifont=Monospace\ 11
 "=======================================
 " Configura linhas, colunas
 "=======================================
