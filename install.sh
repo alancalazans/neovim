@@ -6,9 +6,14 @@ sudo ln -sf /opt/nvim/usr/bin/nvim /usr/bin/nvim
 tar -Jxvf _nvim.tar.xz -C $HOME/.config/
 cp init.vim $HOME/.config/nvim/
 cp snippets/*.snippets $HOME/.config/nvim/snippets/
+mkdir -p $HOME/.local/share/fonts
+cp Droid*.otf $HOME/.local/share/fonts/
+#Para root
 sudo tar -Jxvf _nvim.tar.xz -C /root/.config/
 sudo cp init.vim /root/.config/nvim/
 sudo cp snippets/*.snippets /root/.config/nvim/snippets/
+sudo mkdir -p /root/.local/share/fonts
+sudo cp Droid*.otf /root/.local/share/fonts/
 clear
 echo '[Desktop Entry]
 Version=0.4.4
