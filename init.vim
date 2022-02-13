@@ -546,19 +546,28 @@ iab 15a. 15ª
 " Habilitar área de transferência do sistema
 "-------------------------------------------
 "set clipboard=unnamed " No Windows
-set clipboard+=unnamedplus " No Linux
+"set clipboard=unnamedplus " No Linux
 "-------------------------------------------
-" CTRL-C and CTRL-Insert are Copy
-vmap <C-c> "+y A
-vmap <C-Insert> "+y A
+"<Ctrl-X> -- cut (goto visual mode and cut)
 "-------------------------------------------
-" CTRL-V and SHIFT-Insert are Paste
-imap <C-v> <ESC>"+p A
-imap <S-Insert> <ESC>"+p A
+imap <C-X> <C-O>vgG
+vmap <C-X> "*x<Esc>i
 "-------------------------------------------
-" CTRL-X and SHIFT-Del are Cut
-vmap <C-x> "+c
-vmap <S-Del> "+c
+"<Ctrl-C> -- copy (goto visual mode and copy)
+"-------------------------------------------
+imap <C-C> <C-O>vgG
+vmap <C-C> "*y<Esc>i
+"-------------------------------------------
+"<Ctrl-A> -- copy all
+"-------------------------------------------
+imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
+vmap <C-A> <Esc>gggH<C-O>G<Esc>i
+"-------------------------------------------
+"<Ctrl-V> -- paste
+"-------------------------------------------
+nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
+imap <C-V> x<Esc>\\paste\\"_s
+vmap <C-V> "-cx<Esc>\\paste\\"_x
 "-------------------------------------------
 " VIM-PLUG
 call plug#begin('~/.config/nvim/plugged')
