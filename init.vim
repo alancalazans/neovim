@@ -338,16 +338,6 @@ set listchars=tab:¦\ ,trail:·,eol:¬
 "set list
 nmap <leader>i :set list!<cr>
 "=======================================
-" CTRL-A seleciona tudo
-"=======================================
-nmap <c-a> gggH<c-o>G
-imap <c-a> <c-o>gg<c-o>gH<c-o>G
-cmap <c-a> <c-c>gggH<c-o>G
-omap <c-a> <c-c>gggH<c-o>G
-smap <c-a> <c-c>gggH<c-o>G
-xmap <c-a> <c-c>ggVG
-map <c-a> <esc>ggvG
-"=======================================
 " Backspace no modo de visão apaga a seleção
 "=======================================
 vmap <bs> d
@@ -560,14 +550,24 @@ vmap <C-C> "*y<Esc>i
 "-------------------------------------------
 "<Ctrl-A> -- copy all
 "-------------------------------------------
-imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
-vmap <C-A> <Esc>gggH<C-O>G<Esc>i
+"imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
+"vmap <C-A> <Esc>gggH<C-O>G<Esc>i
 "-------------------------------------------
 "<Ctrl-V> -- paste
 "-------------------------------------------
 nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
 imap <C-V> x<Esc>\\paste\\"_s
 vmap <C-V> "-cx<Esc>\\paste\\"_x
+"-------------------------------------------
+"<Ctrl-A> -- copy all
+"-------------------------------------------
+nmap <c-a> gggH<c-o>G
+imap <c-a> <c-o>gg<c-o>gH<c-o>G
+cmap <c-a> <c-c>gggH<c-o>G
+omap <c-a> <c-c>gggH<c-o>G
+smap <c-a> <c-c>gggH<c-o>G
+xmap <c-a> <c-c>ggVG
+map <c-a> <esc>ggvG
 "-------------------------------------------
 " VIM-PLUG
 call plug#begin('~/.config/nvim/plugged')
