@@ -536,7 +536,7 @@ iab 15a. 15ª
 " Habilitar área de transferência do sistema
 "-------------------------------------------
 "set clipboard=unnamed " No Windows
-"set clipboard=unnamedplus " No Linux
+set clipboard=unnamedplus " No Linux
 "-------------------------------------------
 "<Ctrl-X> -- cut (goto visual mode and cut)
 "-------------------------------------------
