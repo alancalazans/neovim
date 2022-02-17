@@ -538,6 +538,12 @@ iab 15a. 15ª
 "set clipboard=unnamed " No Windows
 set clipboard=unnamedplus " No Linux
 "-------------------------------------------
+"Copy/Paste/Cut
+"-------------------------------------------
+"if has('unnamedplus')
+"  set clipboard=unnamed,unnamedplus
+"endif
+"-------------------------------------------
 "<Ctrl-X> -- cut (goto visual mode and cut)
 "-------------------------------------------
 imap <C-X> <C-O>vgG
@@ -551,7 +557,7 @@ vmap <C-C> "*y<Esc>i
 "<Ctrl-A> -- copy all
 "-------------------------------------------
 "imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
-"vmap <C-A> <Esc>gggH<C-O>G<Esc>i
+vmap <C-A> <Esc>gggH<C-O>G<Esc>i
 "-------------------------------------------
 "<Ctrl-V> -- paste
 "-------------------------------------------
@@ -570,6 +576,7 @@ xmap <c-a> <c-c>ggVG
 map <c-a> <esc>ggvG
 "-------------------------------------------
 " VIM-PLUG
+"-------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 "https://github.com/gko/vim-coloresque
 Plug 'gko/vim-coloresque'
@@ -587,3 +594,19 @@ Plug 'morhetz/gruvbox'
 "$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 Plug 'zah/nim.vim'
 call plug#end()
+"-------------------------------------------
+" Folding/Unfolding
+"-------------------------------------------
+setlocal foldmethod=indent
+set nofoldenable
+set foldlevel=99
+set fillchars=fold:\ "The backslash escapes a space
+set foldtext=CustomFoldText()
+function! CustomFoldText()
+	let indentation = indent(v:foldstart - 1)
+	let foldSize = 1 + v:foldend - v:foldstart
+	let foldSizeStr = " " . foldSize . " lines "
+	let foldLevelStr = repeat("+--", v:foldlevel)
+	let expansionString = repeat(" ", indentation)
+	return expansionString . foldLevelStr . foldSizeStr
+endfunction
