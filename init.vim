@@ -209,7 +209,7 @@ if has("autocmd") && exists("+omnifunc")
   \  setlocal omnifunc=syntaxcomplete#Complete |
   \ endif
 endif
-nmap <leader>a <c-x> <c-o>
+"nmap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
 "=======================================
 " Definindo sintaxe para algumas extenções.
@@ -548,6 +548,7 @@ set clipboard=unnamedplus " No Linux
 "-------------------------------------------
 imap <C-X> <C-O>vgG
 vmap <C-X> "*x<Esc>i
+nmap <C-X> <c-x> <c-o>
 "-------------------------------------------
 "<Ctrl-C> -- copy (goto visual mode and copy)
 "-------------------------------------------
