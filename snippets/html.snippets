@@ -411,6 +411,56 @@ snippet script
 	</script>
 snippet script-src
 	<script src="assets/js/${1:script}.js"></script>
+snippet react-lib
+	<script src="assets/lib/reactjs/babel.min.js"></script>
+	<script src="assets/lib/reactjs/react.development.js"></script>
+	<script src="assets/lib/reactjs/react-dom.development.js"></script>
+snippet react-root-src
+	<div id="root"></div>
+
+	<script type="text/babel" src="assets/jsx/app.js"></script>
+snippet react-root-class
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		const {Component} = React;
+
+		class MyComponent extends Component {
+			render() {
+				return(
+					<div>
+						<p>Teste...</p>
+					</div>
+				)
+			}
+		}
+
+		ReactDOM.render
+			<MyComponent />,
+			root
+		);
+	</script>
+snippet react-root-function
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		function MyComponent() {
+			return(
+				<div>
+					<p>Teste...</p>
+				</div>
+			)
+		}
+
+		ReactDOM.render(
+			<MyComponent />,
+			root
+		);
+	</script>
 snippet kbd
 	<kbd>${1}</kbd>
 snippet label
