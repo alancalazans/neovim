@@ -423,6 +423,31 @@ snippet react-root-src
 	<div id="root"></div>
 
 	<script type="text/babel" src="assets/jsx/app.js"></script>
+snippet react-root-pure
+	<div id="root"></div>
+
+	<script>
+		const root = document.getElementById('root');
+
+		const el = React.createElement;
+
+		function MyComponent() {
+			return el(
+				"div",
+				{ id: "my-component" },
+				el(
+					"p",
+					{ className: "child-element", style: { fontWeight: 'bold' } },
+					"Parágrafo do elemento filho!!!"
+				)
+			);
+		}
+
+		ReactDOM.render(
+			el(MyComponent),
+			root
+		)
+	</script>
 snippet react-root-class
 	<div id="root"></div>
 
