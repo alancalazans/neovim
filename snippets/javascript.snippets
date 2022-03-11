@@ -204,34 +204,59 @@ snippet prop
 #------------------------------------------------
 # ReactJS
 #------------------------------------------------
-snippet rClass
+snippet react-root-pure
+	const root = document.querySelector('#root');
+
+	const e = React.createElement;
+
+	function MyComponent() {
+		return e(
+			"div", { id: "elemento-pai", style: { width: '400px', margin: '0 auto' } },
+			e(
+				"h1", { className: "elemento-filho", style: { fontFamily: 'Arial', fontStyle: 'italic' } },
+				"Alô mundo!!!"
+			)
+		);
+	}
+
+	ReactDOM.render(
+		e(MyComponent),
+		root
+	)
+snippet react-root-class
 	const root = document.getElementById('root');
 
-	class MyComponent extends React.Component {
+	const {Component} = React;
+
+	class MyComponent extends Component {
 		render() {
 			return(
-				<div>
-					<p>Teste</p>
+				<div id="elemento-pai" style={{ width: '400px', margin: '0 auto' }}>
+					<h1 className="elemento-filho" style={{ fontFamily: 'Arial', fontStyle: 'italic' }}>Alô mundo!!!</h1>
 				</div>
 			)
 		}
 	}
 
-	ReactDOM.render(<MyComponent />, root);
-#------------------------------------------------
-snippet rFunction
+	ReactDOM.render(
+		<MyComponent />,
+		root
+	);
+snippet react-root-function
 	const root = document.getElementById('root');
 
-	let MyComponent = () => {
+	function MyComponent() {
 		return(
-			<div>
-				<p>Teste</p>
+			<div id="elemento-pai" style={{ width: '400px', margin: '0 auto' }}>
+				<h1 className="elemento-filho" style={{ fontFamily: 'Arial', fontStyle: 'italic' }}>Alô mundo!!!</h1>
 			</div>
 		)
 	}
 
-	ReactDOM.render(<MyComponent />, root);
-#------------------------------------------------
+	ReactDOM.render(
+		<MyComponent />,
+		root
+	);
 snippet rfProps
 	const root = document.getElementById('root');
 
