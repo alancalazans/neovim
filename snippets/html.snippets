@@ -427,24 +427,22 @@ snippet react-root-pure
 	<div id="root"></div>
 
 	<script>
-		const root = document.getElementById('root');
+		const root = document.querySelector('#root');
 
-		const el = React.createElement;
+		const e = React.createElement;
 
 		function MyComponent() {
-			return el(
-				"div",
-				{ id: "my-component" },
-				el(
-					"p",
-					{ className: "child-element", style: { fontWeight: 'bold' } },
-					"Parágrafo do elemento filho!!!"
+			return e(
+				"div", { id: "elemento-pai", style: { width: '400px', margin: '0 auto' } },
+				e(
+					"h1", { className: "elemento-filho", style: { fontFamily: 'Arial', fontStyle: 'italic' } },
+					"Alô mundo!!!"
 				)
 			);
 		}
 
 		ReactDOM.render(
-			el(MyComponent),
+			e(MyComponent),
 			root
 		)
 	</script>
@@ -459,8 +457,8 @@ snippet react-root-class
 		class MyComponent extends Component {
 			render() {
 				return(
-					<div>
-						<p>Teste...</p>
+					<div id="elemento-pai" style={{ width: '400px', margin: '0 auto' }}>
+						<h1 className="elemento-filho" style={{ fontFamily: 'Arial', fontStyle: 'italic' }}>Alô mundo!!!</h1>
 					</div>
 				)
 			}
@@ -479,8 +477,8 @@ snippet react-root-function
 
 		function MyComponent() {
 			return(
-				<div>
-					<p>Teste...</p>
+				<div id="elemento-pai" style={{ width: '400px', margin: '0 auto' }}>
+					<h1 className="elemento-filho" style={{ fontFamily: 'Arial', fontStyle: 'italic' }}>Alô mundo!!!</h1>
 				</div>
 			)
 		}
