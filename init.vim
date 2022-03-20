@@ -23,7 +23,7 @@
 set termguicolors  " Ativar true colors no terminal
 set noautochdir " Definir diretorio atual automaticamente
 set nostartofline " Não resetar o cursor para o inicio da linha
-set autoread " Ler arquivo automaticamente caso ele for modificado externalmente
+set autoread " Ler arquivo automaticamente caso ele for modificado externamente
 set ai " Ao criar nova linha, usa indentação da linha anterior
 set nocompatible
 set ruler " show the cursor position all the time
@@ -83,7 +83,7 @@ set guifont=Monospace\ 11
 "set lines=42 columns=80
 "set wildmenu
 "=======================================
-" Defina o ',' como tecla líder
+" Defina o <space> como tecla líder
 "=======================================
 let g:mapleader = ' '
 "=======================================
@@ -260,7 +260,7 @@ set nowritebackup "evita arquivos tmp que começam com ~ ou termina com .swp
 " Identação e quebra de linhas
 "=======================================
 set linebreak " Quebra a linha sem quebrar a palavra
-set autoindent " Auto identação
+"set autoindent " Auto identação
 set smartindent " Auto-indenta
 set ci "recuo
 set tabstop=2 " tab = 2 brancos
