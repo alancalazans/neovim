@@ -261,7 +261,7 @@ set nowritebackup "evita arquivos tmp que começam com ~ ou termina com .swp
 "=======================================
 set linebreak " Quebra a linha sem quebrar a palavra
 "set autoindent " Auto identação
-set smartindent " Auto-indenta
+"set smartindent " Auto-indenta
 set ci "recuo
 set tabstop=2 " tab = 2 brancos
 set shiftwidth=2 " Quando o autoindent faz um tab, ele é do tamanho de 2
@@ -595,6 +595,8 @@ Plug 'morhetz/gruvbox'
 "$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 Plug 'zah/nim.vim'
 call plug#end()
+filetype indent off
+filetype plugin off
 "-------------------------------------------
 " Folding/Unfolding
 "-------------------------------------------
