@@ -364,3 +364,21 @@ snippet rMap
 	let final = noticias.map(n => <Noticia noticia={n} />)
 
 	ReactDOM.render(<App />, root);
+#------------------------------------------------
+# RequireJS
+#------------------------------------------------
+snippet boot
+	requirejs.config({
+		baseUrl: 'assets/js',
+		paths: {
+			'${1:scriptName}': '${2:script-name}'
+		}
+	});
+snippet requirejs
+	requirejs(['${1:deps}'], () => {
+		${2:content}
+	});
+snippet definejs
+	define(['${1:deps}'], () => {
+		${2:content}
+	});
