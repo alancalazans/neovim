@@ -90,22 +90,24 @@ let g:mapleader = ' '
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme gruvbox 
+colorscheme midnight 
 function! ToggleColorscheme()
-  if g:colors_name == 'gruvbox'
-    colorscheme OceanicNext
-  elseif g:colors_name == 'OceanicNext'
-    colorscheme ayu
-  elseif g:colors_name == 'ayu'
-    colorscheme nvcode
-  elseif g:colors_name == 'nvcode'
-    colorscheme midnight
-  elseif g:colors_name == 'midnight'
-    colorscheme borland
-  elseif g:colors_name == 'borland'
+  if g:colors_name == 'midnight'
     colorscheme aylin
   elseif g:colors_name == 'aylin'
+    colorscheme OceanicNext
+  elseif g:colors_name == 'OceanicNext'
+    colorscheme nvcode
+  elseif g:colors_name == 'nvcode'
+    colorscheme palenight
+  elseif g:colors_name == 'palenight'
+    colorscheme borland
+  elseif g:colors_name == 'borland'
+    colorscheme ayu
+  elseif g:colors_name == 'ayu'
     colorscheme gruvbox
+  elseif g:colors_name == 'gruvbox'
+    colorscheme midnight
   endif
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
@@ -579,18 +581,25 @@ map <c-a> <esc>ggvG
 " VIM-PLUG
 "-------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
+"-------------------------------------------
 "https://github.com/gko/vim-coloresque
 Plug 'gko/vim-coloresque'
+"-------------------------------------------
 "https://github.com/dense-analysis/ale
 Plug 'dense-analysis/ale'
+"-------------------------------------------
 "https://github.com/preservim/nerdtree
 Plug 'preservim/nerdtree'
+"-------------------------------------------
 "https://github.com/ryanoasis/vim-devicons
 Plug 'ryanoasis/vim-devicons'
+"-------------------------------------------
 "https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
+"-------------------------------------------
 "https://github.com/morhetz/gruvbox/wiki/Installation
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+"-------------------------------------------
 "https://github.com/zah/nim.vim
 "$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 Plug 'zah/nim.vim'
