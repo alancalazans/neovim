@@ -250,9 +250,12 @@ set is hls is scs "para busca
 "=======================================
 " Cor da numeração lateral
 "=======================================
-"hi LineNr     guifg=pink     ctermfg=lightMagenta
-"hi LineNr     guifg=green    ctermfg=lightGreen
-hi LineNr     guifg=white    ctermfg=lightMagenta
+"hi LineNr guifg=blue ctermfg=lightBlue
+"hi LineNr guifg=green ctermfg=lightGreen
+"hi LineNr guifg=yellow ctermfg=lightYellow
+"hi LineNr guifg=pink ctermfg=lightPink
+"hi LineNr guifg=magenta ctermfg=lightPink
+hi LineNr guifg=white ctermfg=lightCyan
 "=======================================
 " Ativa coloração de sintaxe
 "=======================================
