@@ -94,15 +94,15 @@ let g:mapleader = ' '
 " gruvbox, midnight, nvcode, OceanicNext,
 " palenight.
 "=======================================
-colorscheme midnight
+colorscheme ayu
 function! ToggleColorscheme()
-  if g:colors_name == 'midnight'
-    colorscheme gruvbox
-  elseif g:colors_name == 'gruvbox'
+  if g:colors_name == 'ayu'
+    colorscheme midnight
+  elseif g:colors_name == 'midnight'
     colorscheme OceanicNext
   elseif g:colors_name == 'OceanicNext'
-    colorscheme ayu
-  elseif g:colors_name == 'ayu'
+    colorscheme gruvbox
+  elseif g:colors_name == 'gruvbox'
     colorscheme aylin
   elseif g:colors_name == 'aylin'
     colorscheme nvcode
@@ -111,7 +111,7 @@ function! ToggleColorscheme()
   elseif g:colors_name == 'palenight'
     colorscheme borland
   elseif g:colors_name == 'borland'
-    colorscheme midnight
+    colorscheme ayu
   endif
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
