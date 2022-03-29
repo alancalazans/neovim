@@ -945,3 +945,17 @@ snippet rMap
 		ReactDOM.render(<App />, root);
 
 	</script>
+#------------------------------------------------
+# RequireJS
+#------------------------------------------------
+snippet boot
+	requirejs.config({
+		baseUrl: 'assets/js',
+		paths: {
+			'${1:scriptName}': '${2:script-name}'
+		}
+	});
+snippet requirejs
+	requirejs(['${1:deps}'], () => {
+		
+	});
