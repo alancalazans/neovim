@@ -90,23 +90,27 @@ let g:mapleader = ' '
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "=======================================
-colorscheme midnight 
+" Cores disponíveis: aylin, ayu, borland,
+" gruvbox, midnight, nvcode, OceanicNext,
+" palenight.
+"=======================================
+colorscheme midnight
 function! ToggleColorscheme()
   if g:colors_name == 'midnight'
-    colorscheme aylin
-  elseif g:colors_name == 'aylin'
+    colorscheme gruvbox
+  elseif g:colors_name == 'gruvbox'
     colorscheme OceanicNext
   elseif g:colors_name == 'OceanicNext'
+    colorscheme ayu
+  elseif g:colors_name == 'ayu'
+    colorscheme aylin
+  elseif g:colors_name == 'aylin'
     colorscheme nvcode
   elseif g:colors_name == 'nvcode'
     colorscheme palenight
   elseif g:colors_name == 'palenight'
     colorscheme borland
   elseif g:colors_name == 'borland'
-    colorscheme ayu
-  elseif g:colors_name == 'ayu'
-    colorscheme gruvbox
-  elseif g:colors_name == 'gruvbox'
     colorscheme midnight
   endif
 endfunction
@@ -247,7 +251,8 @@ set is hls is scs "para busca
 " Cor da numeração lateral
 "=======================================
 "hi LineNr     guifg=pink     ctermfg=lightMagenta
-hi LineNr     guifg=green    ctermfg=lightGreen
+"hi LineNr     guifg=green    ctermfg=lightGreen
+hi LineNr     guifg=white    ctermfg=lightMagenta
 "=======================================
 " Ativa coloração de sintaxe
 "=======================================
