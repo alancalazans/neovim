@@ -113,6 +113,7 @@ function! ToggleColorscheme()
   elseif g:colors_name == 'borland'
     colorscheme ayu
   endif
+  hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "=======================================
@@ -247,15 +248,6 @@ set backspace=indent,eol,start
 "=======================================
 set nu "linhas numeradas
 set is hls is scs "para busca
-"=======================================
-" Cor da numeração lateral
-"=======================================
-"hi LineNr guifg=blue ctermfg=lightBlue
-"hi LineNr guifg=green ctermfg=lightGreen
-"hi LineNr guifg=yellow ctermfg=lightYellow
-"hi LineNr guifg=pink ctermfg=lightPink
-"hi LineNr guifg=magenta ctermfg=lightPink
-hi LineNr guifg=white ctermfg=lightCyan
 "=======================================
 " Ativa coloração de sintaxe
 "=======================================
@@ -630,3 +622,12 @@ function! CustomFoldText()
 	let expansionString = repeat(" ", indentation)
 	return expansionString . foldLevelStr . foldSizeStr
 endfunction
+"=======================================
+" Cor da numeração lateral
+"=======================================
+"hi LineNr guifg=blue ctermfg=lightBlue
+"hi LineNr guifg=green ctermfg=lightGreen
+"hi LineNr guifg=yellow ctermfg=lightYellow
+"hi LineNr guifg=pink ctermfg=lightPink
+"hi LineNr guifg=magenta ctermfg=lightPink
+hi LineNr guifg=#ffffff ctermfg=lightCyan
