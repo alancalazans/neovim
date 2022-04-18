@@ -295,8 +295,15 @@ snippet div
 	<div>
 		${1}
 	</div>
-snippet div-clear
-	<div class="clear"></div>
+snippet clearfix
+	.${1:container}::before, .${1:container}::after {
+		content: '';
+		display: table;
+	}
+
+	.${1:container}::after {
+		clear: both;
+	}
 snippet dl
 	<dl>${1}</dl>
 snippet dt
