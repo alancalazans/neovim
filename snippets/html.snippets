@@ -296,12 +296,12 @@ snippet div
 		${1}
 	</div>
 snippet clearfix
-	.container::before, .container::after {
+	${1:element}::before, ${2:element}::after {
 		content: '';
 		display: table;
 	}
 
-	.container::after {
+	${3:element}::after {
 		clear: both;
 	}
 snippet dl
