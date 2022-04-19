@@ -7,12 +7,12 @@ snippet bc-ps
 snippet bc:url
 	background: url(${1}) ${2};
 snippet clearfix
-	${1:element}::before, ${2:element}::after {
+	.clearfix::before, .clearfix::after {
 		content: '';
 		display: table;
 	}
 
-	${3:element}::after {
+	.clearfix::after {
 		clear: both;
 	}
 snippet mr
