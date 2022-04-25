@@ -285,6 +285,15 @@ snippet style
 	</style>
 snippet style-src
 	<link rel="stylesheet" href="assets/${1}">
+snippet reset-global
+	html {
+		box-sizing: border-box;
+	}
+	*,
+	*:before,
+	*:after {
+		box-sizing: inherit;
+	}
 snippet dd
 	<dd>${1}</dd>
 snippet del

@@ -15,6 +15,15 @@ snippet clearfix
 	.clearfix::after {
 		clear: both;
 	}
+snippet reset-global
+	html {
+		box-sizing: border-box;
+	}
+	*,
+	*:before,
+	*:after {
+		box-sizing: inherit;
+	}
 snippet mr
 	margin: ${1};
 snippet pd
