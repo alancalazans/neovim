@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo tar -Jxvf nvim-linux64.tar.gz -C /opt/
+sudo tar -zxvf nvim-linux64.tar.gz -C /opt/
 sudo mv /opt/nvim-linux64 /opt/nvim
 sudo ln -sf /opt/nvim/bin/nvim /usr/bin/nvim
 tar -Jxvf _nvim.tar.xz -C $HOME/.config/
@@ -25,12 +25,12 @@ Comment[en_GB]=Edit text files
 Comment[pt]=Editar ficheiros de texto
 Comment[pt_BR]=Edite arquivos de texto
 TryExec=nvim
-Exec=nvim %F
+Exec=/opt/nvim/bin/nvim %F
+Icon=/opt/nvim/share/icons/hicolor/128x128/apps/nvim.png
 Terminal=true
 Type=Application
 Keywords=Text;editor;
-Icon=nvim
-Categories=Utility;TextEditor;
+Categories=Utility;TextEditor;Development;
 StartupNotify=false
-MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;' | sudo tee /usr/share/applications/nvim.desktop
-sudo chmod 755 /usr/share/applications/nvim.desktop
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;' | sudo tee ~/.local/share/applications/nvim.desktop
+chmod 755 ~/.local/share/applications/nvim.desktop
