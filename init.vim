@@ -76,7 +76,7 @@ set fileencoding=utf-8
 "=======================================
 " Configuração de fonte
 "=======================================
-set guifont=Monospace\ 11
+set guifont=Monospace\ 9
 "=======================================
 " Configura linhas, colunas
 "=======================================
@@ -94,13 +94,13 @@ let g:mapleader = ' '
 " gruvbox, midnight, nvcode, OceanicNext,
 " palenight.
 "=======================================
-colorscheme ayu
+colorscheme OceanicNext
 function! ToggleColorscheme()
-  if g:colors_name == 'ayu'
+  if g:colors_name == 'OceanicNext'
     colorscheme midnight
   elseif g:colors_name == 'midnight'
-    colorscheme OceanicNext
-  elseif g:colors_name == 'OceanicNext'
+    colorscheme ayu
+  elseif g:colors_name == 'ayu'
     colorscheme gruvbox
   elseif g:colors_name == 'gruvbox'
     colorscheme aylin
@@ -111,7 +111,7 @@ function! ToggleColorscheme()
   elseif g:colors_name == 'palenight'
     colorscheme borland
   elseif g:colors_name == 'borland'
-    colorscheme ayu
+    colorscheme OceanicNext
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
