@@ -440,8 +440,8 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "=======================================
 imap <c-l> <right>
 imap <c-h> <left>
-imap <m-[> <up>
-imap <m-]> <down>
+imap <c-s> <up>
+imap <c-d> <down>
 "=======================================
 " Habilita auto-indentação
 "=======================================
