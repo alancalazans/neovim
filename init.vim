@@ -94,24 +94,18 @@ let g:mapleader = ' '
 " gruvbox, midnight, nvcode, OceanicNext,
 " palenight.
 "=======================================
-colorscheme OceanicNext
+colorscheme spacecamp
 function! ToggleColorscheme()
-  if g:colors_name == 'OceanicNext'
-    colorscheme midnight
-  elseif g:colors_name == 'midnight'
-    colorscheme ayu
-  elseif g:colors_name == 'ayu'
+  if g:colors_name == 'spacecamp'
+    colorscheme sonokai
+  elseif g:colors_name == 'sonokai'
+    colorscheme dracula
+  elseif g:colors_name == 'dracula'
     colorscheme gruvbox
   elseif g:colors_name == 'gruvbox'
-    colorscheme aylin
-  elseif g:colors_name == 'aylin'
-    colorscheme nvcode
-  elseif g:colors_name == 'nvcode'
-    colorscheme palenight
-  elseif g:colors_name == 'palenight'
-    colorscheme borland
-  elseif g:colors_name == 'borland'
-    colorscheme OceanicNext
+    colorscheme gruvbox-material
+  elseif g:colors_name == 'gruvbox-material'
+    colorscheme spacecamp
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
