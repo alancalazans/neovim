@@ -86,7 +86,12 @@ set fileencoding=utf-8
 "-------------------------------------------
 " Configuração de fonte
 "-------------------------------------------
-set guifont=Monospace\ 9
+"set guifont=Consolas:h10
+if has('gui_win32')
+	set guifont=Consolas:h11:cANSI
+else
+	set guifont=Consolas:h11
+endif
 "-------------------------------------------
 " Configura linhas, colunas
 "-------------------------------------------
@@ -104,18 +109,18 @@ let g:mapleader = ' '
 " gruvbox, midnight, nvcode, OceanicNext,
 " palenight.
 "-------------------------------------------
-colorscheme spacecamp
+colorscheme gruvbox
 function! ToggleColorscheme()
-  if g:colors_name == 'spacecamp'
+  if g:colors_name == 'gruvbox'
+    colorscheme ayu
+  elseif g:colors_name == 'ayu'
     colorscheme sonokai
   elseif g:colors_name == 'sonokai'
     colorscheme dracula
   elseif g:colors_name == 'dracula'
-    colorscheme gruvbox
-  elseif g:colors_name == 'gruvbox'
-    colorscheme gruvbox-material
-  elseif g:colors_name == 'gruvbox-material'
     colorscheme spacecamp
+  elseif g:colors_name == 'spacecamp'
+    colorscheme gruvbox
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
