@@ -90,7 +90,7 @@ set fileencoding=utf-8
 if has('gui_win32')
 	set guifont=Consolas:h11:cANSI
 else
-	set guifont=Consolas:h11
+	set guifont=FuraMono\ Nerd\ Font:h11
 endif
 "-------------------------------------------
 " Configura linhas, colunas
