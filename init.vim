@@ -86,12 +86,7 @@ set fileencoding=utf-8
 "-------------------------------------------
 " Configuração de fonte
 "-------------------------------------------
-"set guifont=Consolas:h10
-if has('gui_win32')
-	set guifont=Consolas:h11:cANSI
-else
-	set guifont=Consolas:h11
-endif
+set guifont=Consolas:h11
 "-------------------------------------------
 " Configura linhas, colunas
 "-------------------------------------------
@@ -278,6 +273,17 @@ set tabstop=2 " tab = 2 brancos
 set shiftwidth=2 " Quando o autoindent faz um tab, ele é do tamanho de 2
 set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identação
 set noexpandtab " set expandtab "cria espaços no lugar de tabulação
+let g:status_tab = 'tab'
+function! ToggleStatusTab()
+	if g:status_tab=='tab'
+		set expandtab
+		let g:status_tab = 'space'
+	else
+		set noexpandtab
+		let g:status_tab = 'tab'
+  endif
+endfunction
+nmap <silent><leader>g :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
 "set nowrap  " Sem wrap (quebra de linha)
 "-------------------------------------------
 " permite indentar bloco de texto selecionado usando 'tab'
