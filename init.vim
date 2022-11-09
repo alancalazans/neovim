@@ -653,7 +653,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "---------------------------------------------
 "https://github.com/zah/nim.vim
 "$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-Plug 'zah/nim.vim'
+"Plug 'zah/nim.vim'
 "---------------------------------------------
 "https://github.com/alaviss/nim.nvim
 Plug 'alaviss/nim.nvim'
