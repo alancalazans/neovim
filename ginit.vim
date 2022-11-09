@@ -166,7 +166,7 @@ function! ToggleTab()
 		let g:tab='tab2'
   endif
 endfunction
-nmap <silent><leader>t :call ToggleTab()<cr>:echo g:tab<cr>
+nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
 "-------------------------------------------
 " Multiple Cursors
 " https://github.com/terryma/vim-multiple-cursors#installation
@@ -288,7 +288,7 @@ function! ToggleStatusTab()
 		let g:status_tab = 'tab'
   endif
 endfunction
-nmap <silent><leader>g :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
+nmap <silent><leader>t :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
 "set nowrap  " Sem wrap (quebra de linha)
 "-------------------------------------------
 " permite indentar bloco de texto selecionado usando 'tab'
@@ -659,6 +659,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "https://github.com/zah/nim.vim
 "$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 Plug 'zah/nim.vim'
+"---------------------------------------------
+"https://github.com/alaviss/nim.nvim
+Plug 'alaviss/nim.nvim'
 call plug#end()
 filetype indent off
 filetype plugin off
