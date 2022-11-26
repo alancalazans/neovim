@@ -86,7 +86,7 @@ set fileencoding=utf-8
 "-------------------------------------------
 " Configuração de fonte
 "-------------------------------------------
-set guifont=Consolas:h11
+set guifont=Fira\ Code:h11
 "-------------------------------------------
 " Configura linhas, colunas
 "-------------------------------------------
@@ -657,6 +657,9 @@ Plug 'zah/nim.vim'
 "---------------------------------------------
 "https://github.com/alaviss/nim.nvim
 Plug 'alaviss/nim.nvim'
+"---------------------------------------------
+"https://github.com/prabirshrestha/vim-lsp
+Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 filetype indent off
 filetype plugin off
