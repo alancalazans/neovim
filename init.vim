@@ -107,6 +107,8 @@ let g:mapleader = ' '
 colorscheme gruvbox
 function! ToggleColorscheme()
   if g:colors_name == 'gruvbox'
+    colorscheme sobrio
+  elseif g:colors_name == 'sobrio'
     colorscheme ayu
   elseif g:colors_name == 'ayu'
     colorscheme sonokai
@@ -561,7 +563,7 @@ set clipboard=unnamedplus " No Linux
 "  set clipboard=unnamed,unnamedplus
 "endif
 "---------------------------------------------
-" Modifica o comportamento do menu de 
+" Modifica o comportamento do menu de
 " auto-completar para se comportar mais como
 " uma IDE.
 "---------------------------------------------
@@ -629,38 +631,65 @@ smap <c-a> <c-c>gggH<c-o>G
 xmap <c-a> <c-c>ggVG
 map <c-a> <esc>ggvG
 "---------------------------------------------
-" VIM-PLUG
+" <VIM-PLUG>
 "---------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
-"---------------------------------------------
-"https://github.com/gko/vim-coloresque
-Plug 'gko/vim-coloresque'
-"---------------------------------------------
-"https://github.com/dense-analysis/ale
-Plug 'dense-analysis/ale'
-"---------------------------------------------
-"https://github.com/preservim/nerdtree
-Plug 'preservim/nerdtree'
-"---------------------------------------------
-"https://github.com/ryanoasis/vim-devicons
-Plug 'ryanoasis/vim-devicons'
-"---------------------------------------------
-"https://github.com/Xuyuanp/nerdtree-git-plugin
-Plug 'Xuyuanp/nerdtree-git-plugin'
-"---------------------------------------------
-"https://github.com/morhetz/gruvbox/wiki/Installation
-"Plug 'morhetz/gruvbox'
-"---------------------------------------------
-"https://github.com/zah/nim.vim
-"$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-Plug 'zah/nim.vim'
-"---------------------------------------------
-"https://github.com/alaviss/nim.nvim
-Plug 'alaviss/nim.nvim'
-"---------------------------------------------
-"https://github.com/prabirshrestha/vim-lsp
-Plug 'prabirshrestha/vim-lsp'
+	"---------------------------------------------
+	" Appearance
+	"---------------------------------------------
+	"https://github.com/vim-airline/vim-airline
+	Plug 'vim-airline/vim-airline'
+	"---------------------------------------------
+	"https://github.com/gko/vim-coloresque
+	Plug 'gko/vim-coloresque'
+	"---------------------------------------------
+	"https://github.com/ryanoasis/vim-devicons
+	Plug 'ryanoasis/vim-devicons'
+	"---------------------------------------------
+	"https://github.com/morhetz/gruvbox/wiki/Installation
+	"Plug 'morhetz/gruvbox'
+	"---------------------------------------------
+	" Utilities
+	"---------------------------------------------
+	"https://github.com/preservim/nerdtree
+	Plug 'preservim/nerdtree'
+	"---------------------------------------------
+	"https://github.com/Xuyuanp/nerdtree-git-plugin
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	"---------------------------------------------
+	" Completion / linters / formatters
+	"---------------------------------------------
+	"https://github.com/dense-analysis/ale
+	Plug 'dense-analysis/ale'
+	"---------------------------------------------
+	"https://github.com/prabirshrestha/vim-lsp
+	Plug 'prabirshrestha/vim-lsp'
+	"---------------------------------------------
+	"https://github.com/zah/nim.vim
+	"$ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	Plug 'zah/nim.vim'
+	"---------------------------------------------
+	"https://github.com/alaviss/nim.nvim
+	Plug 'alaviss/nim.nvim'
 call plug#end()
+"---------------------------------------------
+" </VIM-PLUG>
+"---------------------------------------------
+"---------------------------------------------
+" <ALE>
+"---------------------------------------------
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\}
+
+let g:ale_fix_on_save = 1
+"---------------------------------------------
+" </ALE>
+"---------------------------------------------
 filetype indent off
 filetype plugin off
 "---------------------------------------------
