@@ -211,6 +211,7 @@ if has('autocmd')
   autocmd FileType javascript set complete-=k/home/$USER/.vim/doc/js-list.txt complete+=k/home/$USER/.vim/doc/js-list.txt
   autocmd FileType php set complete-=k/home/$USER/.vim/doc/php-list.txt complete+=k/home/$USER/.vim/doc/php-list.txt
   autocmd FileType css set complete-=k/home/$USER/.vim/doc/css-list.txt complete+=k/home/$USER/.vim/doc/css-list.txt
+  autocmd FileType nim :set expandtab
 endif
 set omnifunc=syntaxcomplete#Complete
 au FileType python set omnifunc=pythoncomplete#Complete
