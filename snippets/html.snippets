@@ -420,6 +420,17 @@ snippet ins
 #=======================================
 # JavaScript / JQuery
 #=======================================
+snippet createElement
+	const createElement = (elementName, attributes) => {
+		let element = document.createElement(elementName)
+		let attributesArray = Object.entries(attributes)
+
+		let attributesAsArray = Object.entries(attributes)
+
+		attributesAsArray.forEach(([key, value]) => element.setAttribute(key, value))
+
+		return element
+	}
 snippet iife
 	((win, doc) => {
 		'use strict';

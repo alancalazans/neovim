@@ -1,3 +1,15 @@
+# createElement
+snippet createElement
+	const createElement = (elementName, attributes) => {
+		let element = document.createElement(elementName)
+		let attributesArray = Object.entries(attributes)
+
+		let attributesAsArray = Object.entries(attributes)
+
+		attributesAsArray.forEach(([key, value]) => element.setAttribute(key, value))
+
+		return element
+	}
 # Prototype
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
@@ -206,9 +218,9 @@ snippet prop
 			configurable : ${0:boolean}
 		}
 	);
-#------------------------------------------------
+#=======================================
 # ReactJS
-#------------------------------------------------
+#=======================================
 snippet react-root-pure
 	const root = document.querySelector('#root');
 
@@ -371,9 +383,9 @@ snippet rMap
 	let final = noticias.map(n => <Noticia noticia={n} />)
 
 	ReactDOM.render(<App />, root);
-#------------------------------------------------
+#=======================================
 # RequireJS
-#------------------------------------------------
+#=======================================
 snippet boot
 	requirejs.config({
 		baseUrl: 'assets/js',
