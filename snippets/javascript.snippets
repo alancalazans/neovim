@@ -31,6 +31,11 @@ snippet ife
 	} else {
 		${0}
 	}
+snippet iife
+	((win, doc) => {
+		'use strict';
+		${0}
+	})(window, document);
 # tertiary conditional
 snippet ter
 	${1:/* condition */} ? ${2:a} : ${0:b}
@@ -378,9 +383,9 @@ snippet boot
 	});
 snippet requirejs
 	requirejs(['${1:deps}'], () => {
-		
+
 	});
 snippet definejs
 	define(['${1:deps}'], () => {
-		
+
 	});

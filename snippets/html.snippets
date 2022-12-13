@@ -417,6 +417,14 @@ snippet input
 	<input type="text" id="${1}" name="${2}" value="${3}" placeholder="${4}" required>
 snippet ins
 	<ins>${1}</ins>
+#=======================================
+# JavaScript / JQuery
+#=======================================
+snippet iife
+	((win, doc) => {
+		'use strict';
+		${0}
+	})(window, document);
 snippet $
 	$(() => {
 		${1}
@@ -973,5 +981,5 @@ snippet boot
 	});
 snippet requirejs
 	requirejs(['${1:deps}'], () => {
-		
+
 	});
