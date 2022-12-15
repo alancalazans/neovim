@@ -649,8 +649,10 @@ call plug#begin('~/.config/nvim/plugged')
 	"---------------------------------------
 	" Utilities
 	"---------------------------------------
+	Plug 'sheerun/vim-polyglot'
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'ap/vim-css-color'
 	"---------------------------------------
 	" Completion / linters / formatters
 	"---------------------------------------
