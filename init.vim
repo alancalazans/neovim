@@ -86,7 +86,12 @@ set fileencoding=utf-8
 "---------------------------------------
 " Configuração de fonte
 "---------------------------------------
-set guifont=Fira\ Code:h11
+"set guifont=Consolas:h10
+if has('gui_win32')
+	set guifont=Consolas:h11
+else
+	set guifont=FuraMono\ Nerd\ Font:h11
+endif
 "---------------------------------------
 " Configura linhas, colunas
 "---------------------------------------
