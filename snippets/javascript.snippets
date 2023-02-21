@@ -6,6 +6,23 @@ snippet cmts
 	/*----------------------------------------
 	 * ${1}
 	 *----------------------------------------*/
+
+# EventListener
+snippet eventsubmit
+	const formElem = document.querySelector('form');
+
+	formElem.addEventListener('submit', evt => {
+		evt.preventDefault();
+
+		console.log(formElem.querySelector('input[name="field1"]'));
+		console.log(formElem.querySelector('input[name="field2"]'));
+
+		const formData = new FormData(formElem);
+
+		console.log(formData.get('field1'));
+		console.log(formData.get('field2'));
+	});
+
 # createElement
 snippet createElement
 	const createElement = (elementName, attributes) => {
