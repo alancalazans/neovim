@@ -106,23 +106,19 @@ let g:mapleader = ' '
 " A primeira linha refere-se ao esquema padrão
 "---------------------------------------
 " Cores disponíveis:
-" aylin, ayu, gruvbox-material, gruvbox,
+" aylin, ayu, gruvbox, gruvbox-material,
 " palenight, spacecamp.
 "---------------------------------------
-colorscheme spacecamp
+colorscheme palenight
 function! ToggleColorscheme()
-  if g:colors_name == 'spacecamp'
-    colorscheme ayu
-  elseif g:colors_name == 'ayu'
-    colorscheme aylin
-  elseif g:colors_name == 'aylin'
-    colorscheme palenight
-  elseif g:colors_name == 'palenight'
+  if g:colors_name == 'palenight'
+    colorscheme spacecamp
+  elseif g:colors_name == 'spacecamp'
     colorscheme gruvbox
   elseif g:colors_name == 'gruvbox'
     colorscheme gruvbox-material
   elseif g:colors_name == 'gruvbox-material'
-    colorscheme spacecamp
+    colorscheme palenight
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
