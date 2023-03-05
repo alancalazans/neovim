@@ -105,24 +105,24 @@ let g:mapleader = ' '
 " Função para trocar o tema de cores
 " A primeira linha refere-se ao esquema padrão
 "---------------------------------------
-" Cores disponíveis: aylin, ayu, borland,
-" gruvbox, midnight, nvcode, OceanicNext,
-" palenight.
+" Cores disponíveis:
+" aylin, ayu, gruvbox-material, gruvbox,
+" palenight, spacecamp.
 "---------------------------------------
-colorscheme gruvbox-material
+colorscheme spacecamp
 function! ToggleColorscheme()
-  if g:colors_name == 'gruvbox-material'
-    colorscheme gruvbox
-  elseif g:colors_name == 'gruvbox'
+  if g:colors_name == 'spacecamp'
     colorscheme ayu
   elseif g:colors_name == 'ayu'
-    colorscheme sonokai
-  elseif g:colors_name == 'sonokai'
-    colorscheme dracula
-  elseif g:colors_name == 'dracula'
-    colorscheme spacecamp
-  elseif g:colors_name == 'spacecamp'
+    colorscheme aylin
+  elseif g:colors_name == 'aylin'
+    colorscheme palenight
+  elseif g:colors_name == 'palenight'
+    colorscheme gruvbox
+  elseif g:colors_name == 'gruvbox'
     colorscheme gruvbox-material
+  elseif g:colors_name == 'gruvbox-material'
+    colorscheme spacecamp
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
