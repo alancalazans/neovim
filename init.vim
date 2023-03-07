@@ -109,9 +109,9 @@ let g:mapleader = ' '
 " aylin, ayu, gruvbox, gruvbox-material,
 " palenight, spacecamp.
 "---------------------------------------
-colorscheme palenight
+colorscheme molokai
 function! ToggleColorscheme()
-  if g:colors_name == 'palenight'
+  if g:colors_name == 'molokai'
     colorscheme spacecamp
   elseif g:colors_name == 'spacecamp'
     colorscheme gruvbox
@@ -119,6 +119,8 @@ function! ToggleColorscheme()
     colorscheme gruvbox-material
   elseif g:colors_name == 'gruvbox-material'
     colorscheme palenight
+  elseif g:colors_name == 'palenight'
+    colorscheme molokai
   endif
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
