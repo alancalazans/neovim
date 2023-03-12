@@ -41,18 +41,18 @@ npm install eslint -g
 #--------------------
 echo -e 'module.exports = {
     "env": {
-			"browser": true,
-			"es2021": true
+      "browser": true,
+      "es2021": true
     },
     "overrides": [
     ],
-    extendes: [
-    	"standard",
-    	"eslint:recommended",
-    	"prettier"
+    extends: [
+      "standard",
+      "eslint:recommended",
+      "prettier"
     ],
     "parserOptions": {
-			"ecmaVersion": "latest"
+      "ecmaVersion": "latest"
     },
     "rules": {
     }
