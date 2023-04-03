@@ -17,3 +17,31 @@ sudo mkdir -p /root/.local/share/fonts
 sudo cp NeoVim_fonts/Droid*.otf /root/.local/share/fonts/
 sudo unzip NeoVim_fonts/FiraMono.zip -d /root/.local/share/fonts/
 #sudo tar -zxf Omnisharp-Roslyn-Server/omnisharp-linux-x64-net6.0.tar.gz -C /opt/omnisharp/
+#--------------------
+# ESLint
+# https://eslint.org/
+# Instalando:
+#--------------------
+npm install eslint -g
+#--------------------
+# Criando arquivo de configuração
+# `.eslintrc.js` na pasta de usuário:
+#--------------------
+echo -e 'module.exports = {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "overrides": [
+    ],
+    extends: [
+      "standard",
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {
+    }
+}' > ~/.eslintrc.js
