@@ -1,4 +1,6 @@
 #!/bin/bash
-rm -rf $HOME/.config/nvim
-unzip _nvim_lua.zip -d $HOME/.config/
-#cp snippets/* $HOME/.config/nvim/snippets/
+sudo rm -rf $HOME/.config/nvim
+tar -Jxf nvim.tar.xz -C $HOME/.config/
+cp snippets/* $HOME/.config/nvim/snippets/
+cp init.vim $HOME/.config/nvim/
+cp ginit.vim $HOME/.config/nvim/
