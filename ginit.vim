@@ -456,13 +456,12 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "---------------------------------------
 " set sn
 "---------------------------------------
-" Outra forma de pular fora dos parênteses, colchetes e chaves, mover o cursor
-" no modo insert
+" Movimentando o cursor
 "---------------------------------------
-imap <c-l> <right>
 imap <c-h> <left>
-imap <m-[> <up>
 imap <m-]> <down>
+imap <m-[> <up>
+imap <c-l> <right>
 "---------------------------------------
 " Habilita auto-indentação
 "---------------------------------------
@@ -647,6 +646,10 @@ call plug#begin('~/.config/nvim/plugged')
 	"---------------------------------------
 	" Utilities
 	"---------------------------------------
+	Plug 'mattn/emmet-vim'
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'tomtom/tlib_vim'
+	Plug 'garbas/vim-snipmate'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -671,6 +674,8 @@ call plug#end()
 "\}
 "
 "let g:ale_fix_on_save = 1
+"---------------------------------------
+let g:snipMate = { 'snippet_version': 1 }
 "---------------------------------------
 filetype indent off
 filetype plugin off

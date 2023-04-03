@@ -458,14 +458,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "---------------------------------------
 " Movimentando o cursor
 "---------------------------------------
-"noremap <C-h> <left>
-"noremap <C-j> <down>
-"noremap <C-k> <up>
-"noremap <C-l> <right>
-imap <c-l> <right>
 imap <c-h> <left>
-imap <m-[> <up>
 imap <m-]> <down>
+imap <m-[> <up>
+imap <c-l> <right>
 "---------------------------------------
 " Habilita auto-indentação
 "---------------------------------------
@@ -650,6 +646,10 @@ call plug#begin('~/.config/nvim/plugged')
 	"---------------------------------------
 	" Utilities
 	"---------------------------------------
+	Plug 'mattn/emmet-vim'
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'tomtom/tlib_vim'
+	Plug 'garbas/vim-snipmate'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -659,7 +659,6 @@ call plug#begin('~/.config/nvim/plugged')
 	"---------------------------------------
 	Plug 'dense-analysis/ale'
 	Plug 'prabirshrestha/vim-lsp'
-	"Plug 'zah/nim.vim'
 	Plug 'alaviss/nim.nvim'
 call plug#end()
 "---------------------------------------
@@ -674,6 +673,8 @@ call plug#end()
 "\}
 "
 "let g:ale_fix_on_save = 1
+"---------------------------------------
+let g:snipMate = { 'snippet_version': 1 }
 "---------------------------------------
 filetype indent off
 filetype plugin off
