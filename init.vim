@@ -647,6 +647,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" Utilities
 	"---------------------------------------
 	Plug 'mattn/emmet-vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'ervandew/supertab'
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
@@ -676,6 +678,8 @@ let g:ale_sign_warning = '⚠️'
 "\}
 "
 "let g:ale_fix_on_save = 1
+"---------------------------------------
+" Para usar a versão mais atual do analisador
 "---------------------------------------
 let g:snipMate = { 'snippet_version': 1 }
 "---------------------------------------
