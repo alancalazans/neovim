@@ -459,8 +459,8 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 " Movimentando o cursor
 "---------------------------------------
 imap <c-h> <left>
-imap <c-]> <down>
-imap <c-[> <up>
+"imap <c-]> <down>
+"imap <c-[> <up>
 imap <c-l> <right>
 "---------------------------------------
 " Habilita auto-indentação
