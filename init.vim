@@ -357,9 +357,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 "---------------------------------------
 "set listchars=tab:¦·,trail:·,eol:$
 "set listchars=tab:▸·,trail:·,eol:¬
-set listchars=tab:¦\ ,trail:·,eol:¬
+"set listchars=tab:¦\ ,trail:·,eol:¬
 "set list
-nmap <leader>i :set list!<cr>
+"nmap <leader>i :set list!<cr>
 "---------------------------------------
 " Backspace no modo de visão apaga a seleção
 "---------------------------------------
@@ -458,10 +458,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "---------------------------------------
 " Movimentando o cursor
 "---------------------------------------
-imap <c-h> <left>
+"imap <c-h> <left>
 "imap <c-]> <down>
 "imap <c-[> <up>
-imap <c-l> <right>
+"imap <c-l> <right>
 "---------------------------------------
 " Habilita auto-indentação
 "---------------------------------------
@@ -656,6 +656,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'ap/vim-css-color'
+	Plug 'thaerkh/vim-indentguides'
 	"---------------------------------------
 	" Completion / linters / formatters
 	"---------------------------------------
