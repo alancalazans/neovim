@@ -458,10 +458,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "---------------------------------------
 " Movimentando o cursor
 "---------------------------------------
-"imap <c-h> <left>
-"imap <c-]> <down>
-"imap <c-[> <up>
-"imap <c-l> <right>
+imap <M-h> <left>
+imap <M-j> <down>
+imap <M-k> <up>
+imap <M-l> <right>
 "---------------------------------------
 " Habilita auto-indentação
 "---------------------------------------
