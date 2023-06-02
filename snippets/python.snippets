@@ -11,7 +11,7 @@ snippet docs
 	'''
 	File: ${1:`Filename('$1.py', 'foo.py')`}
 	Author: ${2:`g:snips_author`}
-	Description: ${3}
+	Description: $0
 	'''
 snippet wh
 	while ${1:condition}:
@@ -26,7 +26,7 @@ snippet cl
 		def __init__(self, ${4:arg}):
 			${5:super($1, self).__init__()}
 			self.$4 = $4
-			${6}
+			$0
 # New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
@@ -34,11 +34,11 @@ snippet def
 		${4:pass}
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		${3}
+		$0
 # New Method
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
-		${3:pass}
+		${0:pass}
 # New Property
 snippet property
 	def ${1:foo}():
@@ -46,31 +46,31 @@ snippet property
 		def fget(self):
 			${3:return self._$1}
 		def fset(self, value):
-			${4:self._$1 = value}
+			${0:self._$1 = value}
 # Lambda
-snippet ld
-	${1:var} = lambda ${2:vars} : ${3:action}
+snippet lambda
+	${1:var} = lambda ${2:vars} : ${0:action}
 snippet .
 	self.
 snippet try Try/Except
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+		${0:raise $3}
 snippet try Try/Except/Else
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
 		${4:raise $3}
 	else:
-		${5:pass}
+		${0:pass}
 snippet try Try/Except/Finally
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
 		${4:raise $3}
 	finally:
-		${5:pass}
+		${0:pass}
 snippet try Try/Except/Else/Finally
 	try:
 		${1:pass}
@@ -79,14 +79,14 @@ snippet try Try/Except/Else/Finally
 	else:
 		${5:pass}
 	finally:
-		${6:pass}
+		${0:pass}
 # if __name__ == '__main__':
 snippet ifmain
 	if __name__ == '__main__':
-		${1:main()}
+		${0:main()}
 # __magic__
 snippet _
-	__${1:init}__${2}
+	__${1:init}__$0
 #--------------------------------------
 # PySimpleGUI
 #--------------------------------------
@@ -94,16 +94,16 @@ snippet sg
 	import PySimpleGUI as sg
 snippet layout
 	layout = [
-		[sg.Text('${1}'), ${2}]
+		[sg.Text('${1}'), $0]
 	]
 snippet sgt
 	sg.Text('${1:String}')
 snippet sgi
-	sg.Input(key='-${1:chave}-')
+	sg.Input(key='-${0:chave}-')
 snippet sgb
-	sg.Button('${1}')
+	sg.Button('$0')
 snippet window
-	window = sg.Window('${1:Title}', layout)
+	window = sg.Window('${0:Title}', layout)
 snippet while-true
 	while True:
 
@@ -111,8 +111,8 @@ snippet while-true
 
 		if event == sg.WIN_CLOSED or event == '${1:Quit}':
 			break
-		elif event == '${2}':
-			${3}
+		elif event == '$2':
+			$0
 
 	window.close()
 snippet sg-base
@@ -136,33 +136,3 @@ snippet sg-base
 			pass
 
 	window.close()
-#--------------------------------------
-# Kivy
-#--------------------------------------
-snippet kivy-base
-	from kivy.app import App
-	from kivy.uix.floatlayout import FloatLayout
-	# Para usar a linguagem kivy inline
-	from kivy.lang import Builder
-	# Para definir dimensão da janela
-	#from kivy.core.window import Window
-
-	Builder.load_string('''
-	<MyWidget>:
-		Button:
-			text: 'Button'
-			size_hint: (0.1, 0.1)
-			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-	''')
-
-	class MyWidget(FloatLayout):
-		pass
-
-	class MyKivyApp(App):
-		def build(self):
-			return MyWidget()
-
-	if __name__ == '__main__':
-		#Window.size = (1366, 768) # Dimensão padrão 800x600
-		#Window.fullscreen = True # Para tela cheia
-		MyKivyApp().run()
