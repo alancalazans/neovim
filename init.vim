@@ -86,11 +86,11 @@ set fileencoding=utf-8
 "---------------------------------------
 " Configuração de fonte
 "---------------------------------------
-"set guifont=Consolas:h10
-if has('gui_win32')
-	set guifont=Consolas:h11
+"set guifont=Monospace\ 12
+if has('gui_running') && !has('gui_win32')
+  set guifont=FuraMono\ Nerd\ Font\ 12
 else
-	set guifont=FuraMono\ Nerd\ Font:h11
+  set guifont=Consolas:h11
 endif
 "---------------------------------------
 " Configura linhas, colunas
@@ -634,7 +634,7 @@ smap <c-a> <c-c>gggH<c-o>G
 xmap <c-a> <c-c>ggVG
 map <c-a> <esc>ggvG
 "---------------------------------------
-" VIM-PLUG
+" VIM-PLUG (https://github.com/junegunn/vim-plug)
 "---------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 	"---------------------------------------
@@ -647,8 +647,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" Utilities
 	"---------------------------------------
 	Plug 'mattn/emmet-vim'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'ervandew/supertab'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'ervandew/supertab'
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
