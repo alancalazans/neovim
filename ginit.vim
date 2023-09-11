@@ -647,8 +647,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" Utilities
 	"---------------------------------------
 	Plug 'mattn/emmet-vim'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'ervandew/supertab'
+	Plug 'jiangmiao/auto-pairs'
+	"Plug 'ervandew/supertab'
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
