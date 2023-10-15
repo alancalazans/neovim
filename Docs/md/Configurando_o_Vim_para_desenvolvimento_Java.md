@@ -134,11 +134,11 @@ Adicione isso e seu novo linter funcionará!
 " Encurtar sinalizadores de erro/aviso
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-" I have some custom icons for errors and warnings but feel free to change them.
+" Tenho alguns ícones personalizados para erros e avisos, mas fique à vontade para alterá-los.
 let g:ale_sign_error = '✘✘'
 let g:ale_sign_warning = '⚠⚠'
 
-" Desative ou ative o loclist na parte inferior do vim
+" Desative ou ative a Lista de locais na parte inferior do vim
 " Tudo se resume à preferência pessoal.
 let g:ale_open_list = 0
 let g:ale_loclist = 0
