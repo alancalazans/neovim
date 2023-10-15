@@ -10,7 +10,7 @@
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Seg 26 Set 2022
+" Updated: Dom 15 Out 2023
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
 "          <http://www.gnu.org/licenses/gpl.html>
@@ -131,23 +131,6 @@ set shortmess+=I
 " Flag tab para 2<->4
 "---------------------------------------
 let g:tab = 'tab2'
-"---------------------------------------
-" Flag DrawIt
-"---------------------------------------
-let g:di = 'stop'
-"---------------------------------------
-" Ativa e Desativa DrawIt
-"---------------------------------------
-function! ToggleDrawIt()
-  if g:di=='stop'
-    :DIstart
-    let g:di='start'
-  else
-    :DIstop
-    let g:di='stop'
-  endif
-endfunction
-nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 "---------------------------------------
 " Tab 2<->4
 "---------------------------------------
@@ -324,32 +307,6 @@ set selectmode=mouse,key
 set mousemodel=popup
 set keymodel=startsel,stopsel
 set selection=exclusive
-"---------------------------------------
-"NERDTree : https://github.com/preservim/nerdtree
-"---------------------------------------
-"---------------------------------------
-" Atalho p/ sidebar de navegação (plugin NERDTree)
-"---------------------------------------
-nmap <leader>n :NERDTreeToggle<cr>
-"nerdtree - configurações básicas
-let NERDTreeShowHidden = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeIgnore = []
-let NERDTreeStatusline = ''
-"nerdtree-git-plugin
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 "---------------------------------------
 " Mostra ou não a identacão
 "---------------------------------------
@@ -655,6 +612,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'ap/vim-css-color'
 	Plug 'thaerkh/vim-indentguides'
+	Plug 'vim-scripts/DrawIt'
 	"---------------------------------------
 	" Completion / linters / formatters
 	"---------------------------------------
@@ -665,6 +623,44 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'alaviss/nim.nvim'
 call plug#end()
+"---------------------------------------
+" DrawIt {{{
+"---------------------------------------
+" Flag
+let g:di = 'stop'
+function! ToggleDrawIt()
+  if g:di=='stop'
+    :DIstart
+    let g:di='start'
+  else
+    :DIstop
+    let g:di='stop'
+  endif
+endfunction
+nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
+" }}}
+"---------------------------------------
+"NERDTree {{{
+"---------------------------------------
+nmap <leader>n :NERDTreeToggle<cr>
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeIgnore = []
+let NERDTreeStatusline = ''
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+  \ "Modified"  : "✹",
+  \ "Staged"    : "✚",
+  \ "Untracked" : "✭",
+  \ "Renamed"   : "➜",
+  \ "Unmerged"  : "═",
+  \ "Deleted"   : "✖",
+  \ "Dirty"     : "✗",
+  \ "Clean"     : "✔︎",
+  \ 'Ignored'   : '☒',
+  \ "Unknown"   : "?"
+  \ }
+" }}}
 "---------------------------------------
 " Ale {{{
 "---------------------------------------

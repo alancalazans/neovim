@@ -10,7 +10,7 @@
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Seg 26 Set 2022
+" Updated: Dom 15 Out 2023
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
 "          <http://www.gnu.org/licenses/gpl.html>
@@ -132,36 +132,19 @@ set shortmess+=I
 "---------------------------------------
 let g:tab = 'tab2'
 "---------------------------------------
-" Flag DrawIt
-"---------------------------------------
-let g:di = 'stop'
-"---------------------------------------
-" Ativa e Desativa DrawIt
-"---------------------------------------
-function! ToggleDrawIt()
-  if g:di=='stop'
-    :DIstart
-    let g:di='start'
-  else
-    :DIstop
-    let g:di='stop'
-  endif
-endfunction
-nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
-"---------------------------------------
 " Tab 2<->4
 "---------------------------------------
 function! ToggleTab()
   if g:tab=='tab2'
-		set tabstop=4
-		set shiftwidth=4
-		set softtabstop=4
-		let g:tab='tab4'
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+    let g:tab='tab4'
   else
-		set tabstop=2
-		set shiftwidth=2
-		set softtabstop=2
-		let g:tab='tab2'
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+    let g:tab='tab2'
   endif
 endfunction
 nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
@@ -324,32 +307,6 @@ set selectmode=mouse,key
 set mousemodel=popup
 set keymodel=startsel,stopsel
 set selection=exclusive
-"---------------------------------------
-"NERDTree : https://github.com/preservim/nerdtree
-"---------------------------------------
-"---------------------------------------
-" Atalho p/ sidebar de navegação (plugin NERDTree)
-"---------------------------------------
-nmap <leader>n :NERDTreeToggle<cr>
-"nerdtree - configurações básicas
-let NERDTreeShowHidden = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeIgnore = []
-let NERDTreeStatusline = ''
-"nerdtree-git-plugin
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 "---------------------------------------
 " Mostra ou não a identacão
 "---------------------------------------
@@ -655,6 +612,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'ap/vim-css-color'
 	Plug 'thaerkh/vim-indentguides'
+	Plug 'vim-scripts/DrawIt'
 	"---------------------------------------
 	" Completion / linters / formatters
 	"---------------------------------------
@@ -663,7 +621,45 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'alaviss/nim.nvim'
 call plug#end()
 "---------------------------------------
-" ALE
+" DrawIt {{{
+"---------------------------------------
+" Flag
+let g:di = 'stop'
+function! ToggleDrawIt()
+  if g:di=='stop'
+    :DIstart
+    let g:di='start'
+  else
+    :DIstop
+    let g:di='stop'
+  endif
+endfunction
+nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
+" }}}
+"---------------------------------------
+"NERDTree {{{
+"---------------------------------------
+nmap <leader>n :NERDTreeToggle<cr>
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeIgnore = []
+let NERDTreeStatusline = ''
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+  \ "Modified"  : "✹",
+  \ "Staged"    : "✚",
+  \ "Untracked" : "✭",
+  \ "Renamed"   : "➜",
+  \ "Unmerged"  : "═",
+  \ "Deleted"   : "✖",
+  \ "Dirty"     : "✗",
+  \ "Clean"     : "✔︎",
+  \ 'Ignored'   : '☒',
+  \ "Unknown"   : "?"
+  \ }
+" }}}
+"---------------------------------------
+" ALE {{{
 "---------------------------------------
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '❌'
@@ -677,15 +673,18 @@ let g:ale_sign_warning = '⚠️'
 "\}
 "
 "let g:ale_fix_on_save = 1
+" }}}
+"---------------------------------------
+" SnipMate {{{
 "---------------------------------------
 " Para usar a versão mais atual do analisador
-"---------------------------------------
 let g:snipMate = { 'snippet_version': 1 }
 "---------------------------------------
+" }}}
 filetype indent off
 filetype plugin off
 "---------------------------------------
-" Folding / Unfolding
+" Folding / Unfolding {{{
 "---------------------------------------
 setlocal foldmethod=indent
 set nofoldenable
@@ -700,8 +699,9 @@ function! CustomFoldText()
 	let expansionString = repeat(" ", indentation)
 	return expansionString . foldLevelStr . foldSizeStr
 endfunction
+" }}}
 "---------------------------------------
-" Cor da numeração lateral
+" Cor da numeração lateral {{{
 "---------------------------------------
 "hi LineNr guifg=blue ctermfg=lightBlue
 "hi LineNr guifg=green ctermfg=lightGreen
@@ -709,3 +709,4 @@ endfunction
 "hi LineNr guifg=pink ctermfg=lightPink
 "hi LineNr guifg=magenta ctermfg=lightPink
 hi LineNr guifg=#ffffff ctermfg=lightCyan
+" }}}
