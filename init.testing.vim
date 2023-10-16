@@ -10,7 +10,7 @@
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Dom 15 Out 2023
+" Updated: Seg 16 Out 2023
 " Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
 " License: GNU General Public License v3
 "          <http://www.gnu.org/licenses/gpl.html>
@@ -43,19 +43,19 @@ set showmatch " Faz o highlight do parênteses, colechetes ou chave corresponden
 " Configuration for landscape Theme
 "---------------------------------------
 let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'filename', 'modified', ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
-  \ },
-  \ 'separator': { 'left': '【', 'right': '】' },
-  \ 'component': {
-  \   'lineinfo': '%l\%L [%p%%], %c, %n',
-  \   'readonly': '%{&readonly?"\ue0a2":""}',
-  \ }
-  \ }
+\   'active': {
+\     'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename', 'modified', ] ],
+\     'right': [ [ 'lineinfo' ],
+\              [ 'percent' ],
+\              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
+\   },
+\   'separator': { 'left': '【', 'right': '】' },
+\   'component': {
+\     'lineinfo': '%l\%L [%p%%], %c, %n',
+\     'readonly': '%{&readonly?"\ue0a2":""}',
+\   }
+\ }
 "---------------------------------------
 " Mudar cor da barra de status dependendo do modo
 "---------------------------------------
@@ -136,15 +136,15 @@ let g:tab = 'tab2'
 "---------------------------------------
 function! ToggleTab()
   if g:tab=='tab2'
-		set tabstop=4
-		set shiftwidth=4
-		set softtabstop=4
-		let g:tab='tab4'
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+    let g:tab='tab4'
   else
-		set tabstop=2
-		set shiftwidth=2
-		set softtabstop=2
-		let g:tab='tab2'
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+    let g:tab='tab2'
   endif
 endfunction
 nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
@@ -262,12 +262,12 @@ set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identa�
 set noexpandtab " set expandtab "cria espaços no lugar de tabulação
 let g:status_tab = 'tab'
 function! ToggleStatusTab()
-	if g:status_tab=='tab'
-		set expandtab
-		let g:status_tab = 'space'
-	else
-		set noexpandtab
-		let g:status_tab = 'tab'
+  if g:status_tab=='tab'
+    set expandtab
+    let g:status_tab = 'space'
+  else
+    set noexpandtab
+    let g:status_tab = 'tab'
   endif
 endfunction
 nmap <silent><leader>t :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
@@ -649,17 +649,17 @@ let NERDTreeDirArrows = 1
 let NERDTreeIgnore = []
 let NERDTreeStatusline = ''
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-  \ "Modified"  : "✹",
-  \ "Staged"    : "✚",
-  \ "Untracked" : "✭",
-  \ "Renamed"   : "➜",
-  \ "Unmerged"  : "═",
-  \ "Deleted"   : "✖",
-  \ "Dirty"     : "✗",
-  \ "Clean"     : "✔︎",
-  \ 'Ignored'   : '☒',
-  \ "Unknown"   : "?"
-  \ }
+\ "Modified"  : "✹",
+\ "Staged"    : "✚",
+\ "Untracked" : "✭",
+\ "Renamed"   : "➜",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "✗",
+\ "Clean"     : "✔︎",
+\ 'Ignored'   : '☒',
+\ "Unknown"   : "?"
+\ }
 " }}}
 "---------------------------------------
 " Ale {{{
@@ -702,9 +702,9 @@ filetype plugin off
 let g:deoplete#enable_at_startup = 1
 " Use TAB como mapeamento
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ?  "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ deoplete#mappings#manual_complete()
+\ pumvisible() ?  "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
 function! s:check_back_space() abort "" {{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'

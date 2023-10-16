@@ -55,24 +55,17 @@ snippet for
 	for ($1; $2; $3) $4
 snippet fore
 	for ($1 : $2) $3
-snippet switch
-	switch ($1) {
-		case $2:
-			$3;
-			break;
-		$0
-		default:
-	}
-snippet case
+snippet sw
+	switch ($1) $2
+snippet cs
 	case $1:
 		$2
-		break;
-	$0
+	$3
 snippet tc
 	public class ${1:`Filename()`} extends ${2:TestCase}
 snippet t
 	public void test${1:Name}() throws Exception $2
-snippet class
+snippet cl
 	class ${1:`Filename("", "untitled")`} $2
 snippet in
 	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}$3
