@@ -679,6 +679,7 @@ let g:ale_sign_warning = '⚠️'
 "---------------------------------------
 " Para usar a versão mais atual do analisador
 let g:snipMate = { 'snippet_version': 1 }
+"imap <c-j> <Plug>snipMateNextOrTrigger
 "---------------------------------------
 " }}}
 filetype indent off
