@@ -7,8 +7,8 @@
 # Duplica linha selecionada:
 	<ctrl> <d>
 # Movimenta linha selecionada:
-	<ctrl> <shift> <up> ou <down>   (Movimenta respectivamente
-	                                 p/ cima ou p/ baixo.)
+	<ctrl> <shift> <up> ou <down>    (Movimenta respectivamente
+	                                  p/ cima ou p/ baixo.)
 ```
 
 
@@ -21,12 +21,22 @@
 	<space> <s>
 # Desfazer seleção de itens pesquisados:
 	<space> <b>
-# Navegação lateral de arquivos e pastas:
+# Navegação lateral de arquivos e pastas (NerdTree):
 	<space> <n>
+# DrawIt (Ferramenta para desenho):
+	<space> <u>
 # Mudar tema:
 	<space> </>
+# Editar arquivo:
+	:e arquivo.txt
+# Editar arquivo de um diretório específico:
+	:e assets/css/estilos.css
+# Split vertical:
+	:vs
+# Split horizontal:
+	:split
 # Busca no arquivo:
-	:/alvo <enter> (p/ continuar a busca tecle <n>)
+	:/alvo <enter>    (p/ continuar a busca tecle <n>)
 ----------------------------------------
 # Substituições:
 	:{intervalo}s/alvo/a_substituir/gic
