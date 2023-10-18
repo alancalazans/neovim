@@ -1,9 +1,20 @@
 # Neovim - uteis
 
 ```
+# << No modo insert >>
 # Emmet:
 	<ctrl> <y> <,>
-# Todas abaixo no modo normal
+# Duplica linha selecionada:
+	<ctrl> <d>
+# Movimenta linha selecionada:
+	<ctrl> <shift> <up> ou <down>   (Movimenta respectivamente
+	                                 p/ cima ou p/ baixo.)
+```
+
+
+
+```
+# << No modo normal >>
 # Marcas de identação, espaço e return habilitar/desabilitar:
 	<space> <i>
 # Apagar espaço final e de linha em todo arquivo:
