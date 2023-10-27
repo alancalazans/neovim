@@ -4,8 +4,9 @@ cp snippets/* $HOME/.config/nvim/snippets/
 cp init.vim $HOME/.config/nvim/
 cp ginit.vim $HOME/.config/nvim/
 # Caso o diretório de fontes não exista.
-sudo cp NeoVim_fonts/Droid*.otf /usr/share/fonts/
-sudo unzip NeoVim_fonts/FuraMono_Linux.zip -d /usr/share/fonts/
+mkdir ~/.local/share/fonts
+cp NeoVim_fonts/Droid*.otf ~/.local/share/fonts/
+unzip NeoVim_fonts/FuraMono_Linux.zip -d ~/.local/share/fonts/
 #if ! [ -d "$HOME/.local/share/fonts" ]; then
 #	mkdir -p "$HOME/.local/share/fonts"
 #	cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
