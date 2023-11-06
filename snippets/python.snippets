@@ -4,6 +4,32 @@ snippet cmts
 	"""
 	${1:coment}
 	"""
+# ---------------------------------------
+# Gatilhos para Flask
+snippet flaskapp
+	from flask import Flask
+
+	app = Flask(__name__)
+
+	@app.route('/')
+	def index():
+	    $0
+	
+	if __name__ == '__main__':
+	    app.run(debug=True)
+snippet @app
+	@app.route('$1')
+	def $2():
+	    $0
+# ---------------------------------------
+# Gatilhos para Flet
+snippet fletapp
+	import flet as ft
+
+	def main(page: ft.Page):
+	    $0
+
+	ft.app(target=main)
 snippet imp
 	import ${1:module}
 # Module Docstring
