@@ -623,7 +623,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'ap/vim-css-color'
 	Plug 'thaerkh/vim-indentguides'
 	Plug 'vim-scripts/DrawIt'
-	Plug 'matze/vim-move'
 	"-----------------------------------------
 	"--- Completion / linters / formatters ---
 	"-----------------------------------------
@@ -631,12 +630,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'alaviss/nim.nvim'
 call plug#end()
-"--------------------
-"--- vim-move {{{ ---
-"--------------------
-"let g:move_key_modifier = 'C'
-"let g:move_key_modifier_visualmode = 'S'
-" }}}
 "------------------
 "--- DrawIt {{{ ---
 "------------------
