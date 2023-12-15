@@ -1,4 +1,4 @@
-"---------------------------------------
+"----------------------------------------------------------
 " ▄▄        ▄  ▄               ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄
 "▐░░▌      ▐░▌▐░▌             ▐░▌▐░░░░░░░░░░░▌▐░░▌     ▐░░▌
 "▐░▌░▌     ▐░▌ ▐░▌           ▐░▌  ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌   ▐░▐░▌
@@ -10,29 +10,29 @@
 "▐░▌     ▐░▐░▌       ▐░▐░▌        ▄▄▄▄█░█▄▄▄▄ ▐░▌       ▐░▌
 "▐░▌      ▐░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░▌       ▐░▌
 " ▀        ▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀
-"---------------------------------------
+"----------------------------------------------------------
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Seg 16 Out 2023
-" Installation: - As dotfile drop the file into your $HOME/.config/nvim/ folder.
+" Updated: Sex 15 Nov 2023
+" Installation: As dotfile drop the file into your $HOME/.config/nvim/ folder
 " License: GNU General Public License v3
-"          <http://www.gnu.org/licenses/gpl.html>
+" <http://www.gnu.org/licenses/gpl.html>
 " Version: 1.0
 " Notes: Based on the file:
-"        .vimrc (1.0) made by Ivan Carlos da Silva Lopes
-"        .vimrc made by Aurelio Marinho Jarga (verde)
-"        .vimrc made by Sérgio Luiz Araújo Silva  (voyeg3r) and
-"        .vimrc made by J. F. Mitre <jfmitre (at) gmail.com>
-"---------------------------------------
-" Suporte a cores.
-"---------------------------------------
+" .vimrc (1.0) made by Ivan Carlos da Silva Lopes
+" .vimrc made by Aurelio Marinho Jarga (verde)
+" .vimrc made by Sérgio Luiz Araújo Silva  (voyeg3r) and
+" .vimrc made by J. F. Mitre <jfmitre (at) gmail.com>
+"-----------------------
+"--- Suporte a cores ---
+"-----------------------
 if $TERM !=? 'xterm-256color'
 	set termguicolors
 endif
-"---------------------------------------
-" Suporte ao itálico verdadeiro
-"---------------------------------------
+"-------------------------------------
+"--- Suporte ao itálico verdadeiro ---
+"-------------------------------------
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 set noautochdir " Definir diretorio atual automaticamente
@@ -42,10 +42,10 @@ set ai " Ao criar nova linha, usa indentação da linha anterior
 set nocompatible
 set ruler " show the cursor position all the time
 set showmatch " Faz o highlight do parênteses, colechetes ou chave correspondente
-"---------------------------------------
-" LIGTHLINE
-" Configuration for landscape Theme
-"---------------------------------------
+"-----------------------------------------
+"---            LIGTHLINE              ---
+"--- Configuration for landscape Theme ---
+"-----------------------------------------
 let g:lightline = {
 \   'active': {
 \     'left': [ [ 'mode', 'paste' ],
@@ -60,59 +60,55 @@ let g:lightline = {
 \     'readonly': '%{&readonly?"\ue0a2":""}',
 \   }
 \ }
-"---------------------------------------
-" Mudar cor da barra de status dependendo do modo
-"---------------------------------------
+"-------------------------------------------------------
+"--- Mudar cor da barra de status dependendo do modo ---
+"-------------------------------------------------------
 " Ao entrar em modo insert ele muda a cor da barra de status
 " altera a cor da linha de status dependendo do modo
 if version >= 700
  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
  au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 endif
-"---------------------------------------
-" Permite que o mouse seja utilizado na edição
-"---------------------------------------
+"----------------------------------------------------
+"--- Permite que o mouse seja utilizado na edição ---
+"----------------------------------------------------
 set mouse=a
-"---------------------------------------
-" Alguns tipos de arquivos devem ser ignorados pelo Vim.
-"---------------------------------------
+"-------------------------------------------------------------
+"--- Alguns tipos de arquivos devem ser ignorados pelo Vim ---
+"-------------------------------------------------------------
 set wildignore=*.o,*.obj,*.bak,*.exe,*.dll,*.com,*.class,*.au,*.wav,*.ps,*.avi,*.wmv,*.flv,*.djvu,*.pdf,*.chm,*.dvi,*.svn/,*~
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
-"---------------------------------------
-" Define codificação, fonte, tema, nº de linha e colunas
-"---------------------------------------
+"--------------------------------------------------------------
+"--- Define codificação, fonte, tema, nº de linha e colunas ---
+"--------------------------------------------------------------
 "set nobomb
 set encoding=utf-8
 set fileencoding=utf-8
 "set encoding=iso-8859-1
 "set fileencoding=iso-8859-1
-"---------------------------------------
-" Configuração de fonte
-"---------------------------------------
+"-----------------------------
+"--- Configuração de fonte ---
+"-----------------------------
 "set guifont=Monospace\ 12
 if has('gui_running') && !has('gui_win32')
   set guifont=FuraMono\ Nerd\ Font\ 12
 else
-  set guifont=Consolas:h11
+  set guifont=DroidSansMono\ Nerd\ Font:h11
 endif
-"---------------------------------------
-" Configura linhas, colunas
-"---------------------------------------
+"---------------------------------
+"--- Configura linhas, colunas ---
+"---------------------------------
 "set lines=42 columns=80
 set wildmenu
-"---------------------------------------
-" Defina o <space> como tecla líder
-"---------------------------------------
+"-----------------------------------------
+"--- Defina o <space> como tecla líder ---
+"-----------------------------------------
 let g:mapleader = ' '
-"---------------------------------------
-" Função para trocar o tema de cores
-" A primeira linha refere-se ao esquema padrão
-"---------------------------------------
-" Cores disponíveis:
-" aylin, ayu, gruvbox, gruvbox-material,
-" palenight, spacecamp.
-"---------------------------------------
+"----------------------------------------------------
+"--- Função para trocar o tema de cores           ---
+"--- A primeira linha refere-se ao esquema padrão ---
+"----------------------------------------------------
 colorscheme molokai
 function! ToggleColorscheme()
   if g:colors_name == 'molokai'
@@ -127,17 +123,17 @@ function! ToggleColorscheme()
   hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
-"---------------------------------------
-" Suprime a mensagem inicial do GVim
-"---------------------------------------
+"------------------------------------------
+"--- Suprime a mensagem inicial do GVim ---
+"------------------------------------------
 set shortmess+=I
-"---------------------------------------
-" Flag tab para 2<->4
-"---------------------------------------
+"---------------------------
+"--- Flag tab para 2<->4 ---
+"---------------------------
 let g:tab = 'tab2'
-"---------------------------------------
-" Tab 2<->4
-"---------------------------------------
+"-----------------
+"--- Tab 2<->4 ---
+"-----------------
 function! ToggleTab()
   if g:tab=='tab2'
     set tabstop=4
@@ -152,10 +148,10 @@ function! ToggleTab()
   endif
 endfunction
 nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
-"---------------------------------------
-" Multiple Cursors
-" https://github.com/terryma/vim-multiple-cursors#installation
-"---------------------------------------
+"-----------------------------------------------------------------
+"---                   Multiple Cursors                        ---
+" https://github.com/terryma/vim-multiple-cursors#installation ---
+"-----------------------------------------------------------------
 " As ligações de teclas, desative-as e reatribua-as da maneira que desejar:
 "let g:multi_cursor_use_default_mapping=0
 " Default mapping
@@ -167,9 +163,9 @@ nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
 "let g:multi_cursor_prev_key            = '<C-p>'
 "let g:multi_cursor_skip_key            = '<C-x>'
 "let g:multi_cursor_quit_key            = '<Esc>'
-"---------------------------------------
-" Opções da linha de status
-"---------------------------------------
+"---------------------------------
+"--- Opções da linha de status ---
+"---------------------------------
 " [1][+][RO] ~/.vimrc [vim] [utf-8] 34, 0x22 0-15 13%"
 set laststatus=2 " Quando exibir a linha de status: 2=always
 set statusline= " Limpa a linha de status
@@ -182,9 +178,9 @@ set statusline+=%= " Alinha tudo a seguir à direita
 set statusline+=%b,0x%-8B\ " ASCII e número hexadecimal do caractere sob o cursor
 set statusline+=%-4.(%l-%c%)\ %<%P " Linha-coluna do cursor e percentual do arquivo
 "set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ " Como o vim interpreta o cursor abaixo, tipo vimString
-"---------------------------------------
-" Autocompletar html, css, javascript, php.
-"---------------------------------------
+"------------------------------------------------
+"--- Autocompletar html, css, javascript, php ---
+"------------------------------------------------
 filetype on
 if has('autocmd')
   filetype plugin indent on
@@ -213,9 +209,9 @@ if has("autocmd") && exists("+omnifunc")
 endif
 "nmap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
-"---------------------------------------
-" Definindo sintaxe para algumas extenções.
-"---------------------------------------
+"------------------------------------------------
+"--- Definindo sintaxe para algumas extenções ---
+"------------------------------------------------
 au BufRead,BufNewFile *.phtml set filetype=php
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.ep set filetype=html
@@ -224,38 +220,38 @@ au BufRead,BufNewFile *.ts set filetype=javascript
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.exs setf erlang
 au BufRead,BufNewFile *.ex setf erlang
-"---------------------------------------
-" Remover barra de menu, barra rolagem e etc do gVim
-"---------------------------------------
+"----------------------------------------------------------
+"--- Remover barra de menu, barra rolagem e etc do gVim ---
+"----------------------------------------------------------
 "set guioptions-=m
 "set guioptions-=T
 "set guioptions-=r
 set guioptions+=b "Exibe barra de rolagem vertical
-"---------------------------------------
-" Essa opção faz com que o <Backspace> se mova e delete nesses locais:
-" indent - permite passar sobre autoindentação.
-" eol - permite passar sobre o line-break, juntando duas linhas.
-" start - permite passar sobre o ponto de inserção.
-"---------------------------------------
+"----------------------------------------------------------------------------
+"--- Essa opção faz com que o <Backspace> se mova e delete nesses locais: ---
+"--- indent - permite passar sobre autoindentação.                        ---
+"--- eol - permite passar sobre o line-break, juntando duas linhas.       ---
+"--- start - permite passar sobre o ponto de inserção.                    ---
+"----------------------------------------------------------------------------
 set backspace=indent,eol,start
-"---------------------------------------
-" Numeração de linhas e busca de palavras
-"---------------------------------------
+"-----------------------------------------------
+"--- Numeração de linhas e busca de palavras ---
+"-----------------------------------------------
 set nu "linhas numeradas
 set is hls is scs "para busca
-"---------------------------------------
-" Ativa coloração de sintaxe
-"---------------------------------------
+"----------------------------------
+"--- Ativa coloração de sintaxe ---
+"----------------------------------
 syntax on
-"---------------------------------------
-" Backups
-"---------------------------------------
+"---------------
+"--- Backups ---
+"---------------
 set nobackup "desabilita os bkps
 set noswapfile "evita arquivos temporarios
 set nowritebackup "evita arquivos tmp que começam com ~ ou termina com .swp
-"---------------------------------------
-" Identação e quebra de linhas
-"---------------------------------------
+"------------------------------------
+"--- Identação e quebra de linhas ---
+"------------------------------------
 set linebreak " Quebra a linha sem quebrar a palavra
 "set autoindent " Auto identação
 "set smartindent " Auto-indenta
@@ -276,160 +272,160 @@ function! ToggleStatusTab()
 endfunction
 nmap <silent><leader>t :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
 "set nowrap  " Sem wrap (quebra de linha)
-"---------------------------------------
-" permite indentar bloco de texto selecionado usando 'tab'
-" com guia e “des”indentar usando 'shift + tab'
-"---------------------------------------
+"----------------------------------------------------------------
+"--- permite indentar bloco de texto selecionado usando 'tab' ---
+"--- com guia e “des”indentar usando 'shift + tab'.           ---
+"----------------------------------------------------------------
 imap <s-tab> <c-o><lt><lt>
 nmap <tab> >>
 nmap <s-tab> <lt><lt>
 vmap <tab> >>
 vmap <s-tab> <lt>
-"---------------------------------------
-" Atalhos Abas
-" 'Ctrl+t' abre uma nova aba
-"---------------------------------------
+"----------------------------------
+"--- Atalhos p/ abas 'Ctrl + t' ---
+"--- abre uma nova aba.         ---
+"----------------------------------
 imap <c-t> <esc>:tabnew<cr>
 nmap <c-t> :tabnew<cr>
-"---------------------------------------
-" 'Ctrl+PageUp' pula para próxima aba
-"---------------------------------------
+"-------------------------------------------
+"--- 'Ctrl+PageUp' pula para próxima aba ---
+"-------------------------------------------
 imap <c-pageup> <esc>:tabnext<cr>
-"---------------------------------------
-" 'Ctrl+PageDown' volta para aba anterior
-"---------------------------------------
+"-----------------------------------------------
+"--- 'Ctrl+PageDown' volta para aba anterior ---
+"-----------------------------------------------
 imap <c-pagedown> <esc>:tabprevious<cr>
-"---------------------------------------
-" 'Ctrl+e' fecha a aba corrente
-"---------------------------------------
+"-------------------------------------
+"--- 'Ctrl+e' fecha a aba corrente ---
+"-------------------------------------
 imap <c-e> <esc>:tabclose<cr>
-"---------------------------------------
-" Atalhos comuns de teclado
-" Permite selecionar com SHIFT + SETA como no Windows
-"---------------------------------------
+"-----------------------------------------------------------
+"--- Atalhos comuns de teclado                           ---
+"--- Permite selecionar com SHIFT + SETA como no Windows ---
+"-----------------------------------------------------------
 set selectmode=mouse,key
 set mousemodel=popup
 set keymodel=startsel,stopsel
 set selection=exclusive
-"---------------------------------------
-" Mostra ou não a identacão
-"---------------------------------------
+"---------------------------------
+"--- Mostra ou não a identacão ---
+"---------------------------------
 "set listchars=tab:¦·,trail:·,eol:$
 "set listchars=tab:▸·,trail:·,eol:¬
 set listchars=tab:¦\ ,trail:·,eol:¬
 set list
 nmap <leader>i :set list!<cr>
-"---------------------------------------
-" Backspace no modo de visão apaga a seleção
-"---------------------------------------
+"--------------------------------------------------
+"--- Backspace no modo de visão apaga a seleção ---
+"--------------------------------------------------
 vmap <bs> d
-"---------------------------------------
-" CTRL-S salva
-"---------------------------------------
+"--------------------
+"--- CTRL-S salva ---
+"--------------------
 nmap <c-s> :update<cr>
 vmap <c-s> <c-c>:update<cr>
 imap <c-s> <c-o>:update<cr>
-"---------------------------------------
-" CTRL-Z desfaz
-"---------------------------------------
+"---------------------
+"--- CTRL-Z desfaz ---
+"---------------------
 nmap <c-z> u
 vmap <c-z> <c-c>u
 imap <c-z> <c-o>u
-"---------------------------------------
-" CTRL-Y refaz
-"---------------------------------------
+"--------------------
+"--- CTRL-Y refaz ---
+"--------------------
 nmap <c-y> <c-r>
 vmap <c-y> <c-c><c-r>
 imap <c-y> <c-o><c-r>
-"---------------------------------------
-" Fechar Editor
-"---------------------------------------
+"---------------------
+"--- Fechar Editor ---
+"---------------------
 nmap <c-q> :q<cr>
 vmap <c-q> <c-c>:q<cr>
 imap <c-q> <c-o>:q<cr>
-"---------------------------------------
-" CTRL-F4 fecha a janela
-"---------------------------------------
+"------------------------------
+"--- CTRL-F4 fecha a janela ---
+"------------------------------
 nmap <c-F4> <c-w>c
 imap <c-F4> <c-o><c-w>c
 cmap <c-F4> <c-c><c-w>c
 omap <c-F4> <c-c><c-w>c
-"---------------------------------------
-" Mova para o próximo buffer com <líder> + l
-"---------------------------------------
+"--------------------------------------------------
+"--- Mova para o próximo buffer com <líder> + l ---
+"--------------------------------------------------
 nmap <leader>l :bnext<cr>
 vmap <leader>l <c-c>:bnext<cr>
-"---------------------------------------
-" Mova para o buffer anterior com <líder> + j
-"---------------------------------------
+"---------------------------------------------------
+"--- Mova para o buffer anterior com <líder> + j ---
+"---------------------------------------------------
 nmap <leader>j :bprevious<cr>
 vmap <leader>j <c-c>:bprevious<cr>
-"---------------------------------------
-" Fechar o buffer atual com <líder> + q
-"---------------------------------------
+"---------------------------------------------
+"--- Fechar o buffer atual com <líder> + q ---
+"---------------------------------------------
 nmap <leader>q :bdelete<cr>
 vmap <leader>q <c-c>:bdelete<cr>
-"---------------------------------------
-" Alinhamento de texto
-"---------------------------------------
+"----------------------------
+"--- Alinhamento de texto ---
+"----------------------------
 nmap <leader>, :left<cr>
 nmap <leader>. :right<cr>
 nmap <leader>; :center<cr>
-"---------------------------------------
-" Emmet
-"---------------------------------------
+"-------------
+"--- Emmet ---
+"-------------
 nmap <leader>e <c-y>,
-"---------------------------------------
-" Retira os ^M que ficam no final de arquivos salvos pelo windows.
-"---------------------------------------
+"-----------------------------------------------------------------------
+"--- Retira os ^M que ficam no final de arquivos salvos pelo windows ---
+"-----------------------------------------------------------------------
 nmap <leader>m :%s/\r//g<cr>
-"---------------------------------------
-" Remove espaços redundantes no fim das linhas com \s
-"---------------------------------------
+"-----------------------------------------------------------
+"--- Remove espaços redundantes no fim das linhas com \s ---
+"-----------------------------------------------------------
 nmap <leader>s mz:%s/\s\+$//g<cr>`z
-"---------------------------------------
-" Limpa o buffer de buscas
-"---------------------------------------
+"--------------------------------
+"--- Limpa o buffer de buscas ---
+"--------------------------------
 nmap <leader>b :let @/=""<cr>
-"---------------------------------------
-" Recarrega o arquivo de configuração
-"---------------------------------------
+"-------------------------------------------
+"--- Recarrega o arquivo de configuração ---
+"-------------------------------------------
 nmap <leader>v :source $MYVIMRC<cr>
-"---------------------------------------
-" Convert <tab> em <spaces> e vice-versa
-"---------------------------------------
+"----------------------------------------------
+"--- Convert <tab> em <spaces> e vice-versa ---
+"----------------------------------------------
 nmap <leader>[ :set expandtab<cr> :retab<cr>
 nmap <leader>] :%s/\s\{2,}/\t/g<cr>
-"---------------------------------------
-" Mapeia a tecla \c para compilar o programa em C
-"---------------------------------------
+"-------------------------------------------------------
+"--- Mapeia a tecla \c para compilar o programa em C ---
+"-------------------------------------------------------
 "au BufNewFile,BufRead *.c nmap \c :!gcc "%" -Wall -o "%<"<cr>
 "au BufNewFile,BufRead *.c nmap \c :!gcc -Wall "%"<cr>
-"---------------------------------------
-" Mapeia a tecla \x para executar o programa
-"---------------------------------------
+"--------------------------------------------------
+"--- Mapeia a tecla \x para executar o programa ---
+"--------------------------------------------------
 "nmap \x :!./"%<"<cr>
 "nmap \x :!./a.out<cr>
-"---------------------------------------
-" mostra o inicio de um bloco recem fechado {}, [], ()
-"---------------------------------------
+"------------------------------------------------------------
+"--- mostra o inicio de um bloco recem fechado {}, [], () ---
+"------------------------------------------------------------
 " set sn
-"---------------------------------------
-" Movimentando o cursor
-"---------------------------------------
+"-----------------------------
+"--- Movimentando o cursor ---
+"-----------------------------
 imap <M-h> <left>
 imap <M-j> <down>
 imap <M-k> <up>
 imap <M-l> <right>
-"---------------------------------------
-" Habilita auto-indentação
-"---------------------------------------
+"--------------------------------
+"--- Habilita auto-indentação ---
+"--------------------------------
 if has("autocmd")
   filetype plugin indent on
 endif
-"---------------------------------------
-" Movimentação de bloco de texto selecionado
-"---------------------------------------
+"--------------------------------------------------
+"--- Movimentação de bloco de texto selecionado ---
+"--------------------------------------------------
 " Move bloco de texto selecionado pra cima
 function! MoveUp()
   let end=line("'>")
@@ -443,7 +439,9 @@ function! MoveUp()
     exec "normal " . (start) . "GV" . (end) . "G"
   endif
 endfunction
-" Move bloco de texto selecionado para baixo
+"--------------------------------------------------
+"--- Move bloco de texto selecionado para baixo ---
+"--------------------------------------------------
 function! MoveDown()
   let end=line("'>")
   let start=line("'<")
@@ -455,7 +453,9 @@ function! MoveDown()
     exec "normal " . (start) . "GV" . (end) . "G"
   endif
 endfunction
-" Duplica um bloco de texto
+"---------------------------------
+"--- Duplica um bloco de texto ---
+"---------------------------------
 function! Duplicate()
   let end=line("'>")
   let start=line("'<")
@@ -465,23 +465,29 @@ function! Duplicate()
   exec "normal p"
   exec "normal " . (start+dif+1) . "GV" . (end+dif+1) . "G"
 endfunction
-" Move bloco de texto selecionado pra cima
+"------------------------------------------------
+"--- Move bloco de texto selecionado pra cima ---
+"------------------------------------------------
 vmap <c-s-up> :<c-u> call MoveUp()<cr>
-" Move bloco de texto selecionado pra baixo
+"-------------------------------------------------
+"--- Move bloco de texto selecionado pra baixo ---
+"-------------------------------------------------
 vmap <c-s-down> :<c-u>call MoveDown()<cr>
-" Duplica o bloco de texto selecionado
+"--------------------------------------------
+"--- Duplica o bloco de texto selecionado ---
+"--------------------------------------------
 vmap <c-d> :<c-u>call Duplicate()<cr>
-"---------------------------------------
-" Fechamento automático de tags HTML
-"---------------------------------------
+"------------------------------------------
+"--- Fechamento automático de tags HTML ---
+"------------------------------------------
 imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
-"---------------------------------------
-" Entra no modo visual para tabular bloco
-"---------------------------------------
+"-----------------------------------------------
+"--- Entra no modo visual para tabular bloco ---
+"-----------------------------------------------
 "imap <f11> <esc><s-v>
-"---------------------------------------
-" Abreviações
-"---------------------------------------
+"-------------------
+"--- Abreviações ---
+"-------------------
 "iab http http://
 "iab https https://
 iab ´a á
@@ -513,78 +519,78 @@ iab 12a. 12ª
 iab 13a. 13ª
 iab 14a. 14ª
 iab 15a. 15ª
-"---------------------------------------
-" Habilitar área de transferência do sistema
-"---------------------------------------
+"--------------------------------------------------
+"--- Habilitar área de transferência do sistema ---
+"--------------------------------------------------
 "set clipboard=unnamed " No Windows
 set clipboard=unnamedplus " No Linux
-"---------------------------------------
-"Copy/Paste/Cut
-"---------------------------------------
+"----------------------
+"--- Copy/Paste/Cut ---
+"----------------------
 "if has('unnamedplus')
 "  set clipboard=unnamed,unnamedplus
 "endif
-"---------------------------------------
-" Modifica o comportamento do menu de
-" auto-completar para se comportar mais como
-" uma IDE.
-"---------------------------------------
+"-------------------------------------------
+"--- Modifica o comportamento do menu de ---
+"--- auto-completar para se comportar    ---
+"--- mais como uma IDE.                  ---
+"-------------------------------------------
 set completeopt=noinsert,menuone,noselect
 "---------------------------------------
-" Destaca a linha atual no editor.
+"--- Destaca a linha atual no editor ---
 "---------------------------------------
 set cursorline
-"---------------------------------------
-" Esconde buffers1 não usados.
-"---------------------------------------
+"-----------------------------------
+"--- Esconde buffers1 não usados ---
+"-----------------------------------
 set hidden
-"---------------------------------------
-" Mostra as linhas a partir da atual. Útil
-" para auxiliar em comandos que usam mais
-" linhas.
-"---------------------------------------
+"-------------------------------------------
+"--- Mostra as linhas a partir da atual. ---
+"--- Útil para auxiliar em comandos que  ---
+"--- usam mais linhas.                   ---
+"-------------------------------------------
 "set relativenumber
-"---------------------------------------
-" configura o comportamento da divisão da
-" tela com o comando :split (dividir a tela
-" horizontalmente) e :vsplit (verticalmente).
-" Neste caso, as telas sempre se dividirão
-" abaixo da tela atual e à direita.
-"---------------------------------------
+"---------------------------------------------------
+"--- configura o comportamento da divisão da     ---
+"--- tela com o comando :split (dividir a tela   ---
+"--- horizontalmente) e :vsplit (verticalmente). ---
+"--- Neste caso, as telas sempre se dividirão    ---
+"--- abaixo da tela atual e à direita.           ---
+"---------------------------------------------------
 set splitbelow splitright
-"---------------------------------------
-" Mostra o título do arquivo
-"---------------------------------------
+"----------------------------------
+"--- Mostra o título do arquivo ---
+"----------------------------------
 set title
-"---------------------------------------
-" Tempo e milissegundos para aceitar comandos.
-"---------------------------------------
+"----------------------------------------------------
+"--- Tempo e milissegundos para aceitar comandos. ---
+"----------------------------------------------------
 set ttimeoutlen=0
-"---------------------------------------
-"<Ctrl-X> -- cut (goto visual mode and cut)
-"---------------------------------------
+"-------------------------------------------------
+"--- <Ctrl-X> - cut (goto visual mode and cut) ---
+"-------------------------------------------------
 imap <C-X> <C-O>vgG
 vmap <C-X> "*x<Esc>i
 nmap <C-X> <c-x> <c-o>
-"---------------------------------------
-"<Ctrl-C> -- copy (goto visual mode and copy)
-"---------------------------------------
+"---------------------------------------------------
+"--- <Ctrl-C> - copy (goto visual mode and copy) ---
+"---------------------------------------------------
 imap <C-C> <C-O>vgG
 vmap <C-C> "*y<Esc>i
-"---------------------------------------
-"<Ctrl-A> -- copy all
-"---------------------------------------
+"---------------------------
+"--- <Ctrl-A> - copy all ---
+"---------------------------
 "imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
 vmap <C-A> <Esc>gggH<C-O>G<Esc>i
-"---------------------------------------
-"<Ctrl-V> -- paste
-"---------------------------------------
+"------------------------
+"--- <Ctrl-V> - paste ---
+"------------------------
 nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
 imap <C-V> x<Esc>\\paste\\"_s
 vmap <C-V> "-cx<Esc>\\paste\\"_x
-"---------------------------------------
-"<Ctrl-A> -- copy all
-"---------------------------------------
+"---------------------------
+"--- <Ctrl-A> - copy all ---
+"---------------------------
 nmap <c-a> gggH<c-o>G
 imap <c-a> <c-o>gg<c-o>gH<c-o>G
 cmap <c-a> <c-c>gggH<c-o>G
@@ -592,19 +598,19 @@ omap <c-a> <c-c>gggH<c-o>G
 smap <c-a> <c-c>gggH<c-o>G
 xmap <c-a> <c-c>ggVG
 map <c-a> <esc>ggvG
-"---------------------------------------
-" VIM-PLUG (https://github.com/junegunn/vim-plug)
-"---------------------------------------
+"-------------------------------------------------------
+"--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
+"-------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
-	"---------------------------------------
-	" Appearance
-	"---------------------------------------
+	"-------------------
+	"--- Appearance ---
+	"------------------
 	Plug 'vim-airline/vim-airline'
 	Plug 'gko/vim-coloresque'
 	Plug 'ryanoasis/vim-devicons'
-	"---------------------------------------
-	" Utilities
-	"---------------------------------------
+	"-----------------
+	"--- Utilities ---
+	"-----------------
 	Plug 'mattn/emmet-vim'
 	Plug 'jiangmiao/auto-pairs'
 	"Plug 'ervandew/supertab'
@@ -617,16 +623,23 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'ap/vim-css-color'
 	Plug 'thaerkh/vim-indentguides'
 	Plug 'vim-scripts/DrawIt'
-	"---------------------------------------
-	" Completion / linters / formatters
-	"---------------------------------------
+	Plug 'matze/vim-move'
+	"-----------------------------------------
+	"--- Completion / linters / formatters ---
+	"-----------------------------------------
 	Plug 'dense-analysis/ale'
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'alaviss/nim.nvim'
 call plug#end()
-"---------------------------------------
-" DrawIt {{{
-"---------------------------------------
+"--------------------
+"--- vim-move {{{ ---
+"--------------------
+"let g:move_key_modifier = 'C'
+"let g:move_key_modifier_visualmode = 'S'
+" }}}
+"------------------
+"--- DrawIt {{{ ---
+"------------------
 " Flag
 let g:di = 'stop'
 function! ToggleDrawIt()
@@ -640,9 +653,9 @@ function! ToggleDrawIt()
 endfunction
 nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 " }}}
-"---------------------------------------
-"NERDTree {{{
-"---------------------------------------
+"--------------------
+"--- NERDTree {{{ ---
+"--------------------
 nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
@@ -662,9 +675,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 \ "Unknown"   : "?"
 \ }
 " }}}
-"---------------------------------------
-" ALE {{{
-"---------------------------------------
+"---------------
+"--- ALE {{{ ---
+"---------------
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
@@ -678,19 +691,18 @@ let g:ale_sign_warning = '⚠️'
 "
 "let g:ale_fix_on_save = 1
 " }}}
-"---------------------------------------
-" SnipMate {{{
-"---------------------------------------
+"--------------------
+"--- SnipMate {{{ ---
+"--------------------
 " Para usar a versão mais atual do analisador
 let g:snipMate = { 'snippet_version': 1 }
 "imap <c-j> <Plug>snipMateNextOrTrigger
-"---------------------------------------
 " }}}
 filetype indent off
 filetype plugin off
-"---------------------------------------
-" Folding / Unfolding {{{
-"---------------------------------------
+"-------------------------------
+"--- Folding / Unfolding {{{ ---
+"-------------------------------
 setlocal foldmethod=indent
 set nofoldenable
 set foldlevel=99
@@ -705,9 +717,9 @@ function! CustomFoldText()
 	return expansionString . foldLevelStr . foldSizeStr
 endfunction
 " }}}
-"---------------------------------------
-" Cor da numeração lateral {{{
-"---------------------------------------
+"------------------------------------
+"--- Cor da numeração lateral {{{ ---
+"------------------------------------
 "hi LineNr guifg=blue ctermfg=lightBlue
 "hi LineNr guifg=green ctermfg=lightGreen
 "hi LineNr guifg=yellow ctermfg=lightYellow
