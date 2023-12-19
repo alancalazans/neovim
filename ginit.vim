@@ -14,7 +14,7 @@
 " File: init.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Sex 15 Nov 2023
+" Updated: Sex 19 Dez 2023
 " Installation: As dotfile drop the file into your $HOME/.config/nvim/ folder
 " License: GNU General Public License v3
 " <http://www.gnu.org/licenses/gpl.html>
@@ -340,7 +340,7 @@ imap <c-y> <c-o><c-r>
 "---------------------
 "--- Fechar Editor ---
 "---------------------
-nmap <c-q> :q<cr>
+nmap <c-q> :qall<cr>
 vmap <c-q> <c-c>:q<cr>
 imap <c-q> <c-o>:q<cr>
 "------------------------------
@@ -413,10 +413,10 @@ nmap <leader>] :%s/\s\{2,}/\t/g<cr>
 "-----------------------------
 "--- Movimentando o cursor ---
 "-----------------------------
-imap <M-h> <left>
-imap <M-j> <down>
-imap <M-k> <up>
-imap <M-l> <right>
+imap <m-h> <left>
+imap <m-j> <down>
+imap <m-k> <up>
+imap <m-l> <right>
 "--------------------------------
 "--- Habilita auto-indentação ---
 "--------------------------------
@@ -488,37 +488,10 @@ imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
 "-------------------
 "--- Abreviações ---
 "-------------------
-"iab http http://
-"iab https https://
-iab ´a á
-iab ´A Á
-iab ´e é
-iab ´E É
-iab ´i í
-iab ´I Í
-iab ´o ó
-iab ´O Ó
-iab ´u ú
-iab ´U Ú
 iab a. ª
 iab o. º
 iab no. nº
 iab No. Nº
-iab 1a. 1ª
-iab 2a. 2ª
-iab 3a. 3ª
-iab 4a. 4ª
-iab 5a. 5ª
-iab 6a. 6ª
-iab 7a. 7ª
-iab 8a. 8ª
-iab 9a. 9ª
-iab 10a. 10ª
-iab 11a. 11ª
-iab 12a. 12ª
-iab 13a. 13ª
-iab 14a. 14ª
-iab 15a. 15ª
 "--------------------------------------------------
 "--- Habilitar área de transferência do sistema ---
 "--------------------------------------------------
