@@ -1,51 +1,12 @@
+#------------------
+#--- Instruções ---
+#------------------
+#---> __magic__ <---
+snippet __
+	__${1:init}__$0
 snippet #!
-	#!/usr/bin/env python
-snippet cmts
-	"""
-	${1:coment}
-	"""
-# ---------------------------------------
-# Gatilhos para Flask
-snippet flaskapp
-	from flask import Flask
-
-	app = Flask(__name__)
-
-	@app.route('/')
-	def index():
-	    $0
-	
-	if __name__ == '__main__':
-	    app.run(debug=True)
-snippet @app
-	@app.route('/$1')
-	def $2():
-	    $0
-# ---------------------------------------
-# Gatilhos para Flet
-snippet fletapp
-	import flet as ft
-
-	def main(page: ft.Page):
-	    $0
-
-	ft.app(target=main)
-snippet imp
-	import ${1:module}
-# Module Docstring
-snippet docs
-	'''
-	File: ${1:`Filename('$1.py', 'foo.py')`}
-	Author: ${2:`g:snips_author`}
-	Description: $0
-	'''
-snippet wh
-	while ${1:condition}:
-		${2:# code...}
-snippet for
-	for ${1:needle} in ${2:haystack}:
-		${3:# code...}
-# New Class
+	#!/usr/bin/python3
+#---> Class <---
 snippet cl
 	class ${1:ClassName}(${2:object}):
 		"""${3:docstring for $1}"""
@@ -53,7 +14,23 @@ snippet cl
 			${5:super($1, self).__init__()}
 			self.$4 = $4
 			$0
-# New Function
+#---> Comentários <---
+snippet cmts
+	"""
+	${1:coment}
+	"""
+#---> Docstring <---
+snippet docs
+	'''
+	File: ${1:`Filename('$1.py', 'foo.py')`}
+	Author: ${2:`g:snips_author`}
+	Description: $0
+	'''
+#---> For <---
+snippet for
+	for ${1:needle} in ${2:haystack}:
+		${3:# code...}
+#---> Function <---
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 		"""${3:docstring for $1}"""
@@ -61,11 +38,21 @@ snippet def
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 		$0
-# New Method
-snippet defs
+#---> if __name__ == '__main__': <---
+snippet ifmain
+	if __name__ == '__main__':
+		${0:main()}
+#---> Import <---
+snippet imp
+	import ${1:module}
+#---> Lambda <---
+snippet lambda
+	${1:var} = lambda ${2:vars} : ${0:action}
+#---> Method <---
+snippet method
 	def ${1:mname}(self, ${2:arg}):
 		${0:pass}
-# New Property
+#---> Property <---
 snippet property
 	def ${1:foo}():
 		doc = "${2:The $1 property.}"
@@ -73,11 +60,7 @@ snippet property
 			${3:return self._$1}
 		def fset(self, value):
 			${0:self._$1 = value}
-# Lambda
-snippet lambda
-	${1:var} = lambda ${2:vars} : ${0:action}
-snippet .
-	self.
+#---> Try <---
 snippet try Try/Except
 	try:
 		${1:pass}
@@ -106,16 +89,49 @@ snippet try Try/Except/Else/Finally
 		${5:pass}
 	finally:
 		${0:pass}
-# if __name__ == '__main__':
-snippet ifmain
+#---> While <---
+snippet wh
+	while ${1:condition}:
+		${2:# code...}
+#---------------------------
+#--- Gatilhos para Flask ---
+#---------------------------
+#---> @app <---
+snippet @app
+	@app.route('/$1')
+	def $2():
+	    $0
+#---> flaskapp <---
+snippet flaskapp
+	from flask import Flask
+
+	app = Flask(__name__)
+
+	@app.route('/')
+	def index():
+	    $0
+	
 	if __name__ == '__main__':
-		${0:main()}
-# __magic__
-snippet _
-	__${1:init}__$0
-#--------------------------------------
-# PySimpleGUI
-#--------------------------------------
+	    app.run(debug=True)
+#---> embended <---
+snippet embended
+	{% $1 %}$0
+#---> interpolation <---
+snippet inter
+	{{ $1 }}$0
+#--------------------------
+#--- Gatilhos para Flet ---
+#--------------------------
+snippet fletapp
+	import flet as ft
+
+	def main(page: ft.Page):
+	    $0
+
+	ft.app(target=main)
+#-------------------
+#--- PySimpleGUI ---
+#-------------------
 snippet sg
 	import PySimpleGUI as sg
 snippet layout
