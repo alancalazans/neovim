@@ -1,8 +1,8 @@
 snippet favicon
 	<link rel="shortcut icon" href="favicon.png">
-#=======================================
-# html
-#=======================================
+#------------
+#--- html ---
+#------------
 snippet documentation
 	<!--
 	=======================================
@@ -216,9 +216,9 @@ snippet input
 	<input type="text" id="$1" name="$2" value="$3" placeholder="$0" required>
 snippet ins
 	<ins>$0</ins>
-#=======================================
-# JavaScript / JQuery
-#=======================================
+#---------------------------
+#--- JavaScript / JQuery ---
+#---------------------------
 snippet createElement
 	const createElement = (elementName, attributes) => {
 		let element = document.createElement(elementName)
@@ -389,16 +389,16 @@ snippet cmtscss
 	**===*/
 snippet hide
 	text-indent: 9999em; line-height: 9999em; overflow: hidden;
-#=======================================
-# window.onload
-#=======================================
+#---------------------
+#--- window.onload ---
+#---------------------
 snippet onload
 	window.onload = () => {
 		$0
 	}
-#------------------------------------------------
-# RequireJS
-#------------------------------------------------
+#-----------------
+#--- RequireJS ---
+#-----------------
 snippet boot
 	requirejs.config({
 		baseUrl: 'assets/js',
@@ -410,12 +410,12 @@ snippet requirejs
 	requirejs(['${0:deps}'], () => {
 
 	});
-#------------------------------------------------
-# Flask
-#------------------------------------------------
+#-------------
+#--- Flask ---
+#-------------
 snippet coment
-	{# $0 #}
-snippet interpolate-var
-	{{ $0 }}
-snippet code-embed
-	{% $0 %}
+	{# $1 #}$0
+snippet interpolate
+	{{ $1 }}$0
+snippet embed
+	{% $1 %}$0
