@@ -8,6 +8,9 @@ if ! [ -d "$HOME/.local/share/fonts" ]; then
 	mkdir -p "$HOME/.local/share/fonts"
 	cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
 	unzip NeoVim_fonts/FuraMono_Linux.zip -d "$HOME/.local/share/fonts/"
+else
+	cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
+	unzip NeoVim_fonts/FuraMono_Linux.zip -d "$HOME/.local/share/fonts/"
 fi
 #sudo mkdir -p /opt/omnisharp
 #sudo tar -zxf Omnisharp-Roslyn-Server/omnisharp-linux-x64-net6.0.tar.gz -C /opt/omnisharp/
