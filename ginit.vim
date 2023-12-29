@@ -148,10 +148,10 @@ function! ToggleTab()
   endif
 endfunction
 nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
-"-----------------------------------------------------------------
-"---                   Multiple Cursors                        ---
-" https://github.com/terryma/vim-multiple-cursors#installation ---
-"-----------------------------------------------------------------
+"--------------------------------------------------------------------
+"---                      Multiple Cursors                        ---
+"--- https://github.com/terryma/vim-multiple-cursors#installation ---
+"--------------------------------------------------------------------
 " As ligações de teclas, desative-as e reatribua-as da maneira que desejar:
 "let g:multi_cursor_use_default_mapping=0
 " Default mapping
