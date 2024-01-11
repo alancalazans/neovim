@@ -175,3 +175,35 @@ snippet sg-base
 			pass
 
 	window.close()
+#---------------------
+#--- CustomTkinter ---
+#---------------------
+snippet ctk
+	import customtkinter as ctk
+
+	win = ctk.CTk()
+	win._set_appearance_mode('${1:system, dark or light}')
+	win.title('$2')
+	win.geometry('${3:width}x${4:height}')
+	$0
+	win.mainloop()
+snippet maxsize
+	win.maxsize(width=$1, height=$2)$0
+snippet minsize
+	win.minsize(width=$1, height=$2)$0
+snippet resizable
+	win.resizable(width=${1:True}, height=${2:True})$0
+snippet button
+	btn${1:Button} = ctk.CTkButton(win, text='$2', command=$3)$0
+snippet button.grid
+	button.grid(row=${1:0}, column=${2:0}, padx=$3, pady=$4)$0
+snippet frame
+	frm${1:Name} = ctk.CTkFrame(master = win,
+		width=${2:500},
+		height=${3:250},
+		fg_color='${4:teal}',
+		bg_color='${5:red}',
+		border_color='${6:pink}',
+		border_width=${7:10},
+		corner_radius=${8:30}
+	).place(x=$9, y=$10)$0
