@@ -90,11 +90,11 @@ set fileencoding=utf-8
 "-----------------------------
 "--- Configuração de fonte ---
 "-----------------------------
-"set guifont=Monospace\ 12
+"set guifont=Consolas:h12
 if has('gui_running') && !has('gui_win32')
   set guifont=FuraMono\ Nerd\ Font\ 12
 else
-  set guifont=DroidSansMono\ Nerd\ Font:h11
+  set guifont=Consolas:h12
 endif
 "---------------------------------
 "--- Configura linhas, colunas ---
