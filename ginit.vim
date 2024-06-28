@@ -259,7 +259,7 @@ set ci "recuo
 set tabstop=2 " tab = 2 brancos
 set shiftwidth=2 " Quando o autoindent faz um tab, ele é do tamanho de 2
 set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identação
-set noexpandtab " set expandtab "cria espaços no lugar de tabulação
+set noexpandtab " set noexpandtab "cria espaços no lugar de tabulação
 let g:status_tab = 'tab'
 function! ToggleStatusTab()
   if g:status_tab=='tab'
