@@ -618,7 +618,7 @@ function! ToggleDrawIt()
   endif
 endfunction
 nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
-" }}}
+"--- }}}
 "--------------------
 "--- NERDTree {{{ ---
 "--------------------
@@ -640,7 +640,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 \ 'Ignored'   : '☒',
 \ "Unknown"   : "?"
 \ }
-" }}}
+"--- }}}
 "---------------
 "--- ALE {{{ ---
 "---------------
@@ -656,14 +656,14 @@ let g:ale_sign_warning = '⚠️'
 "\}
 "
 "let g:ale_fix_on_save = 1
-" }}}
+"--- }}}
 "--------------------
 "--- SnipMate {{{ ---
 "--------------------
 " Para usar a versão mais atual do analisador
 let g:snipMate = { 'snippet_version': 1 }
 "imap <c-j> <Plug>snipMateNextOrTrigger
-" }}}
+"--- }}}
 filetype indent off
 filetype plugin off
 "-------------------------------
@@ -682,7 +682,7 @@ function! CustomFoldText()
 	let expansionString = repeat(" ", indentation)
 	return expansionString . foldLevelStr . foldSizeStr
 endfunction
-" }}}
+"--- }}}
 "------------------------------------
 "--- Cor da numeração lateral {{{ ---
 "------------------------------------
@@ -692,4 +692,4 @@ endfunction
 "hi LineNr guifg=pink ctermfg=lightPink
 "hi LineNr guifg=magenta ctermfg=lightPink
 hi LineNr guifg=#ffffff ctermfg=lightCyan
-" }}}
+"--- }}}
