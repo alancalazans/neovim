@@ -1,0 +1,104 @@
+#---
+# array
+#---
+snippet array
+	array[${1:length}, ${2:type}]$0
+#---
+# block
+#---
+snippet block
+	block ${1:name}:
+	  $0
+#---
+# case
+#---
+snippet case
+	case ${1:value}
+	  $0
+#---
+# for
+#---
+snippet for
+	for ${1:index} in ${2:sequence}:
+	  $0
+#---
+# func
+#---
+snippet func
+	func ${1:name}(${2:arguments}): ${3:return type} =
+	  $0
+#---
+# if
+#---
+snippet if
+	if ${1:expression}:
+	  $0
+#---
+# import
+#---
+snippet import
+	import ${1:module}
+#---
+# from
+#---
+snippet from
+	from ${1:module} import ${2:field}
+#---
+# iterator
+#---
+snippet iterator
+	iterator ${1:name}(${2:arguments}): ${3:return type}$0
+#---
+# macro
+#---
+snippet macro
+	macro ${1:name}(${2:arguments}): ${3:return type} =
+	  $0
+#---
+# method
+#---
+snippet method
+	method ${1:name}(${2:arguments}): ${3:return type} =
+	  $0
+#---
+# of
+#---
+snippet of
+	of ${1:value}:
+	  $0
+#---
+# pr
+#---
+snippet pr
+	{.${1:name}.}
+#---
+# proc
+#---
+snippet proc
+	proc ${1:name}(${2:arguments}): ${3:return type} =
+	  $0
+#---
+# seq
+#---
+snippet seq
+	seq[${1:type}]$0
+#---
+# template
+#---
+snippet template
+	template ${1:name}(${2:arguments}): ${3:return type} =
+	  $0-
+#---
+# try
+#---
+snippet try
+	try:
+	  $1
+	except ${2:exception}:
+	  $0
+#---
+# while
+#---
+snippet while
+	while ${1:expression}:
+	  $0
