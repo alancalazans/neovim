@@ -92,9 +92,9 @@ set fileencoding=utf-8
 "-----------------------------
 "set guifont=Consolas:h12
 if has('gui_running') && !has('gui_win32')
-  set guifont=FuraMono\ Nerd\ Font\ 12
+  set guifont=Fira\ Code:h12
 else
-  set guifont=Consolas:h12
+  set guifont=Fira\ Code:h12
 endif
 "---------------------------------
 "--- Configura linhas, colunas ---
