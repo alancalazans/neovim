@@ -91,10 +91,14 @@ set fileencoding=utf-8
 "--- Configuração de fonte ---
 "-----------------------------
 "set guifont=Consolas:h12
-if has('gui_running') && !has('gui_win32')
-  set guifont=Fira\ Code:h12
+if has('gui_running')
+  if has('win32')  " Verifica se está rodando no Windows
+    set guifont=Consolas:h12
+  else
+    set guifont=FuraMono\ Nerd\ Font\ Mono:h12
+  endif
 else
-  set guifont=Fira\ Code:h12
+  set guifont=FuraMono\ Nerd\ Font\ Mono:h12
 endif
 "---------------------------------
 "--- Configura linhas, colunas ---

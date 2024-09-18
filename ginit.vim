@@ -90,11 +90,15 @@ set fileencoding=utf-8
 "-----------------------------
 "--- Configuração de fonte ---
 "-----------------------------
-"set guifont=Consolas:h12
-if has('gui_running') && !has('gui_win32')
-  set guifont=Fira\ Code:h12
+"set guifont=Monospace:h11
+if has('gui_running')
+  if has('win32')  " Verifica se está rodando no Windows
+    set guifont=Consolas:h12
+  else
+    set guifont=FuraMono\ Nerd\ Font\ Mono:h12
+  endif
 else
-  set guifont=Fira\ Code:h12
+  set guifont=FuraMono\ Nerd\ Font\ Mono:h12
 endif
 "---------------------------------
 "--- Configura linhas, colunas ---
@@ -661,7 +665,7 @@ let g:ale_sign_warning = '⚠️'
 "--- SnipMate {{{ ---
 "--------------------
 " Para usar a versão mais atual do analisador
-let g:snipMate = { 'snippet_version': 1 }
+"let g:snipMate = { 'snippet_version': 1 }
 "imap <c-j> <Plug>snipMateNextOrTrigger
 "--- }}}
 filetype indent off
