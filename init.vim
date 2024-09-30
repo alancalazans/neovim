@@ -606,7 +606,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'dense-analysis/ale'
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'alaviss/nim.nvim'
-	Plug 'neovim/nvim-lspconfig'
+"	Plug 'neovim/nvim-lspconfig'
 call plug#end()
 "------------------
 "--- DrawIt {{{ ---
@@ -672,25 +672,25 @@ let g:ale_sign_warning = '⚠️'
 "---------------------
 "--- Lspconfig {{{ ---
 "---------------------
-lua <<EOF
-require'lspconfig'.nim_langserver.setup{
-  settings = {
-    nim = {
-      nimsuggestPath = "~/.nimble/bin"
-    }
-  }
-}
-require'lspconfig'.nimls.setup{
-  cmd = { "nimlangserver" },
-  filetypes = { "nim" },
-  root_dir = require'lspconfig'.util.root_pattern(".git", "nim.cfg", "config.nims"),
-  settings = {
-    nimls = {
-      suggest = { useNimsuggest = true }
-    }
-  }
-}
-EOF
+"lua <<EOF
+"require'lspconfig'.nim_langserver.setup{
+"  settings = {
+"    nim = {
+"      nimsuggestPath = "~/.nimble/bin"
+"    }
+"  }
+"}
+"require'lspconfig'.nimls.setup{
+"  cmd = { "nimlangserver" },
+"  filetypes = { "nim" },
+"  root_dir = require'lspconfig'.util.root_pattern(".git", "nim.cfg", "config.nims"),
+"  settings = {
+"    nimls = {
+"      suggest = { useNimsuggest = true }
+"    }
+"  }
+"}
+"EOF
 "--- }}}
 filetype indent off
 filetype plugin off
