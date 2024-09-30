@@ -11,10 +11,10 @@
 "▐░▌      ▐░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░▌       ▐░▌
 " ▀        ▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀
 "----------------------------------------------------------
-" File: init.vim
+" File: ginit.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: Sex 30 Abr 2021
-" Updated: Sex 19 Dez 2023
+" Updated: Seg 30 Set 2024
 " Installation: As dotfile drop the file into your $HOME/.config/nvim/ folder
 " License: GNU General Public License v3
 " <http://www.gnu.org/licenses/gpl.html>
@@ -606,6 +606,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'dense-analysis/ale'
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'alaviss/nim.nvim'
+	Plug 'neovim/nvim-lspconfig'
 call plug#end()
 "------------------
 "--- DrawIt {{{ ---
@@ -667,6 +668,29 @@ let g:ale_sign_warning = '⚠️'
 " Para usar a versão mais atual do analisador
 "let g:snipMate = { 'snippet_version': 1 }
 "imap <c-j> <Plug>snipMateNextOrTrigger
+"--- }}}
+"---------------------
+"--- Lspconfig {{{ ---
+"---------------------
+lua <<EOF
+require'lspconfig'.nim_langserver.setup{
+  settings = {
+    nim = {
+      nimsuggestPath = "~/.nimble/bin"
+    }
+  }
+}
+require'lspconfig'.nimls.setup{
+  cmd = { "nimlangserver" },
+  filetypes = { "nim" },
+  root_dir = require'lspconfig'.util.root_pattern(".git", "nim.cfg", "config.nims"),
+  settings = {
+    nimls = {
+      suggest = { useNimsuggest = true }
+    }
+  }
+}
+EOF
 "--- }}}
 filetype indent off
 filetype plugin off
