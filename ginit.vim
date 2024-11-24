@@ -605,9 +605,22 @@ call plug#begin('~/.config/nvim/plugged')
 	"-----------------------------------------
 	Plug 'dense-analysis/ale'
 	Plug 'prabirshrestha/vim-lsp'
-	Plug 'alaviss/nim.nvim'
+"	Plug 'alaviss/nim.nvim'
 "	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
+"---------------------------
+"--- Nvim-Treesitter {{{ ---
+"---------------------------
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "nim" },
+    highlight = {
+        enable = true,
+    },
+}
+EOF
+"--- }}}
 "------------------
 "--- DrawIt {{{ ---
 "------------------
