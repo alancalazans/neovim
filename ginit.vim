@@ -27,8 +27,8 @@
 "-----------------------
 "--- Suporte a cores ---
 "-----------------------
-if $TERM !=? 'xterm-256color'
-	set termguicolors
+if has("termguicolors")
+  set termguicolors
 endif
 "-------------------------------------
 "--- Suporte ao itálico verdadeiro ---
@@ -191,10 +191,12 @@ if has('autocmd')
   "           │     │    └──── Enable file type detection
   "           │     └───────── Enable loading of indent file
   "           └─────────────── Enable loading of plugin files
-  autocmd FileType javascript set complete-=k/home/$USER/.vim/doc/js-list.txt complete+=k/home/$USER/.vim/doc/js-list.txt
-  autocmd FileType php set complete-=k/home/$USER/.vim/doc/php-list.txt complete+=k/home/$USER/.vim/doc/php-list.txt
-  autocmd FileType css set complete-=k/home/$USER/.vim/doc/css-list.txt complete+=k/home/$USER/.vim/doc/css-list.txt
+  autocmd FileType javascript set complete-=k~/.vim/doc/js-list.txt complete+=k~/.vim/doc/js-list.txt
+  autocmd FileType php set complete-=k~/.vim/doc/php-list.txt complete+=k~/.vim/doc/php-list.txt
+  autocmd FileType css set complete-=k~/.vim/doc/css-list.txt complete+=k~/.vim/doc/css-list.txt
   autocmd FileType nim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  " Define o comportamento de tabulação para arquivos .adb
+  autocmd FileType ada setlocal tabstop=3 shiftwidth=3 expandtab
 endif
 set omnifunc=syntaxcomplete#Complete
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -206,10 +208,7 @@ au FileType php set omnifunc=phpcomplete#CompletePHP
 au FileType c set omnifunc=ccomplete#Complete
 " adiciona omnifunc para demais formatos
 if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-  \ if &omnifunc == "" |
-  \  setlocal omnifunc=syntaxcomplete#Complete |
-  \ endif
+  autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
 endif
 "nmap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
@@ -579,35 +578,35 @@ map <c-a> <esc>ggvG
 "--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
 "-------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
-	"-------------------
-	"--- Appearance ---
-	"------------------
-	Plug 'vim-airline/vim-airline'
-	Plug 'gko/vim-coloresque'
-	Plug 'ryanoasis/vim-devicons'
-	"-----------------
-	"--- Utilities ---
-	"-----------------
-	Plug 'mattn/emmet-vim'
-	Plug 'jiangmiao/auto-pairs'
-	"Plug 'ervandew/supertab'
-	Plug 'MarcWeber/vim-addon-mw-utils'
-	Plug 'tomtom/tlib_vim'
-	Plug 'garbas/vim-snipmate'
-	Plug 'sheerun/vim-polyglot'
-	Plug 'preservim/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'ap/vim-css-color'
-	Plug 'thaerkh/vim-indentguides'
-	Plug 'vim-scripts/DrawIt'
-	"-----------------------------------------
-	"--- Completion / linters / formatters ---
-	"-----------------------------------------
-	Plug 'dense-analysis/ale'
-	Plug 'prabirshrestha/vim-lsp'
-"	Plug 'alaviss/nim.nvim'
-"	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-treesitter/nvim-treesitter'
+  "-------------------
+  "--- Appearance ---
+  "------------------
+  Plug 'vim-airline/vim-airline'
+  Plug 'gko/vim-coloresque'
+  Plug 'ryanoasis/vim-devicons'
+  "-----------------
+  "--- Utilities ---
+  "-----------------
+  Plug 'mattn/emmet-vim'
+  Plug 'jiangmiao/auto-pairs'
+  "Plug 'ervandew/supertab'
+  Plug 'MarcWeber/vim-addon-mw-utils'
+  Plug 'tomtom/tlib_vim'
+  Plug 'garbas/vim-snipmate'
+  "Plug 'sheerun/vim-polyglot'
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'ap/vim-css-color'
+  Plug 'thaerkh/vim-indentguides'
+  Plug 'vim-scripts/DrawIt'
+  "-----------------------------------------
+  "--- Completion / linters / formatters ---
+  "-----------------------------------------
+  Plug 'dense-analysis/ale'
+  Plug 'prabirshrestha/vim-lsp'
+" Plug 'alaviss/nim.nvim'
+" Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 "---------------------------
 "--- Nvim-Treesitter {{{ ---
@@ -716,12 +715,12 @@ set foldlevel=99
 set fillchars=fold:\ "The backslash escapes a space
 set foldtext=CustomFoldText()
 function! CustomFoldText()
-	let indentation = indent(v:foldstart - 1)
-	let foldSize = 1 + v:foldend - v:foldstart
-	let foldSizeStr = " " . foldSize . " lines "
-	let foldLevelStr = repeat("+--", v:foldlevel)
-	let expansionString = repeat(" ", indentation)
-	return expansionString . foldLevelStr . foldSizeStr
+  let indentation = indent(v:foldstart - 1)
+  let foldSize = 1 + v:foldend - v:foldstart
+  let foldSizeStr = " " . foldSize . " lines "
+  let foldLevelStr = repeat("+--", v:foldlevel)
+  let expansionString = repeat(" ", indentation)
+  return expansionString . foldLevelStr . foldSizeStr
 endfunction
 "--- }}}
 "------------------------------------
