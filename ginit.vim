@@ -593,7 +593,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'MarcWeber/vim-addon-mw-utils'
   Plug 'tomtom/tlib_vim'
   Plug 'garbas/vim-snipmate'
-  "Plug 'sheerun/vim-polyglot'
+  Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ap/vim-css-color'
@@ -604,21 +604,21 @@ call plug#begin('~/.config/nvim/plugged')
   "-----------------------------------------
   Plug 'dense-analysis/ale'
   Plug 'prabirshrestha/vim-lsp'
-" Plug 'alaviss/nim.nvim'
-" Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'alaviss/nim.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  "Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 "---------------------------
 "--- Nvim-Treesitter {{{ ---
 "---------------------------
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "nim" },
-    highlight = {
-        enable = true,
-    },
-}
-EOF
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"    ensure_installed = { "nim" },
+"    highlight = {
+"        enable = true,
+"    },
+"}
+"EOF
 "--- }}}
 "------------------
 "--- DrawIt {{{ ---
