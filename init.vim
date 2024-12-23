@@ -28,7 +28,7 @@
 "--- Suporte a cores ---
 "-----------------------
 if has("termguicolors")
-  set termguicolors
+	set termguicolors
 endif
 "-------------------------------------
 "--- Suporte ao itálico verdadeiro ---
@@ -66,8 +66,8 @@ let g:lightline = {
 " Ao entrar em modo insert ele muda a cor da barra de status
 " altera a cor da linha de status dependendo do modo
 if version >= 700
- au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
- au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+	au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+	au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 endif
 "----------------------------------------------------
 "--- Permite que o mouse seja utilizado na edição ---
@@ -92,13 +92,17 @@ set fileencoding=utf-8
 "-----------------------------
 "set guifont=Consolas:h12
 if has('gui_running')
-  if has('win32')  " Verifica se está rodando no Windows
-    set guifont=Consolas:h12
-  else
-    set guifont=FuraMono\ Nerd\ Font\ Mono:h12
-  endif
+	if has('win32')  " Verifica se está rodando no Windows
+		set guifont=Consolas:h12
+	else
+		set guifont=FuraMono\ Nerd\ Font\ Mono:h12
+	endif
 else
-  set guifont=FuraMono\ Nerd\ Font\ Mono:h12
+	if has('win32')  " Verifica se está rodando no Windows
+		set guifont=Consolas:h12
+	else
+		set guifont=FuraMono\ Nerd\ Font\ Mono:h12
+	endif
 endif
 "---------------------------------
 "--- Configura linhas, colunas ---
@@ -115,16 +119,16 @@ let g:mapleader = ' '
 "----------------------------------------------------
 colorscheme molokai
 function! ToggleColorscheme()
-  if g:colors_name == 'molokai'
-    colorscheme spacecamp
-  elseif g:colors_name == 'spacecamp'
-    colorscheme gruvbox
-  elseif g:colors_name == 'gruvbox'
-    colorscheme gruvbox-material
-  elseif g:colors_name == 'gruvbox-material'
-    colorscheme molokai
-  endif
-  hi LineNr guifg=#ffffff ctermfg=lightCyan
+	if g:colors_name == 'molokai'
+		colorscheme spacecamp
+	elseif g:colors_name == 'spacecamp'
+		colorscheme gruvbox
+	elseif g:colors_name == 'gruvbox'
+		colorscheme gruvbox-material
+	elseif g:colors_name == 'gruvbox-material'
+		colorscheme molokai
+	endif
+	hi LineNr guifg=#ffffff ctermfg=lightCyan
 endfunction
 nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "------------------------------------------
@@ -139,17 +143,17 @@ let g:tab = 'tab2'
 "--- Tab 2<->4 ---
 "-----------------
 function! ToggleTab()
-  if g:tab=='tab2'
-    set tabstop=4
-    set shiftwidth=4
-    set softtabstop=4
-    let g:tab='tab4'
-  else
-    set tabstop=2
-    set shiftwidth=2
-    set softtabstop=2
-    let g:tab='tab2'
-  endif
+	if g:tab=='tab2'
+		set tabstop=4
+		set shiftwidth=4
+		set softtabstop=4
+		let g:tab='tab4'
+	else
+		set tabstop=2
+		set shiftwidth=2
+		set softtabstop=2
+		let g:tab='tab2'
+	endif
 endfunction
 nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
 "--------------------------------------------------------------------
@@ -187,16 +191,17 @@ set statusline+=%-4.(%l-%c%)\ %<%P " Linha-coluna do cursor e percentual do arqu
 "------------------------------------------------
 filetype on
 if has('autocmd')
-  filetype plugin indent on
-  "           │     │    └──── Enable file type detection
-  "           │     └───────── Enable loading of indent file
-  "           └─────────────── Enable loading of plugin files
-  autocmd FileType javascript set complete-=k~/.vim/doc/js-list.txt complete+=k~/.vim/doc/js-list.txt
-  autocmd FileType php set complete-=k~/.vim/doc/php-list.txt complete+=k~/.vim/doc/php-list.txt
-  autocmd FileType css set complete-=k~/.vim/doc/css-list.txt complete+=k~/.vim/doc/css-list.txt
-  autocmd FileType nim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-  " Define o comportamento de tabulação para arquivos .adb
-  autocmd FileType ada setlocal tabstop=3 shiftwidth=3 expandtab
+	filetype plugin indent on
+	"           │     │    └──── Enable file type detection
+	"           │     └───────── Enable loading of indent file
+	"           └─────────────── Enable loading of plugin files
+	autocmd FileType javascript set complete-=k~/.vim/doc/js-list.txt complete+=k~/.vim/doc/js-list.txt
+	autocmd FileType php set complete-=k~/.vim/doc/php-list.txt complete+=k~/.vim/doc/php-list.txt
+	autocmd FileType css set complete-=k~/.vim/doc/css-list.txt complete+=k~/.vim/doc/css-list.txt
+	autocmd FileType nim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+	autocmd FileType zig setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+	" Define o comportamento de tabulação para arquivos .adb
+	autocmd FileType ada setlocal tabstop=3 shiftwidth=3 expandtab
 endif
 set omnifunc=syntaxcomplete#Complete
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -208,7 +213,7 @@ au FileType php set omnifunc=phpcomplete#CompletePHP
 au FileType c set omnifunc=ccomplete#Complete
 " adiciona omnifunc para demais formatos
 if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
+	autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
 endif
 "nmap <leader>a <c-x> <c-o>
 setlocal sm " Destaca Abertura e fechamento {} [] ()
@@ -265,13 +270,13 @@ set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identa�
 set noexpandtab " set noexpandtab "cria espaços no lugar de tabulação
 let g:status_tab = 'tab'
 function! ToggleStatusTab()
-  if g:status_tab=='tab'
-    set expandtab
-    let g:status_tab = 'space'
-  else
-    set noexpandtab
-    let g:status_tab = 'tab'
-  endif
+	if g:status_tab=='tab'
+		set expandtab
+		let g:status_tab = 'space'
+	else
+		set noexpandtab
+		let g:status_tab = 'tab'
+	endif
 endfunction
 nmap <silent><leader>t :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
 "set nowrap  " Sem wrap (quebra de linha)
@@ -424,49 +429,49 @@ imap <m-l> <right>
 "--- Habilita auto-indentação ---
 "--------------------------------
 if has("autocmd")
-  filetype plugin indent on
+	filetype plugin indent on
 endif
 "--------------------------------------------------
 "--- Movimentação de bloco de texto selecionado ---
 "--------------------------------------------------
 " Move bloco de texto selecionado pra cima
 function! MoveUp()
-  let end=line("'>")
-  let start=line("'<")
-  if (start > 1)
-    let dif=end - start
-    exec "'<,'>d"
-    exec "normal kP"
-    exec "normal " . (start-1) . "GV" . (end-1) . "G"
-    else
-    exec "normal " . (start) . "GV" . (end) . "G"
-  endif
+	let end=line("'>")
+	let start=line("'<")
+	if (start > 1)
+		let dif=end - start
+		exec "'<,'>d"
+		exec "normal kP"
+		exec "normal " . (start-1) . "GV" . (end-1) . "G"
+		else
+		exec "normal " . (start) . "GV" . (end) . "G"
+	endif
 endfunction
 "--------------------------------------------------
 "--- Move bloco de texto selecionado para baixo ---
 "--------------------------------------------------
 function! MoveDown()
-  let end=line("'>")
-  let start=line("'<")
-  if (end < line("$")-1)
-    let dif=end - start
-    exec "'<,'>d"
-    exec "normal p" . (start+1) . "GV" . (end+1) . "G"
-  else
-    exec "normal " . (start) . "GV" . (end) . "G"
-  endif
+	let end=line("'>")
+	let start=line("'<")
+	if (end < line("$")-1)
+		let dif=end - start
+		exec "'<,'>d"
+		exec "normal p" . (start+1) . "GV" . (end+1) . "G"
+	else
+		exec "normal " . (start) . "GV" . (end) . "G"
+	endif
 endfunction
 "---------------------------------
 "--- Duplica um bloco de texto ---
 "---------------------------------
 function! Duplicate()
-  let end=line("'>")
-  let start=line("'<")
-  let dif=end - start
-  exec "'<,'>y"
-  exec "normal " . end . "G"
-  exec "normal p"
-  exec "normal " . (start+dif+1) . "GV" . (end+dif+1) . "G"
+	let end=line("'>")
+	let start=line("'<")
+	let dif=end - start
+	exec "'<,'>y"
+	exec "normal " . end . "G"
+	exec "normal p"
+	exec "normal " . (start+dif+1) . "GV" . (end+dif+1) . "G"
 endfunction
 "------------------------------------------------
 "--- Move bloco de texto selecionado pra cima ---
@@ -578,35 +583,35 @@ map <c-a> <esc>ggvG
 "--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
 "-------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
-  "-------------------
-  "--- Appearance ---
-  "------------------
-  Plug 'vim-airline/vim-airline'
-  Plug 'gko/vim-coloresque'
-  Plug 'ryanoasis/vim-devicons'
-  "-----------------
-  "--- Utilities ---
-  "-----------------
-  Plug 'mattn/emmet-vim'
-  Plug 'jiangmiao/auto-pairs'
-  "Plug 'ervandew/supertab'
-  Plug 'MarcWeber/vim-addon-mw-utils'
-  Plug 'tomtom/tlib_vim'
-  Plug 'garbas/vim-snipmate'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'ap/vim-css-color'
-  Plug 'thaerkh/vim-indentguides'
-  Plug 'vim-scripts/DrawIt'
-  "-----------------------------------------
-  "--- Completion / linters / formatters ---
-  "-----------------------------------------
-  Plug 'dense-analysis/ale'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'alaviss/nim.nvim'
-  Plug 'neovim/nvim-lspconfig'
-  "Plug 'nvim-treesitter/nvim-treesitter'
+	"-------------------
+	"--- Appearance ---
+	"------------------
+	Plug 'vim-airline/vim-airline'
+	Plug 'gko/vim-coloresque'
+	Plug 'ryanoasis/vim-devicons'
+	"-----------------
+	"--- Utilities ---
+	"-----------------
+	Plug 'mattn/emmet-vim'
+	Plug 'jiangmiao/auto-pairs'
+	"Plug 'ervandew/supertab'
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'tomtom/tlib_vim'
+	Plug 'garbas/vim-snipmate'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'preservim/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'ap/vim-css-color'
+	Plug 'thaerkh/vim-indentguides'
+	Plug 'vim-scripts/DrawIt'
+	"-----------------------------------------
+	"--- Completion / linters / formatters ---
+	"-----------------------------------------
+	Plug 'dense-analysis/ale'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'alaviss/nim.nvim'
+	Plug 'neovim/nvim-lspconfig'
+	"Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 "---------------------------
 "--- Nvim-Treesitter {{{ ---
@@ -626,13 +631,13 @@ call plug#end()
 " Flag
 let g:di = 'stop'
 function! ToggleDrawIt()
-  if g:di=='stop'
-    :DIstart
-    let g:di='start'
-  else
-    :DIstop
-    let g:di='stop'
-  endif
+	if g:di=='stop'
+		:DIstart
+		let g:di='start'
+	else
+		:DIstop
+		let g:di='stop'
+	endif
 endfunction
 nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 "--- }}}
@@ -715,12 +720,12 @@ set foldlevel=99
 set fillchars=fold:\ "The backslash escapes a space
 set foldtext=CustomFoldText()
 function! CustomFoldText()
-  let indentation = indent(v:foldstart - 1)
-  let foldSize = 1 + v:foldend - v:foldstart
-  let foldSizeStr = " " . foldSize . " lines "
-  let foldLevelStr = repeat("+--", v:foldlevel)
-  let expansionString = repeat(" ", indentation)
-  return expansionString . foldLevelStr . foldSizeStr
+	let indentation = indent(v:foldstart - 1)
+	let foldSize = 1 + v:foldend - v:foldstart
+	let foldSizeStr = " " . foldSize . " lines "
+	let foldLevelStr = repeat("+--", v:foldlevel)
+	let expansionString = repeat(" ", indentation)
+	return expansionString . foldLevelStr . foldSizeStr
 endfunction
 "--- }}}
 "------------------------------------
