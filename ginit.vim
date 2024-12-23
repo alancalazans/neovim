@@ -199,9 +199,9 @@ if has('autocmd')
 	autocmd FileType php set complete-=k~/.vim/doc/php-list.txt complete+=k~/.vim/doc/php-list.txt
 	autocmd FileType css set complete-=k~/.vim/doc/css-list.txt complete+=k~/.vim/doc/css-list.txt
 	autocmd FileType nim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-	autocmd FileType zig setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+	autocmd FileType zig setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	" Define o comportamento de tabulação para arquivos .adb
-	autocmd FileType ada setlocal tabstop=3 shiftwidth=3 expandtab
+	autocmd FileType ada setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
 endif
 set omnifunc=syntaxcomplete#Complete
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -211,6 +211,7 @@ au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au FileType c set omnifunc=ccomplete#Complete
+au FileType zig set omnifunc=zigcomplete#Complete
 " adiciona omnifunc para demais formatos
 if has("autocmd") && exists("+omnifunc")
 	autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
@@ -221,13 +222,14 @@ setlocal sm " Destaca Abertura e fechamento {} [] ()
 "--- Definindo sintaxe para algumas extenções ---
 "------------------------------------------------
 au BufRead,BufNewFile *.phtml set filetype=php
-au BufRead,BufNewFile *.ejs set filetype=html
-au BufRead,BufNewFile *.ep set filetype=html
-au BufRead,BufNewFile *.pl6 set filetype=perl
-au BufRead,BufNewFile *.ts set filetype=javascript
-au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.ejs setf html
+au BufRead,BufNewFile *.ep setf html
+au BufRead,BufNewFile *.pl6 setf perl
+au BufRead,BufNewFile *.ts setf javascript
+au BufRead,BufNewFile *.go setf go
 au BufRead,BufNewFile *.exs setf erlang
 au BufRead,BufNewFile *.ex setf erlang
+au BufRead,BufNewFile *.zig setf zig
 "----------------------------------------------------------
 "--- Remover barra de menu, barra rolagem e etc do gVim ---
 "----------------------------------------------------------
