@@ -42,4 +42,4 @@ fi
 # ESLint
 # https://eslint.org/
 # Instalar:
-echo 'Rode o comando: "npm install eslint -g" caso ainda não tenha instalado o "eslint"'
+echo 'Rode o comando: "npm i -g eslint" caso ainda não tenha instalado o "eslint"'
