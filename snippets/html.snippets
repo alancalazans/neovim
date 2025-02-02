@@ -1,18 +1,18 @@
 snippet favicon
 	<link rel="shortcut icon" href="favicon.png">
-#------------
-#--- html ---
-#------------
+#-------------
+#--- html5 ---
+#-------------
 snippet documentation
 	<!--
-	=======================================
+	---
 	 File: ${1:index.html}
 	 Author: ${2:webmaster <webmaster@gmail.com>}
 	 Last Update: ${3:Sex 06 Mai 2016 07:22:00 BRT}
 	 Created: ${4:Sex 22 Mai 2009 10:01:22 BRT}
-	 Version: ${5:1.0.0}
+	 Version: ${5}
 	 Notes: $0
-	=======================================
+	---
 	-->
 snippet a
 	<a href="${1:#}">$0</a>
@@ -51,16 +51,16 @@ snippet cmt
 	<!-- $0 -->
 snippet cmts
 	<!--
-	===
+	---
 	$0
-	===
+	---
 	-->
 snippet caption
 	<caption>$0</caption>
 snippet cdata
 	<![CDATA[$0]]>
 snippet checkbox
-	<input type="checkbox" name="$1" value="$0" />
+	<input type="checkbox" name="${1}" value="$0" />
 snippet cite
 	<cite>$0</cite>
 snippet code
@@ -69,7 +69,7 @@ snippet col
 	<col align="${0:left, right, center, justify or char?}"/>
 snippet colgroup
 	<colgroup>$0</colgroup>
-snippet style
+snippet css
 	<style>
 
 		* {
@@ -105,7 +105,7 @@ snippet del
 snippet dfn
 	<dfn>$0</dfn>
 snippet div
-	<div ${1:id or class?}="$2">
+	<div>
 		$0
 	</div>
 snippet clearfix
@@ -132,6 +132,7 @@ snippet form
 	<form action="${1:url}" method="${2:get or post?}">
 
 		<input type="submit" value="${0:send value}">
+
 	</form>
 snippet frame
 	<!--
@@ -149,7 +150,7 @@ snippet frame
 	</frameset>
 snippet frameset
 	<frameset>
-		<frame src="$1" />
+		<frame src="${1}" />
 		$0
 	</frameset>
 snippet h1
@@ -211,9 +212,9 @@ snippet iframe
 	<iframe src="http://www.google.com" width="400px" height="400px" frameborder="1" scrolling="yes"></iframe>
 	</div>
 snippet img
-	<img src="$1" width="$2" height="$3" title="$4" alt="$0">
+	<img src="${1}" width="${2}" height="${3}" title="${4}" alt="$0">
 snippet input
-	<input type="text" id="$1" name="$2" value="$3" placeholder="$0" required>
+	<input type="text" id="${1}" name="${2}" value="${3}" placeholder="$0" required>
 snippet ins
 	<ins>$0</ins>
 #---------------------------
@@ -248,17 +249,17 @@ snippet jssrc
 snippet kbd
 	<kbd>$0</kbd>
 snippet label
-	<label for="$1">$0</label>
+	<label for="${1}">$0</label>
 snippet legend
 	<legend>$0</legend>
 snippet li
 	<li>$0</li>
 snippet map
-	<map name="$1">$0</map>
+	<map name="${1}">$0</map>
 snippet meta
-	<meta name="$1" content="$0" />
+	<meta name="${1}" content="$0" />
 snippet metah
-	<meta http-equiv="$1" content="$0" />
+	<meta http-equiv="${1}" content="$0" />
 snippet noframes
 	<noframes>$0</noframes>
 snippet noscript
@@ -270,17 +271,17 @@ snippet ol
 		<li>$0</li>
 	</ol>
 snippet optgroup
-	<optgroup label="$1">
-		<option value="$2">$0</option>
+	<optgroup label="${1}">
+		<option value="${2}">$0</option>
 	</optgroup>
 snippet option
 	<option>$0</option>
 snippet p
 	<p>$0</p>
 snippet param
-	<param name="$1" value="$0" />
+	<param name="${1}" value="$0" />
 snippet password
-	<input type="password" id="$1" name="$0" />
+	<input type="password" id="${1}" name="$0" />
 snippet pre
 	<pre>$0</pre>
 snippet precode
@@ -294,23 +295,23 @@ snippet precodeln
 snippet q
 	<q>$0</q>
 snippet radio
-	<input type="radio" name="$1" value="$0" />
+	<input type="radio" name="${1}" value="$0" />
 snippet refresh
 	<meta http-equiv="refresh" content="2;url=$0" />
 snippet rss
-	<link rel="alternate" type="application/rss+xml" title="$1" href="$0" />
+	<link rel="alternate" type="application/rss+xml" title="${1}" href="$0" />
 snippet samp
 	<samp>$0</samp>
 snippet select
-	<select id="$1" name="$2">
-	<optgroup label="$3">
-		<option value="$4">$0</option>
+	<select id="${1}" name="${2}">
+	<optgroup label="${3}">
+		<option value="${4}">$0</option>
 	</optgroup>
 	</select>
 snippet small
 	<small>$0</small>
 snippet span
-	<span class="$1">$0</span>
+	<span class="${1}">$0</span>
 snippet strong
 	<strong>$0</strong>
 snippet sub
@@ -346,7 +347,7 @@ snippet tbody
 snippet td
 	<td>$0</td>
 snippet textarea
-	<textarea ${1:id ou class}="$2" name="$3" cols="50" rows="10" >$0</textarea>
+	<textarea ${1:id ou class}="${2}" name="${3}" cols="50" rows="10" >$0</textarea>
 snippet tfoot
 	<tfoot>
 		<tr>$0</tr>
@@ -364,7 +365,7 @@ snippet tr
 		<td>$0</td>
 	</tr>
 snippet thumb
-	<a href="$1"><img src="$2" alt="$3" title="$0"/></a>
+	<a href="${1}"><img src="${2}" alt="${3}" title="$0"/></a>
 snippet ul
 	<ul>
 		<li>$0</li>
@@ -384,9 +385,9 @@ snippet video
 snippet cmtcss
 	/* $0 */
 snippet cmtscss
-	/*===
+	/*---
 	* $0
-	**===*/
+	**---*/
 snippet hide
 	text-indent: 9999em; line-height: 9999em; overflow: hidden;
 #---------------------
@@ -399,23 +400,26 @@ snippet onload
 #-----------------
 #--- RequireJS ---
 #-----------------
-snippet boot
+snippet bootjs
 	requirejs.config({
 		baseUrl: 'assets/js',
 		paths: {
-			'${1:scriptName}': '${0:script-name}'
+			// vendor
+			'bootstrap': '../vendor/bootstrap/bootstrap.bundle.min',
+			// js
+			'main': 'main'
 		}
 	});
 snippet requirejs
-	requirejs(['${0:deps}'], () => {
-
-	});
-#-------------
-#--- Flask ---
-#-------------
-snippet coment
-	{# $1 #}$0
-snippet interpolate
-	{{ $1 }}$0
-snippet embed
-	{% $1 %}$0
+	requirejs (
+		['${1:module}'],
+		(${2:module_alias}) => {
+			$0
+		}
+	);
+snippet definejs
+	define ([],
+		() => {
+			$0
+		}
+	);
