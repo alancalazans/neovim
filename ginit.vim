@@ -15,7 +15,7 @@
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
 " Created: sex 30 abr 2021
 " Updated: ter 10 jun 2025
-" Installation: As dotfile drop the file into your $HOME/.config/nvim/ folder
+" Installation: This configuration file `ginit.vim` in the path $HOME/.config/nvim/
 " License: GNU General Public License v3
 " <http://www.gnu.org/licenses/gpl.html>
 " Version: 1.0
