@@ -13,17 +13,12 @@
 "----------------------------------------------------------
 " File: ginit.vim
 " Author: Alan Calazans <alancalazans@hotmail.com.br>
-" Created: Sex 30 Abr 2021
-" Updated: Seg 30 Set 2024
+" Created: sex 30 abr 2021
+" Updated: ter 10 jun 2025
 " Installation: As dotfile drop the file into your $HOME/.config/nvim/ folder
 " License: GNU General Public License v3
 " <http://www.gnu.org/licenses/gpl.html>
 " Version: 1.0
-" Notes: Based on the file:
-" .vimrc (1.0) made by Ivan Carlos da Silva Lopes
-" .vimrc made by Aurelio Marinho Jarga (verde)
-" .vimrc made by Sérgio Luiz Araújo Silva  (voyeg3r) and
-" .vimrc made by J. F. Mitre <jfmitre (at) gmail.com>
 "-----------------------
 "--- Suporte a cores ---
 "-----------------------
@@ -90,18 +85,18 @@ set fileencoding=utf-8
 "-----------------------------
 "--- Configuração de fonte ---
 "-----------------------------
-"set guifont=Monospace:h11
+"set guifont=Consolas:h12
 if has('gui_running')
 	if has('win32')  " Verifica se está rodando no Windows
 		set guifont=Consolas:h12
 	else
-		set guifont=FuraMono\ Nerd\ Font\ Mono\ 12
+		set guifont=MonoLisa\ Medium\ 12
 	endif
 else
 	if has('win32')  " Verifica se está rodando no Windows
 		set guifont=Consolas:h12
 	else
-		set guifont=FuraMono\ Nerd\ Font\ Mono\ 12
+		set guifont=MonoLisa\ Medium\ 12
 	endif
 endif
 "---------------------------------
@@ -690,8 +685,8 @@ let g:ale_sign_warning = '⚠️'
 "--- SnipMate {{{ ---
 "--------------------
 " Para usar a versão mais atual do analisador
-"let g:snipMate = { 'snippet_version': 1 }
-"imap <c-j> <Plug>snipMateNextOrTrigger
+let g:snipMate = { 'snippet_version': 1 }
+imap <c-j> <Plug>snipMateNextOrTrigger
 "--- }}}
 "---------------------
 "--- Lspconfig {{{ ---
@@ -745,3 +740,4 @@ endfunction
 "hi LineNr guifg=magenta ctermfg=lightPink
 hi LineNr guifg=#ffffff ctermfg=lightCyan
 "--- }}}
+

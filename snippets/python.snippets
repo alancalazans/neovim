@@ -1,85 +1,76 @@
-#------------------
-#--- Instruções ---
-#------------------
-#---> __magic__ <---
-snippet __
-	__${1:init}__$0
 snippet #!
-	#!/usr/bin/python3
-#---> Class <---
+	#!/usr/bin/env python
+snippet cmts
+	"""
+	${1:coment}
+	"""
+snippet imp
+	import ${1:module}
+# Module Docstring
+snippet docs
+	'''
+	File: ${1:`Filename('$1.py', 'foo.py')`}
+	Author: ${2:`g:snips_author`}
+	Description: ${3}
+	'''
+snippet wh
+	while ${1:condition}:
+		${2:# code...}
+snippet for
+	for ${1:needle} in ${2:haystack}:
+		${3:# code...}
+# New Class
 snippet cl
 	class ${1:ClassName}(${2:object}):
 		"""${3:docstring for $1}"""
 		def __init__(self, ${4:arg}):
 			${5:super($1, self).__init__()}
 			self.$4 = $4
-			$0
-#---> Comentários <---
-snippet cmts
-	"""
-	${1:coment}
-	"""
-#---> Docstring <---
-snippet docs
-	'''
-	File: ${1:`Filename('$1.py', 'foo.py')`}
-	Author: ${2:`g:snips_author`}
-	Description: $0
-	'''
-#---> For <---
-snippet for
-	for ${1:needle} in ${2:haystack}:
-		${3:# code...}
-#---> Function <---
+			${6}
+# New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 		"""${3:docstring for $1}"""
 		${4:pass}
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		$0
-#---> if __name__ == '__main__': <---
-snippet ifmain
-	if __name__ == '__main__':
-		${0:main()}
-#---> Import <---
-snippet imp
-	import ${1:module}
-#---> Lambda <---
-snippet lambda
-	${1:var} = lambda ${2:vars} : ${0:action}
-#---> Method <---
-snippet method
+		${3}
+# New Method
+snippet defs
 	def ${1:mname}(self, ${2:arg}):
-		${0:pass}
-#---> Property <---
+		${3:pass}
+# New Property
 snippet property
 	def ${1:foo}():
 		doc = "${2:The $1 property.}"
 		def fget(self):
 			${3:return self._$1}
 		def fset(self, value):
-			${0:self._$1 = value}
-#---> Try <---
+			${4:self._$1 = value}
+# Lambda
+snippet ld
+	${1:var} = lambda ${2:vars} : ${3:action}
+snippet .
+	self.
 snippet try Try/Except
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${0:raise $3}
+		${4:raise $3}
 snippet try Try/Except/Else
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
 		${4:raise $3}
 	else:
-		${0:pass}
+		${5:pass}
 snippet try Try/Except/Finally
 	try:
 		${1:pass}
 	except ${2:Exception}, ${3:e}:
 		${4:raise $3}
 	finally:
-		${0:pass}
+		${5:pass}
 snippet try Try/Except/Else/Finally
 	try:
 		${1:pass}
@@ -88,61 +79,31 @@ snippet try Try/Except/Else/Finally
 	else:
 		${5:pass}
 	finally:
-		${0:pass}
-#---> While <---
-snippet wh
-	while ${1:condition}:
-		${2:# code...}
-#-------------
-#--- Flask ---
-#-------------
-#---> @app <---
-snippet @app
-	@app.route('/$1')
-	def $2():
-	    $0
-#---> flaskapp <---
-snippet flaskapp
-	from flask import Flask
-
-	app = Flask(__name__)
-
-	@app.route('/')
-	def index():
-	    $0
-	
+		${6:pass}
+# if __name__ == '__main__':
+snippet ifmain
 	if __name__ == '__main__':
-	    app.run(debug=True)
-#---> interpolate <---
-snippet interpolate
-	{ $1 }$0
-#------------
-#--- Flet ---
-#------------
-snippet fletapp
-	import flet as ft
-
-	def main(page: ft.Page):
-	    $0
-
-	ft.app(target=main)
-#-------------------
-#--- PySimpleGUI ---
-#-------------------
+		${1:main()}
+# __magic__
+snippet _
+	__${1:init}__${2}
+#--------------------------------------
+# PySimpleGUI
+#--------------------------------------
 snippet sg
 	import PySimpleGUI as sg
 snippet layout
 	layout = [
-		[sg.Text('${1}'), $0]
+		[sg.Text('${1}'), ${2}]
 	]
 snippet sgt
 	sg.Text('${1:String}')
 snippet sgi
-	sg.Input(key='-${0:chave}-')
+	sg.Input(key='-${1:chave}-')
 snippet sgb
-	sg.Button('$0')
+	sg.Button('${1}')
 snippet window
-	window = sg.Window('${0:Title}', layout)
+	window = sg.Window('${1:Title}', layout)
 snippet while-true
 	while True:
 
@@ -150,8 +111,8 @@ snippet while-true
 
 		if event == sg.WIN_CLOSED or event == '${1:Quit}':
 			break
-		elif event == '$2':
-			$0
+		elif event == '${2}':
+			${3}
 
 	window.close()
 snippet sg-base
@@ -175,35 +136,33 @@ snippet sg-base
 			pass
 
 	window.close()
-#---------------------
-#--- CustomTkinter ---
-#---------------------
-snippet ctk
-	import customtkinter as ctk
+#--------------------------------------
+# Kivy
+#--------------------------------------
+snippet kivy-base
+	from kivy.app import App
+	from kivy.uix.floatlayout import FloatLayout
+	# Para usar a linguagem kivy inline
+	from kivy.lang import Builder
+	# Para definir dimensão da janela
+	#from kivy.core.window import Window
 
-	win = ctk.CTk()
-	win._set_appearance_mode('${1:system, dark or light}')
-	win.title('$2')
-	win.geometry('${3:width}x${4:height}')
-	$0
-	win.mainloop()
-snippet maxsize
-	win.maxsize(width=$1, height=$2)$0
-snippet minsize
-	win.minsize(width=$1, height=$2)$0
-snippet resizable
-	win.resizable(width=${1:True}, height=${2:True})$0
-snippet button
-	btn${1:Button} = ctk.CTkButton(win, text='$2', command=$3)$0
-snippet button.grid
-	button.grid(row=${1:0}, column=${2:0}, padx=$3, pady=$4)$0
-snippet frame
-	frm${1:Name} = ctk.CTkFrame(master = win,
-		width=${2:500},
-		height=${3:250},
-		fg_color='${4:teal}',
-		bg_color='${5:red}',
-		border_color='${6:pink}',
-		border_width=${7:10},
-		corner_radius=${8:30}
-	).place(x=$9, y=$10)$0
+	Builder.load_string('''
+	<MyWidget>:
+		Button:
+			text: 'Button'
+			size_hint: (0.1, 0.1)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+	''')
+
+	class MyWidget(FloatLayout):
+		pass
+
+	class MyKivyApp(App):
+		def build(self):
+			return MyWidget()
+
+	if __name__ == '__main__':
+		#Window.size = (1366, 768) # Dimensão padrão 800x600
+		#Window.fullscreen = True # Para tela cheia
+		MyKivyApp().run()

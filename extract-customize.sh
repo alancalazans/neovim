@@ -9,8 +9,17 @@ if ! [ -d "$HOME/.local/share/fonts" ]; then
 	cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
 	unzip NeoVim_fonts/FuraMono_Linux.zip -d "$HOME/.local/share/fonts/"
 else
-	cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
-	unzip NeoVim_fonts/FuraMono_Linux.zip -d "$HOME/.local/share/fonts/"
+  if [ ! -f ~/.local/share/fonts/Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete.otf ]; then
+    cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
+  fi
+	if [ ! -f ~/.local/share/fonts/Fura\ Mono\ Bold\ Nerd\ Font\ Complete\ Mono.otf ]; then
+		cp NeoVim_fonts/Droid*.otf "$HOME/.local/share/fonts/"
+		unzip NeoVim_fonts/FuraMono_Linux.zip -d "$HOME/.local/share/fonts/"
+	fi
+  if [ ! -f ~/.local/share/fonts/MonoLisa-italic.ttf ]; then
+    cp NeoVim_fonts/MonoLisa-italic.ttf "$HOME/.local/share/fonts/"
+    cp NeoVim_fonts/MonoLisa-normal.ttf "$HOME/.local/share/fonts/"
+  fi
 fi
 #sudo mkdir -p /opt/omnisharp
 #sudo tar -zxf Omnisharp-Roslyn-Server/omnisharp-linux-x64-net6.0.tar.gz -C /opt/omnisharp/
@@ -19,27 +28,27 @@ fi
 # `.eslintrc.js` no path do usuário:
 #--------------------
 if [ ! -f ~/.eslintrc.js ]; then
-	echo -e 'module.exports = {
-			"env": {
-				"browser": true,
-				"es2021": true
+	echo -e "module.exports = {
+			\"env\": {
+				\"browser\": true,
+				\"es2021\": true
 			},
-			"overrides": [
+			\"overrides\": [
 			],
-			extends: [
-				"standard",
-				"eslint:recommended",
-				"prettier"
+			\"extends\": [
+				\"standard\",
+				\"eslint\": \"recommended\",
+				\"prettier\"
 			],
-			"parserOptions": {
-				"ecmaVersion": "latest"
+			\"parserOptions\": {
+				\"ecmaVersion\": \"latest\"
 			},
-			"rules": {
+			\"rules\": {
 			}
-	}' > ~/.eslintrc.js
+	}" > ~/.eslintrc.js
+	#--------------------
+	# ESLint
+	# https://eslint.org/
+	# Instalar:
+	echo 'Rode o comando: "npm i -g eslint" caso ainda não tenha instalado o "eslint"'
 fi
-#--------------------
-# ESLint
-# https://eslint.org/
-# Instalar:
-echo 'Rode o comando: "npm i -g eslint" caso ainda não tenha instalado o "eslint"'
