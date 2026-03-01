@@ -1,2 +1,0 @@
-nimble install nimlangserver
-nimble install nimlsp

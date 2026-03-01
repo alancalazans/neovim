@@ -1,0 +1,694 @@
+"---------------------------------------------
+" ▄               ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄
+"▐░▌             ▐░▌▐░░░░░░░░░░░▌▐░░▌     ▐░░▌
+" ▐░▌           ▐░▌  ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌   ▐░▐░▌
+"  ▐░▌         ▐░▌       ▐░▌     ▐░▌▐░▌ ▐░▌▐░▌
+"   ▐░▌       ▐░▌        ▐░▌     ▐░▌ ▐░▐░▌ ▐░▌
+"    ▐░▌     ▐░▌         ▐░▌     ▐░▌  ▐░▌  ▐░▌
+"     ▐░▌   ▐░▌          ▐░▌     ▐░▌   ▀   ▐░▌
+"      ▐░▌ ▐░▌           ▐░▌     ▐░▌       ▐░▌
+"       ▐░▐░▌        ▄▄▄▄█░█▄▄▄▄ ▐░▌       ▐░▌
+"        ▐░▌        ▐░░░░░░░░░░░▌▐░▌       ▐░▌
+"         ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀
+"---------------------------------------------
+" File: init.vim
+" Author: Alan Calazans <alancalazans@hotmail.com.br>
+" Created: dom 02 mai 2021
+" Updated: sex 28 nov 2025
+" Installation: Place this file in $HOME/.config/nvim/init.vim
+" License: GNU General Public License v3
+" <http://www.gnu.org/licenses/gpl.html>
+" Version: 2.0 (NeoVim)
+"-----------------------
+"--- Suporte a cores ---
+"-----------------------
+" NeoVim já suporta termguicolors nativamente
+set termguicolors
+"-------------------------------------
+"--- Suporte ao itálico verdadeiro ---
+"-------------------------------------
+" NeoVim não precisa de t_ZH/t_ZR, o suporte a itálico
+" é nativo via termguicolors e emuladores modernos.
+set noautochdir " Definir diretorio atual automaticamente
+set nostartofline " Não resetar o cursor para o inicio da linha
+set autoread " Ler arquivo automaticamente caso ele for modificado externamente
+set ai " Ao criar nova linha, usa indentação da linha anterior
+" set nocompatible - Removido: NeoVim é sempre 'nocompatible'
+set ruler " show the cursor position all the time
+set showmatch " Faz o highlight do parênteses, colechetes ou chave correspondente
+"-----------------------------------------
+"---            LIGTHLINE              ---
+"--- Configuration for landscape Theme ---
+"-----------------------------------------
+let g:lightline = {
+\   'active': {
+\     'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename', 'modified', ] ],
+\     'right': [ [ 'lineinfo' ],
+\              [ 'percent' ],
+\              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
+\   },
+\   'separator': { 'left': '【', 'right': '】' },
+\   'component': {
+\     'lineinfo': '%l\%L [%p%%], %c, %n',
+\     'readonly': '%{&readonly?"\ue0a2":""}',
+\   }
+\ }
+"-------------------------------------------------------
+"--- Mudar cor da barra de status dependendo do modo ---
+"-------------------------------------------------------
+" Ao entrar em modo insert ele muda a cor da barra de status
+" altera a cor da linha de status dependendo do modo
+au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+"----------------------------------------------------
+"--- Permite que o mouse seja utilizado na edição ---
+"----------------------------------------------------
+set mouse=a
+"-------------------------------------------------------------
+"--- Alguns tipos de arquivos devem ser ignorados pelo Vim ---
+"-------------------------------------------------------------
+set wildignore=*.o,*.obj,*.bak,*.exe,*.dll,*.com,*.class,*.au,*.wav,*.ps,*.avi,*.wmv,*.flv,*.djvu,*.pdf,*.chm,*.dvi,*.svn/,*~
+"--------------------------------------------------------------
+"--- Define codificação, fonte, tema, nº de linha e colunas ---
+"--------------------------------------------------------------
+" NeoVim já usa UTF-8 por padrão, mas não faz mal declarar
+set encoding=utf-8
+set fileencoding=utf-8
+"-----------------------------
+"--- Configuração de fonte ---
+"-----------------------------
+" NeoVim em terminal não usa guifont (a fonte é do emulador de terminal).
+" Se usar um frontend GUI como Neovide, descomente e ajuste:
+"set guifont=MonoLisa\ Medium:h12
+"---------------------------------
+"--- Configura linhas, colunas ---
+"---------------------------------
+set wildmenu
+"-----------------------------------------
+"--- Defina o <space> como tecla líder ---
+"-----------------------------------------
+let g:mapleader = ' '
+"----------------------------------------------------
+"--- Função para trocar o tema de cores           ---
+"--- A primeira linha refere-se ao esquema padrão ---
+"----------------------------------------------------
+colorscheme molokai
+function! ToggleColorscheme()
+	if g:colors_name == 'molokai'
+		colorscheme spacecamp
+	elseif g:colors_name == 'spacecamp'
+		colorscheme gruvbox
+	elseif g:colors_name == 'gruvbox'
+		colorscheme gruvbox-material
+	elseif g:colors_name == 'gruvbox-material'
+		colorscheme molokai
+	endif
+	hi LineNr guifg=#ffffff ctermfg=lightCyan
+endfunction
+nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
+"----------------------------------------------
+"--- Suprime a mensagem inicial do NeoVim ---
+"----------------------------------------------
+set shortmess+=I
+"---------------------------
+"--- Flag tab para 2<->4 ---
+"---------------------------
+let g:tab = 'tab2'
+"-----------------
+"--- Tab 2<->4 ---
+"-----------------
+function! ToggleTab()
+	if g:tab=='tab2'
+		set tabstop=4
+		set shiftwidth=4
+		set softtabstop=4
+		let g:tab='tab4'
+	else
+		set tabstop=2
+		set shiftwidth=2
+		set softtabstop=2
+		let g:tab='tab2'
+	endif
+endfunction
+nmap <silent><leader>g :call ToggleTab()<cr>:echo g:tab<cr>
+"--------------------------------------------------------------------
+"---                      Multiple Cursors                        ---
+"--- https://github.com/terryma/vim-multiple-cursors#installation ---
+"--------------------------------------------------------------------
+" As ligações de teclas, desative-as e reatribua-as da maneira que desejar:
+"let g:multi_cursor_use_default_mapping=0
+" Default mapping
+"let g:multi_cursor_start_word_key      = '<C-n>'
+"let g:multi_cursor_select_all_word_key = '<A-n>'
+"let g:multi_cursor_start_key           = 'g<C-n>'
+"let g:multi_cursor_select_all_key      = 'g<A-n>'
+"let g:multi_cursor_next_key            = '<C-n>'
+"let g:multi_cursor_prev_key            = '<C-p>'
+"let g:multi_cursor_skip_key            = '<C-x>'
+"let g:multi_cursor_quit_key            = '<Esc>'
+"---------------------------------
+"--- Opções da linha de status ---
+"---------------------------------
+" [1][+][RO] ~/.vimrc [vim] [utf-8] 34, 0x22 0-15 13%"
+set laststatus=2 " Quando exibir a linha de status: 2=always
+set statusline= " Limpa a linha de status
+set statusline+=[%n] " Número do buffer atual
+set statusline+=%m%r\ " [+] Quando o arquivo for modificado, [RO] para apenas leitura
+set statusline+=%f\ " Nome do arquivo
+set statusline+=[%{strlen(&ft)?&ft:'none'}] " Tipo do arquivo
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}] " Codificação
+set statusline+=%= " Alinha tudo a seguir à direita
+set statusline+=%b,0x%-8B\ " ASCII e número hexadecimal do caractere sob o cursor
+set statusline+=%-4.(%l-%c%)\ %<%P " Linha-coluna do cursor e percentual do arquivo
+"------------------------------------------------
+"--- Autocompletar html, css, javascript, php ---
+"------------------------------------------------
+filetype on
+if has('autocmd')
+	filetype plugin indent on
+	autocmd FileType javascript set complete-=k~/.config/nvim/doc/js-list.txt complete+=k~/.config/nvim/doc/js-list.txt
+	autocmd FileType php set complete-=k~/.config/nvim/doc/php-list.txt complete+=k~/.config/nvim/doc/php-list.txt
+	autocmd FileType css set complete-=k~/.config/nvim/doc/css-list.txt complete+=k~/.config/nvim/doc/css-list.txt
+	autocmd FileType nim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+	autocmd FileType zig setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+	autocmd FileType ada setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
+endif
+set omnifunc=syntaxcomplete#Complete
+au FileType python set omnifunc=pythoncomplete#Complete
+au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+au FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
+au FileType css set omnifunc=csscomplete#CompleteCSS
+au FileType xml set omnifunc=xmlcomplete#CompleteTags
+au FileType php set omnifunc=phpcomplete#CompletePHP
+au FileType c set omnifunc=ccomplete#Complete
+au FileType zig set omnifunc=zigcomplete#Complete
+" adiciona omnifunc para demais formatos
+if has("autocmd") && exists("+omnifunc")
+	autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
+endif
+setlocal sm " Destaca Abertura e fechamento {} [] ()
+"------------------------------------------------
+"--- Definindo sintaxe para algumas extenções ---
+"------------------------------------------------
+au BufRead,BufNewFile *.phtml set filetype=php
+au BufRead,BufNewFile *.ejs setf html
+au BufRead,BufNewFile *.ep setf html
+au BufRead,BufNewFile *.pl6 setf perl
+au BufRead,BufNewFile *.ts setf javascript
+au BufRead,BufNewFile *.go setf go
+au BufRead,BufNewFile *.exs setf erlang
+au BufRead,BufNewFile *.ex setf erlang
+au BufRead,BufNewFile *.zig setf zig
+au BufRead,BufNewFile *.cob,*.cbl,*.cpy setf cobol
+"----------------------------------------------------------
+"--- Opções de GUI removidas (guioptions não existe     ---
+"--- no NeoVim terminal). Se usar frontend GUI como     ---
+"--- Neovide, configure conforme a documentação dele.   ---
+"----------------------------------------------------------
+"----------------------------------------------------------------------------
+"--- Essa opção faz com que o <Backspace> se mova e delete nesses locais: ---
+"--- indent - permite passar sobre autoindentação.                        ---
+"--- eol - permite passar sobre o line-break, juntando duas linhas.       ---
+"--- start - permite passar sobre o ponto de inserção.                    ---
+"----------------------------------------------------------------------------
+set backspace=indent,eol,start
+"-----------------------------------------------
+"--- Numeração de linhas e busca de palavras ---
+"-----------------------------------------------
+set nu "linhas numeradas
+set is hls is scs "para busca
+"----------------------------------
+"--- Ativa coloração de sintaxe ---
+"----------------------------------
+syntax on
+"---------------
+"--- Backups ---
+"---------------
+set nobackup "desabilita os bkps
+set noswapfile "evita arquivos temporarios
+set nowritebackup "evita arquivos tmp que começam com ~ ou termina com .swp
+"------------------------------------
+"--- Identação e quebra de linhas ---
+"------------------------------------
+set linebreak " Quebra a linha sem quebrar a palavra
+set ci "recuo
+set tabstop=2 " tab = 2 brancos
+set shiftwidth=2 " Quando o autoindent faz um tab, ele é do tamanho de 2
+set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identação
+set noexpandtab " cria tabs no lugar de espaços
+let g:status_tab = 'tab'
+function! ToggleStatusTab()
+	if g:status_tab=='tab'
+		set expandtab
+		let g:status_tab = 'space'
+	else
+		set noexpandtab
+		let g:status_tab = 'tab'
+	endif
+endfunction
+nmap <silent><leader>t :call ToggleStatusTab()<cr>:echo g:status_tab<cr>
+"----------------------------------------------------------------
+"--- permite indentar bloco de texto selecionado usando 'tab' ---
+"--- com guia e "des"indentar usando 'shift + tab'.           ---
+"----------------------------------------------------------------
+imap <s-tab> <c-o><lt><lt>
+nmap <tab> >>
+nmap <s-tab> <lt><lt>
+vmap <tab> >>
+vmap <s-tab> <lt>
+"----------------------------------
+"--- Atalhos p/ abas 'Ctrl + t' ---
+"--- abre uma nova aba.         ---
+"----------------------------------
+imap <c-t> <esc>:tabnew<cr>
+nmap <c-t> :tabnew<cr>
+"-------------------------------------------
+"--- 'Ctrl+PageUp' pula para próxima aba ---
+"-------------------------------------------
+imap <c-pageup> <esc>:tabnext<cr>
+"-----------------------------------------------
+"--- 'Ctrl+PageDown' volta para aba anterior ---
+"-----------------------------------------------
+imap <c-pagedown> <esc>:tabprevious<cr>
+"-------------------------------------
+"--- 'Ctrl+e' fecha a aba corrente ---
+"-------------------------------------
+imap <c-e> <esc>:tabclose<cr>
+"-----------------------------------------------------------
+"--- Atalhos comuns de teclado                           ---
+"--- Permite selecionar com SHIFT + SETA como no Windows ---
+"-----------------------------------------------------------
+set selectmode=mouse,key
+set mousemodel=popup
+set keymodel=startsel,stopsel
+set selection=exclusive
+"---------------------------------
+"--- Mostra ou não a identacão ---
+"---------------------------------
+set listchars=tab:¦\ ,trail:·,eol:¬
+set list
+nmap <leader>i :set list!<cr>
+"--------------------------------------------------
+"--- Backspace no modo de visão apaga a seleção ---
+"--------------------------------------------------
+vmap <bs> d
+"--------------------
+"--- CTRL-S salva ---
+"--------------------
+nmap <c-s> :update<cr>
+vmap <c-s> <c-c>:update<cr>
+imap <c-s> <c-o>:update<cr>
+"---------------------------------
+"--- Ao salvar remover espaços ---
+"--- e tabs de fim de linha.   ---
+"---------------------------------
+autocmd BufWritePre * :%s/\s\+$//e
+"---------------------
+"--- CTRL-Z desfaz ---
+"---------------------
+nmap <c-z> u
+vmap <c-z> <c-c>u
+imap <c-z> <c-o>u
+"--------------------
+"--- CTRL-Y refaz ---
+"--------------------
+nmap <c-y> <c-r>
+vmap <c-y> <c-c><c-r>
+imap <c-y> <c-o><c-r>
+"---------------------
+"--- Fechar Editor ---
+"---------------------
+nmap <A-q> :qall<cr>
+vmap <A-q> <c-c>:q<cr>
+imap <A-q> <c-o>:q<cr>
+"------------------------------
+"--- CTRL-F4 fecha a janela ---
+"------------------------------
+nmap <c-F4> <c-w>c
+imap <c-F4> <c-o><c-w>c
+cmap <c-F4> <c-c><c-w>c
+omap <c-F4> <c-c><c-w>c
+"--------------------------------------------------
+"--- Mova para o próximo buffer com <líder> + l ---
+"--------------------------------------------------
+nmap <leader>l :bnext<cr>
+vmap <leader>l <c-c>:bnext<cr>
+"---------------------------------------------------
+"--- Mova para o buffer anterior com <líder> + j ---
+"---------------------------------------------------
+nmap <leader>j :bprevious<cr>
+vmap <leader>j <c-c>:bprevious<cr>
+"---------------------------------------------
+"--- Fechar o buffer atual com <líder> + q ---
+"---------------------------------------------
+nmap <leader>q :bdelete<cr>
+vmap <leader>q <c-c>:bdelete<cr>
+"----------------------------
+"--- Alinhamento de texto ---
+"----------------------------
+nmap <leader>, :left<cr>
+nmap <leader>. :right<cr>
+nmap <leader>; :center<cr>
+"-------------
+"--- Emmet ---
+"-------------
+nmap <leader>e <c-y>,
+"-----------------------------------------------------------------------
+"--- Retira os ^M que ficam no final de arquivos salvos pelo windows ---
+"-----------------------------------------------------------------------
+nmap <leader>m :%s/\r//g<cr>
+"-----------------------------------------------------------
+"--- Remove espaços redundantes no fim das linhas com \s ---
+"-----------------------------------------------------------
+nmap <leader>s mz:%s/\s\+$//g<cr>`z
+"--------------------------------
+"--- Limpa o buffer de buscas ---
+"--------------------------------
+nmap <leader>b :let @/=""<cr>
+"-------------------------------------------
+"--- Recarrega o arquivo de configuração ---
+"-------------------------------------------
+nmap <leader>v :source $MYVIMRC<cr>
+"----------------------------------------------
+"--- Convert <tab> em <spaces> e vice-versa ---
+"----------------------------------------------
+nmap <leader>[ :set expandtab<cr> :retab<cr>
+nmap <leader>] :%s/\s\{2,}/\t/g<cr>
+"-----------------------------
+"--- Movimentando o cursor ---
+"-----------------------------
+imap <A-h> <left>
+imap <A-l> <right>
+imap <A-j> <down>
+imap <A-k> <up>
+"--------------------------------
+"--- Habilita auto-indentação ---
+"--------------------------------
+if has("autocmd")
+	filetype plugin indent on
+endif
+"--------------------------------------------------
+"--- Movimentação de bloco de texto selecionado ---
+"--------------------------------------------------
+" Move bloco de texto selecionado pra cima
+function! MoveUp()
+	let end=line("'>")
+	let start=line("'<")
+	if (start > 1)
+		let dif=end - start
+		exec "'<,'>d"
+		exec "normal kP"
+		exec "normal " . (start-1) . "GV" . (end-1) . "G"
+	else
+		exec "normal " . (start) . "GV" . (end) . "G"
+	endif
+endfunction
+"--------------------------------------------------
+"--- Move bloco de texto selecionado para baixo ---
+"--------------------------------------------------
+function! MoveDown()
+	let end=line("'>")
+	let start=line("'<")
+	if (end < line("$")-1)
+		let dif=end - start
+		exec "'<,'>d"
+		exec "normal p" . (start+1) . "GV" . (end+1) . "G"
+	else
+		exec "normal " . (start) . "GV" . (end) . "G"
+	endif
+endfunction
+"---------------------------------
+"--- Duplica um bloco de texto ---
+"---------------------------------
+function! Duplicate()
+	let end=line("'>")
+	let start=line("'<")
+	let dif=end - start
+	exec "'<,'>y"
+	exec "normal " . end . "G"
+	exec "normal p"
+	exec "normal " . (start+dif+1) . "GV" . (end+dif+1) . "G"
+endfunction
+"------------------------------------------------
+"--- Move bloco de texto selecionado pra cima ---
+"------------------------------------------------
+vmap <c-s-up> :<c-u> call MoveUp()<cr>
+"-------------------------------------------------
+"--- Move bloco de texto selecionado pra baixo ---
+"-------------------------------------------------
+vmap <c-s-down> :<c-u>call MoveDown()<cr>
+"--------------------------------------------
+"--- Duplica o bloco de texto selecionado ---
+"--------------------------------------------
+vmap <c-d> :<c-u>call Duplicate()<cr>
+"------------------------------------------
+"--- Fechamento automático de tags HTML ---
+"------------------------------------------
+imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
+"-------------------
+"--- Abreviações ---
+"-------------------
+iab a. ª
+iab o. º
+iab no. nº
+iab No. Nº
+"--------------------------------------------------
+"--- Habilitar área de transferência do sistema ---
+"--------------------------------------------------
+set clipboard=unnamedplus
+"-------------------------------------------
+"--- Modifica o comportamento do menu de ---
+"--- auto-completar para se comportar    ---
+"--- mais como uma IDE.                  ---
+"-------------------------------------------
+set completeopt=noinsert,menuone,noselect
+"---------------------------------------
+"--- Destaca a linha atual no editor ---
+"---------------------------------------
+set cursorline
+"-----------------------------------
+"--- Esconde buffers não usados ---
+"-----------------------------------
+set hidden
+"---------------------------------------------------
+"--- configura o comportamento da divisão da     ---
+"--- tela com o comando :split (dividir a tela   ---
+"--- horizontalmente) e :vsplit (verticalmente). ---
+"--- Neste caso, as telas sempre se dividirão    ---
+"--- abaixo da tela atual e à direita.           ---
+"---------------------------------------------------
+set splitbelow splitright
+"----------------------------------
+"--- Mostra o título do arquivo ---
+"----------------------------------
+set title
+"----------------------------------------------------
+"--- Tempo e milissegundos para aceitar comandos. ---
+"----------------------------------------------------
+set ttimeoutlen=0
+"-------------------------------------------------
+"--- <Ctrl-X> - cut (goto visual mode and cut) ---
+"-------------------------------------------------
+imap <C-X> <C-O>vgG
+vmap <C-X> "*x<Esc>i
+nmap <C-X> <c-x> <c-o>
+"---------------------------------------------------
+"--- <Ctrl-C> - copy (goto visual mode and copy) ---
+"---------------------------------------------------
+imap <C-C> <C-O>vgG
+vmap <C-C> "*y<Esc>i
+"---------------------------
+"--- <Ctrl-A> - copy all ---
+"---------------------------
+vmap <C-A> <Esc>gggH<C-O>G<Esc>i
+"------------------------
+"--- <Ctrl-V> - paste ---
+"------------------------
+nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
+imap <C-V> x<Esc>\\paste\\"_s
+vmap <C-V> "-cx<Esc>\\paste\\"_x
+"---------------------------
+"--- <Ctrl-A> - copy all ---
+"---------------------------
+nmap <c-a> gggH<c-o>G
+imap <c-a> <c-o>gg<c-o>gH<c-o>G
+cmap <c-a> <c-c>gggH<c-o>G
+omap <c-a> <c-c>gggH<c-o>G
+smap <c-a> <c-c>gggH<c-o>G
+xmap <c-a> <c-c>ggVG
+map <c-a> <esc>ggvG
+"-------------------------------------------------------
+"--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
+"-------------------------------------------------------
+" Instale o vim-plug para NeoVim:
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+call plug#begin('~/AppData/Local/nvim/plugged')
+	"-------------------
+	"--- Appearance ---
+	"------------------
+	" Temas {{{
+    Plug 'tomasr/molokai'
+    Plug 'jaredgorski/spacecamp'
+    Plug 'morhetz/gruvbox'
+    Plug 'sainnhe/gruvbox-material'
+    " }}}
+	Plug 'vim-airline/vim-airline'
+	Plug 'gko/vim-coloresque'
+	Plug 'ryanoasis/vim-devicons'
+	"-----------------
+	"--- Utilities ---
+	"-----------------
+	Plug 'mattn/emmet-vim'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'tomtom/tlib_vim'
+	Plug 'garbas/vim-snipmate'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'preservim/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'ap/vim-css-color'
+	Plug 'thaerkh/vim-indentguides'
+	Plug 'vim-scripts/DrawIt'
+	"-----------------------------------------
+	"--- Completion / linters / formatters ---
+	"-----------------------------------------
+	Plug 'dense-analysis/ale'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'alaviss/nim.nvim'
+	Plug 'neovim/nvim-lspconfig'
+	"Plug 'nvim-treesitter/nvim-treesitter'
+call plug#end()
+"---------------------------
+"--- Nvim-Treesitter {{{ ---
+"---------------------------
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"    ensure_installed = { "nim" },
+"    highlight = {
+"        enable = true,
+"    },
+"}
+"EOF
+"--- }}}
+"------------------
+"--- DrawIt {{{ ---
+"------------------
+let g:di = 'stop'
+function! ToggleDrawIt()
+	if g:di=='stop'
+		:DIstart
+		let g:di='start'
+	else
+		:DIstop
+		let g:di='stop'
+	endif
+endfunction
+nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
+"--- }}}
+"--------------------
+"--- NERDTree {{{ ---
+"--------------------
+nmap <leader>n :NERDTreeToggle<cr>
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeIgnore = []
+let NERDTreeStatusline = ''
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+\ "Modified"  : "✹",
+\ "Staged"    : "✚",
+\ "Untracked" : "✭",
+\ "Renamed"   : "➜",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "✗",
+\ "Clean"     : "✔︎",
+\ 'Ignored'   : '☒',
+\ "Unknown"   : "?"
+\ }
+"--- }}}
+"---------------
+"--- ALE {{{ ---
+"---------------
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+"--- }}}
+"--------------------
+"--- SnipMate {{{ ---
+"--------------------
+"let g:snipMate = { 'snippet_version': 1 }
+"imap <c-j> <Plug>snipMateNextOrTrigger
+"--- }}}
+"---------------------
+"--- Lspconfig {{{ ---
+"---------------------
+"lua <<EOF
+"require'lspconfig'.nim_langserver.setup{
+"  settings = {
+"    nim = {
+"      nimsuggestPath = "~/.nimble/bin"
+"    }
+"  }
+"}
+"require'lspconfig'.nimls.setup{
+"  cmd = { "nimlangserver" },
+"  filetypes = { "nim" },
+"  root_dir = require'lspconfig'.util.root_pattern(".git", "nim.cfg", "config.nims"),
+"  settings = {
+"    nimls = {
+"      suggest = { useNimsuggest = true }
+"    }
+"  }
+"}
+"EOF
+"--- }}}
+"-------------------------------
+"--- Folding / Unfolding {{{ ---
+"-------------------------------
+setlocal foldmethod=indent
+set nofoldenable
+set foldlevel=99
+set fillchars=fold:\ "The backslash escapes a space
+set foldtext=CustomFoldText()
+function! CustomFoldText()
+	let indentation = indent(v:foldstart - 1)
+	let foldSize = 1 + v:foldend - v:foldstart
+	let foldSizeStr = " " . foldSize . " lines "
+	let foldLevelStr = repeat("+--", v:foldlevel)
+	let expansionString = repeat(" ", indentation)
+	return expansionString . foldLevelStr . foldSizeStr
+endfunction
+"--- }}}
+"------------------------------------
+"--- Cor da numeração lateral {{{ ---
+"------------------------------------
+hi LineNr guifg=#ffffff ctermfg=lightCyan
+"--- }}}
+"-------------------------------
+"--- Configuração COBOL {{{ ---
+"-------------------------------
+"let g:cobol_legacy_code = 1
+"let cobol_error_lines = 1
+"--- }}}
+"-------------------------------
+"--- COBOL FORMAT FREE {{{ ---
+"-------------------------------
+let g:cobol_legacy_code = 0  " 0 = Formato Livre, 1 = Formato Fixo
+function! DetectCobolFormat()
+    let l:first_lines = getline(1, 10)
+    for l:line in l:first_lines
+        if l:line =~? 'FORMAT\s\+FREE'
+            let g:cobol_legacy_code = 0
+            setlocal filetype=cobol
+            return
+        endif
+    endfor
+    let g:cobol_legacy_code = 1
+    setlocal filetype=cobol
+endfunction
+" Detecta automaticamente FORMAT FREE no arquivo
+autocmd BufRead,BufNewFile *.cob,*.cbl,*.cpy call DetectCobolFormat()
+"--- }}}
