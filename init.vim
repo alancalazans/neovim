@@ -59,7 +59,7 @@ let g:lightline = {
 "-------------------------------------------------------
 " Ao entrar em modo insert ele muda a cor da barra de status
 " altera a cor da linha de status dependendo do modo
-au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=none
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 "----------------------------------------------------
 "--- Permite que o mouse seja utilizado na edição ---
