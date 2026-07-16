@@ -1,4 +1,12 @@
-mkdir ~\AppData\Local\nvim
-cp init.vim ~\AppData\Local\nvim\
-cp -r snippets ~\AppData\Local\nvim\
-* Obs.: Abra o editor `nvim` pressione <ESC> e insira `:PlugInstall` para instalar os Plugins.
+Passos:
+0. O arquivo `install.bat` executa estes passos automaticamente
+1. Entre na url (https://github.com/neovim/neovim/releases/)
+2. Baixe a última versão (não a prerelease) o arquivo `nvim-win64.zip` (Caso não encontre este arquivo na lista clique no final em `Show all 14 assets` que estará lá)
+3. Extrair o `nvim-win64.zip` em `C:\` ficando `C:\nvim-win64`
+4. Abra o `powershell`
+5. Copie `plug.vim` com o comando: `C:\nvim-win64\share\nvim\runtime\autoload\`
+6. Crie a pasta `nvim` no caminho com o comando: mkdir ~\AppData\Local\nvim
+7. Copie `init.vim` com o comando: cp init.vim ~\AppData\Local\nvim\
+8. Copie a pasta `snippets` com o comando: cp -r snippets ~\AppData\Local\nvim\
+9. Abra o editor `nvim`(mantenha no modo normal) e digite `:PlugInstall` + <ENTER> para instalar os Plugins.
+
