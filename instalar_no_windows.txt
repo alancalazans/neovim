@@ -1,0 +1,4 @@
+mkdir ~\AppData\Local\nvim
+cp init.vim ~\AppData\Local\nvim\
+cp -r snippets ~\AppData\Local\nvim\
+* Obs.: Abra o editor `nvim` pressione <ESC> e insira `:PlugInstall` para instalar os Plugins.

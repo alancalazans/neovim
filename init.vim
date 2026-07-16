@@ -89,24 +89,6 @@ set wildmenu
 "--- Defina o <space> como tecla líder ---
 "-----------------------------------------
 let g:mapleader = ' '
-"----------------------------------------------------
-"--- Função para trocar o tema de cores           ---
-"--- A primeira linha refere-se ao esquema padrão ---
-"----------------------------------------------------
-colorscheme molokai
-function! ToggleColorscheme()
-	if g:colors_name == 'molokai'
-		colorscheme spacecamp
-	elseif g:colors_name == 'spacecamp'
-		colorscheme gruvbox
-	elseif g:colors_name == 'gruvbox'
-		colorscheme gruvbox-material
-	elseif g:colors_name == 'gruvbox-material'
-		colorscheme molokai
-	endif
-	hi LineNr guifg=#ffffff ctermfg=lightCyan
-endfunction
-nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "----------------------------------------------
 "--- Suprime a mensagem inicial do NeoVim ---
 "----------------------------------------------
@@ -533,7 +515,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
     Plug 'jaredgorski/spacecamp'
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
-    " }}}
+  " }}}
 	Plug 'vim-airline/vim-airline'
 	Plug 'gko/vim-coloresque'
 	Plug 'ryanoasis/vim-devicons'
@@ -560,6 +542,24 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 	Plug 'neovim/nvim-lspconfig'
 	"Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
+"----------------------------------------------------
+"--- Função para trocar o tema de cores           ---
+"--- A primeira linha refere-se ao esquema padrão ---
+"----------------------------------------------------
+colorscheme molokai
+function! ToggleColorscheme()
+	if g:colors_name == 'molokai'
+		colorscheme spacecamp
+	elseif g:colors_name == 'spacecamp'
+		colorscheme gruvbox
+	elseif g:colors_name == 'gruvbox'
+		colorscheme gruvbox-material
+	elseif g:colors_name == 'gruvbox-material'
+		colorscheme molokai
+	endif
+	hi LineNr guifg=#ffffff ctermfg=lightCyan
+endfunction
+nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 "---------------------------
 "--- Nvim-Treesitter {{{ ---
 "---------------------------
@@ -620,7 +620,7 @@ let g:ale_sign_warning = '⚠️'
 "--- SnipMate {{{ ---
 "--------------------
 "let g:snipMate = { 'snippet_version': 1 }
-"imap <c-j> <Plug>snipMateNextOrTrigger
+imap <c-j> <Plug>snipMateNextOrTrigger
 "--- }}}
 "---------------------
 "--- Lspconfig {{{ ---
