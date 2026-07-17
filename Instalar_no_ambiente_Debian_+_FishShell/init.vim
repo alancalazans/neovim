@@ -89,6 +89,13 @@ set wildmenu
 "--- Defina o <space> como tecla líder ---
 "-----------------------------------------
 let g:mapleader = ' '
+
+" Tempo de resposta mais rápido para mapeamentos
+set timeoutlen=500
+set ttimeoutlen=0
+
+" Garante que backspace funcione corretamente no insert
+set backspace=indent,eol,start
 "----------------------------------------------
 "--- Suprime a mensagem inicial do NeoVim ---
 "----------------------------------------------
@@ -506,6 +513,11 @@ map <c-a> <esc>ggvG
 " Instale o vim-plug para NeoVim:
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 "        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" Desativa o mapeamento de <Space> do auto-pairs
+" Isso evita que ele interfira na digitação normal
+let g:AutoPairsMapSpace = 0
+" Desativa mapeamento de BS do auto-pairs (pode causar loop)
+let g:AutoPairsMapBS = 0
 call plug#begin('~/AppData/Local/nvim/plugged')
 	"-------------------
 	"--- Appearance ---
