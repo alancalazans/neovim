@@ -114,8 +114,8 @@
 "--- Tempo de resposta mais rápido para mapeamentos ---
 "------------------------------------------------------
 " {{{
-	set timeoutlen=200
-	set ttimeoutlen=10
+"	set timeoutlen=200
+"	set ttimeoutlen=10
 " }}}
 "-------------------------------------------------------------
 "--- Garante que backspace funcione corretamente no insert ---
