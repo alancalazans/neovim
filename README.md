@@ -1,247 +1,270 @@
-# neovim
+## 📋 GUIA DE ATALHOS DE TECLADO - NEOVIM
 
-Parte traduzida de: [Neovim, Instalación y Configuración Básica](https://stsewd.dev/es/posts/neovim-installation-configuration/)
+### 🔹 Tecla Líder: **Espaço** (`<leader>`)
 
-## Primeiros passos com Neovim
+---
 
-A seguir, você aprenderá o básico para começar a usar o Neovim como editor de código. A princípio, parecerá que é contraproducente e que você precisa digitar muito para realizar uma ação simples; Existem outras maneiras mais eficientes de fazer isso, mas o objetivo é se familiarizar com a edição de texto antes de passar para coisas mais avançadas. Ao final da postagem você encontrará diversos recursos para saber mais sobre o Neovim / Vim.
+### 📌 NAVEGAÇÃO E GERENCIAMENTO DE BUFFERS
 
-> **Obs.:** Tudo o que você aprende nesta seção também é válido para o Vim.
+| Atalho      | Modo            | Função                        |
+| ----------- | --------------- | ----------------------------- |
+| `<leader>l` | Normal / Visual | Navega para o próximo buffer  |
+| `<leader>j` | Normal / Visual | Navega para o buffer anterior |
+| `<leader>q` | Normal / Visual | Fecha o buffer atual          |
 
-### Modos
+---
 
-Neovim tem 3 modos principais:
+### 📌 GERENCIAMENTO DE ABAS
 
-- **Modo normal** - onde todas as teclas são interpretadas como comandos.
-- **Modo de inserção** - onde você pode escrever tudo o que digitar.
-- **Modo visual** - onde você pode selecionar blocos de texto.
+| Atalho         | Modo            | Função            |
+| -------------- | --------------- | ----------------- |
+| `<C-t>`        | Insert / Normal | Abre uma nova aba |
+| `<C-PageUp>`   | Insert          | Próxima aba       |
+| `<C-PageDown>` | Insert          | Aba anterior      |
+| `<C-e>`        | Insert          | Fecha a aba atual |
 
-Para entrar e sair de cada modo:
+---
 
-- Para *entrar* no *modo de inserção*, pressione  **`i`**.
-- Para *sair* do *modo de inserção*, pressione  **`Esc`**.
-- Para *entrar* no *modo visual*, pressione  **`v`**.
-- Para *sair* do *modo visual*, pressione  **`Esc`**.
+### 📌 INDENTAÇÃO E ESPAÇAMENTO
 
-Quando você abre o Neovim, o modo padrão é normal.
+| Atalho      | Modo                     | Função                                     |
+| ----------- | ------------------------ | ------------------------------------------ |
+| `<Tab>`     | Normal / Visual          | Indenta o bloco/linha atual                |
+| `<S-Tab>`   | Normal / Insert / Visual | Desindenta o bloco/linha atual             |
+| `<leader>g` | Normal                   | Alterna tamanho do tab entre 2 e 4 espaços |
+| `<leader>t` | Normal                   | Alterna entre usar tab ou espaços          |
+| `<leader>[` | Normal                   | Converte tabs em espaços                   |
+| `<leader>]` | Normal                   | Converte espaços duplos em tabs            |
 
-> **Obs.:** Sempre que você sentir que perdeu uma etapa, pressione **`Esc`** pelo menos três vezes para voltar ao *modo normal* e reiniciar.
+---
 
-#### Abra um arquivo
+### 📌 MANIPULAÇÃO DE TEXTO
 
-Você pode abrir um arquivo do terminal com:
+| Atalho       | Modo                     | Função                               |
+| ------------ | ------------------------ | ------------------------------------ |
+| `<C-s>`      | Normal / Visual / Insert | Salva o arquivo                      |
+| `<C-z>`      | Normal / Visual / Insert | Desfaz (Undo)                        |
+| `<C-y>`      | Normal / Visual / Insert | Refaz (Redo)                         |
+| `<C-d>`      | Visual                   | Duplica o bloco de texto selecionado |
+| `<C-S-Up>`   | Visual                   | Move bloco selecionado para cima     |
+| `<C-S-Down>` | Visual                   | Move bloco selecionado para baixo    |
+| `<C-X>`      | Insert / Visual / Normal | Corta o texto selecionado            |
+| `<C-C>`      | Insert / Visual          | Copia o texto selecionado            |
+| `<C-V>`      | Insert / Visual / Normal | Cola da área de transferência        |
+| `<C-A>`      | Normal / Insert / Visual | Seleciona todo o texto               |
 
-```bash
-nvim mi-archivo.txt
+---
+
+### 📌 FORMATAÇÃO E ALINHAMENTO
+
+| Atalho      | Modo   | Função                                    |
+| ----------- | ------ | ----------------------------------------- |
+| `<leader>,` | Normal | Alinha texto à esquerda                   |
+| `<leader>.` | Normal | Alinha texto à direita                    |
+| `<leader>;` | Normal | Centraliza o texto                        |
+| `<leader>m` | Normal | Remove ^M (quebras de linha Windows)      |
+| `<leader>s` | Normal | Remove espaços no final das linhas        |
+| `<leader>i` | Normal | Alterna exibição de caracteres invisíveis |
+
+---
+
+### 📌 BUSCA E LIMPEZA
+
+| Atalho      | Modo   | Função                  |
+| ----------- | ------ | ----------------------- |
+| `<leader>b` | Normal | Limpa o buffer de busca |
+
+---
+
+### 📌 PLUGINS
+
+| Atalho      | Modo   | Função                  | Plugin        |
+| ----------- | ------ | ----------------------- | ------------- |
+| `<leader>n` | Normal | Abre/fecha o NERDTree   | NERDTree      |
+| `<leader>e` | Normal | Dispara o Emmet         | Emmet-vim     |
+| `<C-j>`     | Insert | Próximo snippet         | SnipMate      |
+| `<leader>u` | Normal | Ativa/desativa o DrawIt | DrawIt **∗¹** |
+
+> **∗¹ :** Abaixo há um um guia chamado ***Como Usar o DrawIt no Neovim***
+
+---
+
+### 📌 APARÊNCIA E TEMAS
+
+| Atalho      | Modo   | Função                                                          |
+| ----------- | ------ | --------------------------------------------------------------- |
+| `<leader>/` | Normal | Alterna temas: molokai → spacecamp → gruvbox → gruvbox-material |
+
+---
+
+### 📌 FECHAMENTO E CONTROLE
+
+| Atalho   | Modo                                 | Função                 |
+| -------- | ------------------------------------ | ---------------------- |
+| `<A-q>`  | Normal / Visual / Insert             | Fecha todas as janelas |
+| `<C-F4>` | Normal / Insert / Command / Operator | Fecha a janela atual   |
+
+---
+
+### 📌 MOVIMENTAÇÃO NO INSERT
+
+| Atalho  | Modo   | Função                    |
+| ------- | ------ | ------------------------- |
+| `<A-h>` | Insert | Move cursor para esquerda |
+| `<A-l>` | Insert | Move cursor para direita  |
+| `<A-j>` | Insert | Move cursor para baixo    |
+| `<A-k>` | Insert | Move cursor para cima     |
+
+---
+
+### 📌 CONFIGURAÇÃO E RECARREGAMENTO
+
+| Atalho      | Modo   | Função                              |
+| ----------- | ------ | ----------------------------------- |
+| `<leader>v` | Normal | Recarrega o arquivo de configuração |
+
+---
+
+### 📌 ABREVIAÇÕES NO INSERT
+
+| Digite | Expande para |
+| ------ | ------------ |
+| `a.`   | ª            |
+| `o.`   | º            |
+| `no.`  | nº           |
+| `No.`  | Nº           |
+
+---
+
+### 📌 RESUMO DE TECLAS ESPECIAIS
+
+| Tecla        | Descrição     |
+| ------------ | ------------- |
+| `<leader>`   | Espaço        |
+| `<C-...>`    | Ctrl + tecla  |
+| `<S-...>`    | Shift + tecla |
+| `<A-...>`    | Alt + tecla   |
+| `<Tab>`      | Tecla Tab     |
+| `<S-Tab>`    | Shift + Tab   |
+| `<PageUp>`   | Page Up       |
+| `<PageDown>` | Page Down     |
+| `<F4>`       | Tecla F4      |
+
+---
+
+### 📌 LEGENDA DOS MODOS
+
+| Sigla        | Significado              |
+| ------------ | ------------------------ |
+| **Normal**   | Modo normal (tecla Esc)  |
+| **Insert**   | Modo de inserção         |
+| **Visual**   | Modo de seleção visual   |
+| **Command**  | Modo de linha de comando |
+| **Operator** | Modo de operador         |
+
+---
+
+📌 **Dica:** Este guia pode ser consultado rapidamente usando `:help` ou mantendo uma cópia impressa ao lado do monitor enquanto você se acostuma com os atalhos.
+
+---
+
+## Como Usar o DrawIt no Neovim
+
+O **DrawIt** é um plugin que permite desenhar diagramas ASCII diretamente no seu editor de texto, usando caracteres para formar linhas, retângulos, elipses e setas .
+
+### 🚀 Iniciando e Parando
+
+No seu arquivo `init.vim`, você já tem o atalho configurado:
+
+| Atalho      | Modo   | Função                  |
+| ----------- | ------ | ----------------------- |
+| `<leader>u` | Normal | Ativa/desativa o DrawIt |
+
+Isso equivale a executar os comandos `\di` para iniciar e `\ds` para parar .
+
+---
+
+### 🎨 Modos de Desenho
+
+Após ativar o DrawIt (`\di`), você pode usar dois modos:
+
+| Modo        | Tecla             | Função                                                                      |
+| ----------- | ----------------- | --------------------------------------------------------------------------- |
+| **Desenho** | Teclas de direção | Deixa um rastro de caracteres ao mover o cursor                             |
+| **Apagar**  | `Espaço`          | Alterna para o modo de apagar, removendo caracteres por onde o cursor passa |
+
+---
+
+### ↕️ Desenhando Linhas
+
+**Linhas retas** (use as teclas de direção):
+
+| Tecla | Direção  |
+| ----- | -------- |
+| `←`   | Esquerda |
+| `→`   | Direita  |
+| `↑`   | Cima     |
+| `↓`   | Baixo    |
+
+**Linhas diagonais** :
+
+| Tecla      | Direção                |
+| ---------- | ---------------------- |
+| `PageUp`   | Cima + Direita (`/`)   |
+| `PageDown` | Baixo + Direita (`\`)  |
+| `Home`     | Cima + Esquerda (`\`)  |
+| `End`      | Baixo + Esquerda (`/`) |
+
+---
+
+### ➡️ Desenhando Setas
+
+| Atalho | Resultado                 |
+| ------ | ------------------------- |
+| `>`    | Seta para direita (`->`)  |
+| `<`    | Seta para esquerda (`<-`) |
+| `^`    | Seta para cima (`^`)      |
+| `v`    | Seta para baixo (`v`)     |
+| `\>`   | Seta grossa para direita  |
+| `\<`   | Seta grossa para esquerda |
+| `\^`   | Seta grossa para cima     |
+| `\v`   | Seta grossa para baixo    |
+
+---
+
+### 📦 Desenhando Formas no Modo Visual
+
+Selecione uma área com `Ctrl-V` (bloco visual) e use:
+
+| Atalho | Função                                                      |
+| ------ | ----------------------------------------------------------- |
+| `\b`   | Desenha um **retângulo** ao redor da seleção                |
+| `\e`   | Desenha uma **elipse** dentro da seleção                    |
+| `\a`   | Desenha uma linha com **seta** entre os cantos da seleção   |
+| `\l`   | Desenha uma **linha** entre os cantos da seleção (sem seta) |
+| `\f`   | **Preenche** a figura com um caractere                      |
+
+---
+
+### ✏️ Dicas e Truques
+
+- **Movendo blocos**: Selecione uma área com o mouse, depois segure `Ctrl` e arraste para mover o bloco 
+- **Apagando áreas grandes**: Selecione a área no modo visual e execute `r` (substitui por espaços) 
+- **Espaços necessários**: Para usar `\b`, `\e`, `\a` etc., a área deve conter espaços em branco 
+- **Evite o modo Insert**: Durante o desenho, use o modo de substituição (`R`) para não estragar o diagrama 
+
+---
+
+### 🎯 No Seu `init.vim`
+
+O comando já está configurado:
+
+```vim
+nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 ```
 
-#### Movendo-se no editor
+Basta pressionar `<leader>u` (Espaço + U) para ativar/desativar o DrawIt. O plugin alterna entre os estados "start" e "stop" .
 
-Anteriormente, eu disse que você pode usar as teclas de seta para se mover, mas não é o mais eficiente quando você usa o Neovim, as teclas de seta estão longe de sua linha inicial. Você pode usar as seguintes teclas para mover dentro do *modo normal*.
+---
 
-**`h`** - esquerda  
-**`j`** - a baixo  
-**`k`** - a cima  
-**`l`** - direita  
-
-![Teclas movimentação](img/hjkl.png)
-
-Você também pode usar **`w`** e **`b`** para se mover entre as palavras.
-
-No início será difícil não fazer isso com as setas do teclado, tente praticar até se sentir confortável, sem perder a cabeça nem as teclas.
-
-### Gravar em um arquivo
-
-Para começar a escrever, você deve entrar no modo de inserção com **`i`**. Observe como a forma do cursor mudou, insira algum texto e, quando terminar, pressione **`Esc`** para retornar ao modo normal.
-
-- #### Salvar
-
-No modo normal, pressione **`:`**, digite **`w`** e pressione enter.
-
-- #### Sair
-
-No modo normal, pressione **`:`** e, em seguida, digite **`q`** e pressione **`enter`** (para sair sem salvar as alterações, você deve digitar **`q!`**).
-
-- #### Selecionar texto
-
-Pressione **`v`** para entrar no modo visual, mova o cursor para fazer a seleção. Pressione **`Esc`** para retornar ao modo normal.
-
-- #### Copiar e colar
-
-Selecione um texto usando o modo visual e pressione **`y`**. Pressione **`p`** para colar depois do cursor ou **`P`** para colar antes do cursor.
-
-Para copiar uma palavra, no modo normal, pressione **`yiw`** ou, para copiar a linha atual, pressione **`yy`**.
-
-- #### Recortar
-
-Selecione um texto usando o modo visual e pressione **`d`**. Para recortar uma palavra, no modo normal pressione **`diw`** ou para recortar a linha atual pressione **`dd`**.
-
-Para colar o texto recortado, pressione **`p`**.
-
-- #### Copiar e colar da área de transferência
-
-Se você tentou colar texto fora do Neovim, ou colar algo que copiou para a área de transferência, pode ter percebido que não funciona. Para usar a área de transferência, você deve copiar usando **`"+y`**, e colar da área de transferência **`"+p`**.
-
-- #### Desfazer e refazer
-
-Para desfazer, no modo normal, pressione **`u`**; e para refazer **`Ctrl + r`**.
-
-> **Aviso:** Você pode ficar tentado a usar **`Ctrl + z`**, se o fez e seu editor fechado, não se preocupe, apenas digite **`fg`** no terminal e você terá seu editor de volta.
-
-- #### Auto completar
-
-No modo de inserção, digite o início de uma palavra e pressione **`Crtl + p`** ou **`Ctrl + n`** para repetir as sugestões.
-
-### Modo de linha de comando
-
-O Neovim tem outro modo, o modo de linha de comando. Ele aparece abaixo do editor onde você pode inserir um comando, após executá-lo (com Enter) o editor retorna ao modo normal.
-
-Parece familiar, não é? Você já o usou para salvar e sair! Para entrar neste modo, digite **`:`** do modo normal.
-
-A partir de agora, quando você vir caracteres precedidos por **`:`** você saberá que quero dizer que você executa um comando no modo de linha de comando. Por exemplo, para salvar **`:w`**.
-
-> **Obs.1:** Enquanto estiver no modo de linha de comando, você pode usar **`Tab`** para autocompletar.
-
-> **Obs.2:** O comando **`:w`** é a abreviação de **`:write`**, teste-o!
-
-### Trabalhar com vários arquivos
-
-Para trabalhar com vários arquivos costumamos usar abas, o Neovim tem abas, mas não são exatamente as mesmas que nos outros editores, em vez disso usaremos buffers.
-
-Podemos abrir vários arquivos do terminal com:
-
-```bash
-nvim archivo-um.txt archivo-dois.txt
-```
-
-Ou se você já está com o Neovim aberto, pode usar o comando **`:e <arquivo>`** , por exemplo **`:e arquivo-um.txt`** .
-
-Pode parecer que não há nenhum outro arquivo aberto, mas há. Você pode listar todos os buffers com **`:ls`**; para mudar para o próximo buffer use **`:bnext`** e para o anterior **`:bprevious`**; para fechar o buffer atual **`:bdelete`**.
-
-> **Obs.:** Os comandos **`:bn`** e **`:bp`** são abreviações de **`:bnext`** e **`:bprevious`**.
-
-### Buscar
-
-No modo normal, pressione **`/`**, digite a palavra a ser pesquisada e pressione **`Enter`**. Mova para a próxima correspondência ou anterior com **`n`** e **`N`**.
-
-### Obtendo ajuda
-
-Para obter ajuda, você pode usar o comando **`:help [tópico]`**, por exemplo **`:help :w`** para obter ajuda sobre o comando **`:w`**.
-
-> **Obs.:** O comando **`:help`** pode ser abreviado como **`:h`**.
-
-### Aprendendo com Neovim
-
-Neovim inclui um tutorial interativo, execute o comando **`:Tutor`** para começar.
-
-### Configurando o Neovim
-
-O Neovim pode ser configurado no modo de linha de comando, teste exibindo os números da linha executando **`:set number`**. Quer ver o nome do arquivo que está editando na janela do terminal? **`:set title`**.
-
-Se você fechar o Neovim, todas as configurações serão perdidas, para mantê-las um arquivo ***init.vim*** é usado, que é carregado toda vez que o Neovim é iniciado.
-
-### init.vim
-
-> **Obs.:** Se você usar o ***Vim***, este arquivo terá a mesma função do arquivo ***.vimrc***.
-
-Este arquivo está localizado em **`~/.config/nvim/init.vim`**, se não existir, crie-o.
-
-```bash
-cd ~/.config/
-mkdir nvim
-touch nvim/init.vim
-```
-
-Abra o arquivo e adicione a linha:
-
-```bash
-set number
-```
-
-Para que as alterações tenham efeito, você deve reabrir o Neovim ou pode executar o comando **`:so ~/.config/nvim/init.vim`**.
-
-O arquivo de configuração pode ficar muito grande, então tente documentar tudo que você colocou nele (você pode adicionar comentários com "), e não copie e cole nenhuma configuração sem entendê-la, então você terá um ***init.vim*** bacana.
-
-> **Obs.:** É recomendado colocar seu ***init.vim*** no topo de um sistema de controle de versão, como o git.
-
-Abaixo você tem um ***init.vim*** com algumas configurações mínimas.
-
-```bash
-set title  " Mostra o nome do arquivo na janela do terminal
-set number  " Mostra os números das linhas
-set mouse=a  " Permite a integração do mouse (selecione o texto, mova o cursor)
-
-set nowrap  " Não divida a linha se for muito longa
-
-set cursorline  " Destacar a linha atual
-set colorcolumn=120  " Exibe a coluna de limite para 120 caracteres
-
-" Recuo de 2 espaços
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set shiftround
-set expandtab  " Insira espaços em vez de <Tab>s
-
-set hidden  " Permitir a mudança de buffers sem ter que salvá-los
-
-set ignorecase  " Ignore letras maiúsculas ao fazer uma pesquisa
-set smartcase  " Não ignore as letras maiúsculas se a palavra de pesquisa contiver letras maiúsculas
-
-set spelllang=en,es  " Corrigir as palavras usando dicionários em inglês e espanhol
-
-set termguicolors  " Ativar true colors no terminal
-set background=light  " Fundo do tema: claro ou escuro
-colorscheme zellner  " Nome do tema
-```
-
-> **Obs.1:** Para que as alterações do set termguicolors tenham efeito, você deve reabrir o Neovim.
-
-> **Obs.2:** Para ver todos os temas digite **`:colorscheme`** dê um espaço e use a tecla **`Tab`** para iterar sobre eles.
-
-### Mapeamentos
-
-Vários comandos foram usados para interagir com o Neovim, mas ter que digitá-los a cada vez para alterar os buffers ou salvar um arquivo não parece ser tão produtivo.
-
-O Neovim nos permite definir nossos próprios atalhos de teclado (mapeamentos). Por exemplo, se quiséssemos usar **`Ctrl + s`** para salvar, bastaria colocar esta linha no arquivo ***init.vim***.
-
-```bash
-nnoremap <C-s> :w<CR>
-```
-
-Freqüentemente, você verá combinações que usam , vamos nos referir a ela como a chave principal, ela é reservada para atalhos definidos pelo usuário. Por padrão, a chave inicial é **`\`**, mas é um pouco difícil de digitar, então a tecla **`Espaço`** ou **`,`** é freqüentemente usada como substituta.
-
-Aqui estão alguns mapeamentos que podem ser úteis.
-
-```bash
-let g:mapleader = ' '  " Defina o espaço como tecla líder
-
-nnoremap <leader>s :w<CR>  " Guardar como <líder> + s
-
-nnoremap <leader>e :e $MYVIMRC<CR>  " Abra o arquivo init.vim com <líder> + e
-
-" Usar <líder> + y para copiar para a área de transferência
-vnoremap <leader>y "+y
-nnoremap <leader>y "+y
-
-" Usar <líder> + d para recortar para a área de transferência
-vnoremap <leader>d "+d
-nnoremap <leader>d "+d
-
-" Usar <líder> + p para colar da área de transferência
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>P "+P
-
-" Mova para o próximo buffer com <líder> + l
-nnoremap <leader>l :bnext<CR>
-
-" Mova para o buffer anterior com <líder> + j
-nnoremap <leader>j :bprevious<CR>
-
-" Fechar o buffer atual com <líder> + q
-nnoremap <leader>q :bdelete<CR>
-```
-
-
+Com um pouco de prática, você conseguirá criar diagramas ASCII rapidamente dentro do Neovim!
