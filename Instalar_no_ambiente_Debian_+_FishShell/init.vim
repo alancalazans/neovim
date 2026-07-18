@@ -570,7 +570,7 @@ EOF
 "--- Destaca a linha atual no editor ---
 "---------------------------------------
 " {{{
-	"set cursorline
+	set cursorline
 " }}}
 "----------------------------------
 "--- Esconde buffers não usados ---
