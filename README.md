@@ -1,270 +1,241 @@
-## 📋 GUIA DE ATALHOS DE TECLADO - NEOVIM
+# Guia Completo de Atalhos de Teclado - Neovim
 
-### 🔹 Tecla Líder: **Espaço** (`<leader>`)
+## 📋 Sumário
 
----
-
-### 📌 NAVEGAÇÃO E GERENCIAMENTO DE BUFFERS
-
-| Atalho      | Modo            | Função                        |
-| ----------- | --------------- | ----------------------------- |
-| `<leader>l` | Normal / Visual | Navega para o próximo buffer  |
-| `<leader>j` | Normal / Visual | Navega para o buffer anterior |
-| `<leader>q` | Normal / Visual | Fecha o buffer atual          |
-
----
-
-### 📌 GERENCIAMENTO DE ABAS
-
-| Atalho         | Modo            | Função            |
-| -------------- | --------------- | ----------------- |
-| `<C-t>`        | Insert / Normal | Abre uma nova aba |
-| `<C-PageUp>`   | Insert          | Próxima aba       |
-| `<C-PageDown>` | Insert          | Aba anterior      |
-| `<C-e>`        | Insert          | Fecha a aba atual |
+1. [Teclas Líder](#teclas-líder)
+2. [Navegação e Movimentação](#navegação-e-movimentação)
+3. [Abas e Janelas](#abas-e-janelas)
+4. [Buffers](#buffers)
+5. [Edição e Seleção](#edição-e-seleção)
+6. [Formatação e Alinhamento](#formatação-e-alinhamento)
+7. [LSP e Diagnósticos](#lsp-e-diagnósticos)
+8. [Snippets e Autocompletar](#snippets-e-autocompletar)
+9. [Gerenciamento de Arquivos](#gerenciamento-de-arquivos)
+10. [Funcionalidades Especiais](#funcionalidades-especiais)
+11. [Resumo Rápido](#resumo-rápido)
 
 ---
 
-### 📌 INDENTAÇÃO E ESPAÇAMENTO
+## 🎯 Teclas Líder
 
-| Atalho      | Modo                     | Função                                     |
-| ----------- | ------------------------ | ------------------------------------------ |
-| `<Tab>`     | Normal / Visual          | Indenta o bloco/linha atual                |
-| `<S-Tab>`   | Normal / Insert / Visual | Desindenta o bloco/linha atual             |
-| `<leader>g` | Normal                   | Alterna tamanho do tab entre 2 e 4 espaços |
-| `<leader>t` | Normal                   | Alterna entre usar tab ou espaços          |
-| `<leader>[` | Normal                   | Converte tabs em espaços                   |
-| `<leader>]` | Normal                   | Converte espaços duplos em tabs            |
+| Atalho    | Modo  | Função      | Descrição                                    |
+| --------- | ----- | ----------- | -------------------------------------------- |
+| `<space>` | Todos | Tecla Líder | Tecla principal para comandos personalizados |
 
----
+### Comandos com `<leader>`:
 
-### 📌 MANIPULAÇÃO DE TEXTO
-
-| Atalho       | Modo                     | Função                               |
-| ------------ | ------------------------ | ------------------------------------ |
-| `<C-s>`      | Normal / Visual / Insert | Salva o arquivo                      |
-| `<C-z>`      | Normal / Visual / Insert | Desfaz (Undo)                        |
-| `<C-y>`      | Normal / Visual / Insert | Refaz (Redo)                         |
-| `<C-d>`      | Visual                   | Duplica o bloco de texto selecionado |
-| `<C-S-Up>`   | Visual                   | Move bloco selecionado para cima     |
-| `<C-S-Down>` | Visual                   | Move bloco selecionado para baixo    |
-| `<C-X>`      | Insert / Visual / Normal | Corta o texto selecionado            |
-| `<C-C>`      | Insert / Visual          | Copia o texto selecionado            |
-| `<C-V>`      | Insert / Visual / Normal | Cola da área de transferência        |
-| `<C-A>`      | Normal / Insert / Visual | Seleciona todo o texto               |
-
----
-
-### 📌 FORMATAÇÃO E ALINHAMENTO
-
-| Atalho      | Modo   | Função                                    |
-| ----------- | ------ | ----------------------------------------- |
-| `<leader>,` | Normal | Alinha texto à esquerda                   |
-| `<leader>.` | Normal | Alinha texto à direita                    |
-| `<leader>;` | Normal | Centraliza o texto                        |
-| `<leader>m` | Normal | Remove ^M (quebras de linha Windows)      |
-| `<leader>s` | Normal | Remove espaços no final das linhas        |
-| `<leader>i` | Normal | Alterna exibição de caracteres invisíveis |
+| Atalho      | Função                    | Descrição                                           |
+| ----------- | ------------------------- | --------------------------------------------------- |
+| `<leader>g` | `ToggleTab()`             | Alterna entre tabulação 2 e 4 espaços               |
+| `<leader>t` | `ToggleStatusTab()`       | Alterna entre tabs e espaços                        |
+| `<leader>i` | `set list!`               | Mostra/oculta caracteres invisíveis (tabs, espaços) |
+| `<leader>e` | `Emmet`                   | Expande abreviações Emmet                           |
+| `<leader>m` | `%s/\r//g`                | Remove caracteres ^M (quebra de linha Windows)      |
+| `<leader>s` | `%s/\s\+$//g`             | Remove espaços redundantes no fim das linhas        |
+| `<leader>b` | `let @/=""`               | Limpa o buffer de buscas (highlight)                |
+| `<leader>v` | `source $MYVIMRC`         | Recarrega a configuração do Neovim                  |
+| `<leader>[` | `set expandtab` + `retab` | Converte tabs para espaços                          |
+| `<leader>]` | `%s/\s\{2,}/\t/g`         | Converte espaços para tabs                          |
+| `<leader>,` | `:left`                   | Alinha texto à esquerda                             |
+| `<leader>.` | `:right`                  | Alinha texto à direita                              |
+| `<leader>;` | `:center`                 | Centraliza texto                                    |
+| `<leader>/` | `ToggleColorscheme()`     | Alterna entre temas de cores                        |
+| `<leader>u` | `ToggleDrawIt()`          | Ativa/desativa o modo DrawIt                        |
+| `<leader>l` | `:bnext`                  | Próximo buffer                                      |
+| `<leader>j` | `:bprevious`              | Buffer anterior                                     |
+| `<leader>q` | `:bdelete`                | Fecha o buffer atual                                |
 
 ---
 
-### 📌 BUSCA E LIMPEZA
+## 🧭 Navegação e Movimentação
 
-| Atalho      | Modo   | Função                  |
-| ----------- | ------ | ----------------------- |
-| `<leader>b` | Normal | Limpa o buffer de busca |
-
----
-
-### 📌 PLUGINS
-
-| Atalho      | Modo   | Função                  | Plugin        |
-| ----------- | ------ | ----------------------- | ------------- |
-| `<leader>n` | Normal | Abre/fecha o NERDTree   | NERDTree      |
-| `<leader>e` | Normal | Dispara o Emmet         | Emmet-vim     |
-| `<C-j>`     | Insert | Próximo snippet         | SnipMate      |
-| `<leader>u` | Normal | Ativa/desativa o DrawIt | DrawIt **∗¹** |
-
-> **∗¹ :** Abaixo há um um guia chamado ***Como Usar o DrawIt no Neovim***
+| Atalho         | Modo          | Função                     | Descrição                                  |
+| -------------- | ------------- | -------------------------- | ------------------------------------------ |
+| `<Alt-h>`      | Insert        | `<left>`                   | Move cursor uma posição para esquerda      |
+| `<Alt-l>`      | Insert        | `<right>`                  | Move cursor uma posição para direita       |
+| `<Alt-j>`      | Insert        | `<down>`                   | Move cursor uma linha para baixo           |
+| `<Alt-k>`      | Insert        | `<up>`                     | Move cursor uma linha para cima            |
+| `<C-PageUp>`   | Insert        | `:tabnext`                 | Próxima aba                                |
+| `<C-PageDown>` | Insert        | `:tabprevious`             | Aba anterior                               |
+| `<Tab>`        | Normal/Visual | `>>`                       | Indenta bloco selecionado                  |
+| `<S-Tab>`      | Normal/Visual | `<<`                       | Desindenta bloco selecionado               |
+| `<S-Tab>`      | Insert        | `<c-o><lt><lt>`            | Desindenta no modo insert                  |
+| `K`            | Normal        | `vim.lsp.buf.hover`        | Mostra informações do símbolo sob o cursor |
+| `[d`           | Normal        | `vim.diagnostic.goto_prev` | Vai para diagnóstico anterior              |
+| `]d`           | Normal        | `vim.diagnostic.goto_next` | Vai para próximo diagnóstico               |
 
 ---
 
-### 📌 APARÊNCIA E TEMAS
+## 📑 Abas e Janelas
 
-| Atalho      | Modo   | Função                                                          |
-| ----------- | ------ | --------------------------------------------------------------- |
-| `<leader>/` | Normal | Alterna temas: molokai → spacecamp → gruvbox → gruvbox-material |
-
----
-
-### 📌 FECHAMENTO E CONTROLE
-
-| Atalho   | Modo                                 | Função                 |
-| -------- | ------------------------------------ | ---------------------- |
-| `<A-q>`  | Normal / Visual / Insert             | Fecha todas as janelas |
-| `<C-F4>` | Normal / Insert / Command / Operator | Fecha a janela atual   |
+| Atalho         | Modo          | Função                  | Descrição                       |
+| -------------- | ------------- | ----------------------- | ------------------------------- |
+| `<C-t>`        | Insert        | `<esc>:tabnew<cr>`      | Abre uma nova aba               |
+| `<C-t>`        | Normal        | `:tabnew`               | Abre uma nova aba               |
+| `<C-PageUp>`   | Insert        | `<esc>:tabnext<cr>`     | Próxima aba                     |
+| `<C-PageDown>` | Insert        | `<esc>:tabprevious<cr>` | Aba anterior                    |
+| `<C-e>`        | Insert        | `<esc>:tabclose<cr>`    | Fecha a aba atual               |
+| `<C-F4>`       | Normal/Insert | `<c-w>c`                | Fecha a janela atual            |
+| `<C-n>`        | Normal        | `:NvimTreeToggle`       | Abre/fecha a árvore de arquivos |
 
 ---
 
-### 📌 MOVIMENTAÇÃO NO INSERT
+## 📂 Buffers
 
-| Atalho  | Modo   | Função                    |
-| ------- | ------ | ------------------------- |
-| `<A-h>` | Insert | Move cursor para esquerda |
-| `<A-l>` | Insert | Move cursor para direita  |
-| `<A-j>` | Insert | Move cursor para baixo    |
-| `<A-k>` | Insert | Move cursor para cima     |
-
----
-
-### 📌 CONFIGURAÇÃO E RECARREGAMENTO
-
-| Atalho      | Modo   | Função                              |
-| ----------- | ------ | ----------------------------------- |
-| `<leader>v` | Normal | Recarrega o arquivo de configuração |
+| Atalho      | Função       | Descrição            |
+| ----------- | ------------ | -------------------- |
+| `<leader>l` | `:bnext`     | Próximo buffer       |
+| `<leader>j` | `:bprevious` | Buffer anterior      |
+| `<leader>q` | `:bdelete`   | Fecha o buffer atual |
 
 ---
 
-### 📌 ABREVIAÇÕES NO INSERT
+## ✏️ Edição e Seleção
 
-| Digite | Expande para |
-| ------ | ------------ |
-| `a.`   | ª            |
-| `o.`   | º            |
-| `no.`  | nº           |
-| `No.`  | Nº           |
+| Atalho       | Modo   | Função            | Descrição                         |
+| ------------ | ------ | ----------------- | --------------------------------- |
+| `<C-s>`      | Normal | `:update`         | Salva o arquivo                   |
+| `<C-s>`      | Visual | `<c-c>:update`    | Salva o arquivo                   |
+| `<C-s>`      | Insert | `<c-o>:update`    | Salva o arquivo                   |
+| `<C-z>`      | Normal | `u`               | Desfaz                            |
+| `<C-z>`      | Visual | `<c-c>u`          | Desfaz                            |
+| `<C-z>`      | Insert | `<c-o>u`          | Desfaz                            |
+| `<C-y>`      | Normal | `<c-r>`           | Refaz                             |
+| `<C-y>`      | Visual | `<c-c><c-r>`      | Refaz                             |
+| `<C-y>`      | Insert | `<c-o><c-r>`      | Refaz                             |
+| `<C-a>`      | Todos  | `<esc>ggvG`       | Seleciona todo o texto            |
+| `<C-c>`      | Insert | `<C-O>vgG`        | Copia (entra em modo visual)      |
+| `<C-c>`      | Visual | `"*y<Esc>i`       | Copia para clipboard do sistema   |
+| `<C-x>`      | Insert | `<C-O>vgG`        | Corta (entra em modo visual)      |
+| `<C-x>`      | Visual | `"*x<Esc>i`       | Corta para clipboard do sistema   |
+| `<C-v>`      | Insert | `x<Esc>\paste\`   | Cola do clipboard do sistema      |
+| `<C-v>`      | Normal | `"\=@*"`          | Cola do clipboard do sistema      |
+| `<C-v>`      | Visual | `"-cx<Esc>\paste` | Cola substituindo seleção         |
+| `<BS>`       | Visual | `d`               | Apaga a seleção                   |
+| `<C-s-up>`   | Visual | `MoveUp()`        | Move bloco selecionado para cima  |
+| `<C-s-down>` | Visual | `MoveDown()`      | Move bloco selecionado para baixo |
+| `<C-d>`      | Visual | `Duplicate()`     | Duplica bloco selecionado         |
+| `<Alt-q>`    | Normal | `:qall`           | Fecha o editor                    |
+| `<Alt-q>`    | Visual | `<c-c>:q`         | Fecha o editor                    |
 
----
+### Comandos de Folding
 
-### 📌 RESUMO DE TECLAS ESPECIAIS
-
-| Tecla        | Descrição     |
-| ------------ | ------------- |
-| `<leader>`   | Espaço        |
-| `<C-...>`    | Ctrl + tecla  |
-| `<S-...>`    | Shift + tecla |
-| `<A-...>`    | Alt + tecla   |
-| `<Tab>`      | Tecla Tab     |
-| `<S-Tab>`    | Shift + Tab   |
-| `<PageUp>`   | Page Up       |
-| `<PageDown>` | Page Down     |
-| `<F4>`       | Tecla F4      |
-
----
-
-### 📌 LEGENDA DOS MODOS
-
-| Sigla        | Significado              |
-| ------------ | ------------------------ |
-| **Normal**   | Modo normal (tecla Esc)  |
-| **Insert**   | Modo de inserção         |
-| **Visual**   | Modo de seleção visual   |
-| **Command**  | Modo de linha de comando |
-| **Operator** | Modo de operador         |
-
----
-
-📌 **Dica:** Este guia pode ser consultado rapidamente usando `:help` ou mantendo uma cópia impressa ao lado do monitor enquanto você se acostuma com os atalhos.
+| Atalho | Função | Descrição                       |
+| ------ | ------ | ------------------------------- |
+| `zf`   | `zf`   | Cria um fold (dobra)            |
+| `zo`   | `zo`   | Abre um fold                    |
+| `zc`   | `zc`   | Fecha um fold                   |
+| `zR`   | `zR`   | Abre todos os folds             |
+| `zM`   | `zM`   | Fecha todos os folds            |
+| `za`   | `za`   | Alterna entre abrir/fechar fold |
 
 ---
 
-## Como Usar o DrawIt no Neovim
+## 🎨 Formatação e Alinhamento
 
-O **DrawIt** é um plugin que permite desenhar diagramas ASCII diretamente no seu editor de texto, usando caracteres para formar linhas, retângulos, elipses e setas .
-
-### 🚀 Iniciando e Parando
-
-No seu arquivo `init.vim`, você já tem o atalho configurado:
-
-| Atalho      | Modo   | Função                  |
-| ----------- | ------ | ----------------------- |
-| `<leader>u` | Normal | Ativa/desativa o DrawIt |
-
-Isso equivale a executar os comandos `\di` para iniciar e `\ds` para parar .
+| Atalho      | Função    | Descrição               |
+| ----------- | --------- | ----------------------- |
+| `<leader>,` | `:left`   | Alinha texto à esquerda |
+| `<leader>.` | `:right`  | Alinha texto à direita  |
+| `<leader>;` | `:center` | Centraliza texto        |
 
 ---
 
-### 🎨 Modos de Desenho
+## 🔍 LSP e Diagnósticos
 
-Após ativar o DrawIt (`\di`), você pode usar dois modos:
-
-| Modo        | Tecla             | Função                                                                      |
-| ----------- | ----------------- | --------------------------------------------------------------------------- |
-| **Desenho** | Teclas de direção | Deixa um rastro de caracteres ao mover o cursor                             |
-| **Apagar**  | `Espaço`          | Alterna para o modo de apagar, removendo caracteres por onde o cursor passa |
-
----
-
-### ↕️ Desenhando Linhas
-
-**Linhas retas** (use as teclas de direção):
-
-| Tecla | Direção  |
-| ----- | -------- |
-| `←`   | Esquerda |
-| `→`   | Direita  |
-| `↑`   | Cima     |
-| `↓`   | Baixo    |
-
-**Linhas diagonais** :
-
-| Tecla      | Direção                |
-| ---------- | ---------------------- |
-| `PageUp`   | Cima + Direita (`/`)   |
-| `PageDown` | Baixo + Direita (`\`)  |
-| `Home`     | Cima + Esquerda (`\`)  |
-| `End`      | Baixo + Esquerda (`/`) |
+| Atalho       | Função                       | Descrição                                  |
+| ------------ | ---------------------------- | ------------------------------------------ |
+| `K`          | `vim.lsp.buf.hover`          | Mostra informações do símbolo sob o cursor |
+| `gd`         | `vim.lsp.buf.definition`     | Vai para definição do símbolo              |
+| `gi`         | `vim.lsp.buf.implementation` | Vai para implementação                     |
+| `gr`         | `vim.lsp.buf.references`     | Mostra referências do símbolo              |
+| `<leader>rn` | `vim.lsp.buf.rename`         | Renomeia símbolo                           |
+| `<leader>ca` | `vim.lsp.buf.code_action`    | Ações de código (refatoração)              |
+| `[d`         | `vim.diagnostic.goto_prev`   | Vai para diagnóstico anterior              |
+| `]d`         | `vim.diagnostic.goto_next`   | Vai para próximo diagnóstico               |
+| `<leader>e`  | `vim.diagnostic.open_float`  | Abre diagnóstico em janela flutuante       |
 
 ---
 
-### ➡️ Desenhando Setas
+## 📝 Snippets e Autocompletar
 
-| Atalho | Resultado                 |
-| ------ | ------------------------- |
-| `>`    | Seta para direita (`->`)  |
-| `<`    | Seta para esquerda (`<-`) |
-| `^`    | Seta para cima (`^`)      |
-| `v`    | Seta para baixo (`v`)     |
-| `\>`   | Seta grossa para direita  |
-| `\<`   | Seta grossa para esquerda |
-| `\^`   | Seta grossa para cima     |
-| `\v`   | Seta grossa para baixo    |
+| Atalho    | Modo          | Função                       | Descrição                                        |
+| --------- | ------------- | ---------------------------- | ------------------------------------------------ |
+| `<Tab>`   | Insert        | `select_next_item()`         | Próxima sugestão de autocompletar                |
+| `<S-Tab>` | Insert        | `select_prev_item()`         | Sugestão anterior                                |
+| `<CR>`    | Insert        | `confirm({ select = true })` | Confirma seleção de autocompletar                |
+| `<C-l>`   | Insert/Select | `expand_or_jump()`           | Expande snippet ou pula para próximo placeholder |
+| `<C-h>`   | Insert/Select | `jump(-1)`                   | Volta para placeholder anterior                  |
 
 ---
 
-### 📦 Desenhando Formas no Modo Visual
+## 📁 Gerenciamento de Arquivos
 
-Selecione uma área com `Ctrl-V` (bloco visual) e use:
-
-| Atalho | Função                                                      |
-| ------ | ----------------------------------------------------------- |
-| `\b`   | Desenha um **retângulo** ao redor da seleção                |
-| `\e`   | Desenha uma **elipse** dentro da seleção                    |
-| `\a`   | Desenha uma linha com **seta** entre os cantos da seleção   |
-| `\l`   | Desenha uma **linha** entre os cantos da seleção (sem seta) |
-| `\f`   | **Preenche** a figura com um caractere                      |
+| Atalho      | Função            | Descrição                       |
+| ----------- | ----------------- | ------------------------------- |
+| `<C-n>`     | `:NvimTreeToggle` | Abre/fecha a árvore de arquivos |
+| `<leader>v` | `source $MYVIMRC` | Recarrega a configuração        |
+| `<C-s>`     | `:update`         | Salva o arquivo atual           |
 
 ---
 
-### ✏️ Dicas e Truques
+## 🛠️ Funcionalidades Especiais
 
-- **Movendo blocos**: Selecione uma área com o mouse, depois segure `Ctrl` e arraste para mover o bloco 
-- **Apagando áreas grandes**: Selecione a área no modo visual e execute `r` (substitui por espaços) 
-- **Espaços necessários**: Para usar `\b`, `\e`, `\a` etc., a área deve conter espaços em branco 
-- **Evite o modo Insert**: Durante o desenho, use o modo de substituição (`R`) para não estragar o diagrama 
+| Atalho      | Função                | Descrição                           |
+| ----------- | --------------------- | ----------------------------------- |
+| `<leader>e` | `Emmet`               | Expande abreviações Emmet           |
+| `<leader>u` | `ToggleDrawIt()`      | Ativa/desativa modo de desenho      |
+| `<leader>g` | `ToggleTab()`         | Alterna tabulação 2 ↔ 4 espaços     |
+| `<leader>t` | `ToggleStatusTab()`   | Alterna tabs ↔ espaços              |
+| `<leader>i` | `set list!`           | Mostra/oculta caracteres invisíveis |
+| `<leader>m` | `%s/\r//g`            | Remove ^M (Windows)                 |
+| `<leader>s` | `%s/\s\+$//g`         | Remove espaços no fim das linhas    |
+| `<leader>b` | `let @/=""`           | Limpa highlight de busca            |
+| `<leader>/` | `ToggleColorscheme()` | Alterna temas de cores              |
+
+### Comandos de Texto
+
+| Atalho      | Função                    | Descrição                  |
+| ----------- | ------------------------- | -------------------------- |
+| `<leader>[` | `set expandtab` + `retab` | Converte tabs para espaços |
+| `<leader>]` | `%s/\s\{2,}/\t/g`         | Converte espaços para tabs |
 
 ---
 
-### 🎯 No Seu `init.vim`
+## 🎯 Resumo Rápido
 
-O comando já está configurado:
+### Teclas mais usadas:
 
-```vim
-nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
-```
+- **`<space>`** - Tecla líder para todos os comandos personalizados
+- **`<C-s>`** - Salvar
+- **`<C-z>`** - Desfazer
+- **`<C-y>`** - Refazer
+- **`<C-n>`** - Abrir árvore de arquivos
+- **`<C-t>`** - Nova aba
+- **`<C-PageUp/PageDown>`** - Navegar entre abas
+- **`gd`** - Ir para definição
+- **`K`** - Ver informações do símbolo
 
-Basta pressionar `<leader>u` (Espaço + U) para ativar/desativar o DrawIt. O plugin alterna entre os estados "start" e "stop" .
+### Plugins ativados:
+
+- **Lualine** - Statusline moderna
+- **Indent Blankline** - Guias de indentação
+- **nvim-tree** - Navegador de arquivos
+- **nvim-cmp** - Autocompletar
+- **LuaSnip** - Snippets
+- **Mason + LSP** - Servidor de linguagem
+- **Conform** - Formatador automático
+- **Emmet** - Expansão de HTML/CSS
+- **DrawIt** - Desenho no editor
 
 ---
 
-Com um pouco de prática, você conseguirá criar diagramas ASCII rapidamente dentro do Neovim!
+## 📌 Observações
+
+1. **Clipboard**: O clipboard do sistema está habilitado (`set clipboard=unnamedplus`)
+2. **Mouse**: Suporte a mouse ativado para seleção e navegação
+3. **Numeração**: Linhas numeradas com `set nu`
+4. **Destaque**: Buscas com highlight e busca incremental (`set is hls is scs`)
+5. **Auto-indentação**: Ativada automaticamente para todos os tipos de arquivo
+6. **Backup**: Desativado (`set nobackup`, `set noswapfile`)
+7. **Encoding**: UTF-8 por padrão
