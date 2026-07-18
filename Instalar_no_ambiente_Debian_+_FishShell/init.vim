@@ -686,20 +686,44 @@ EOF
 	set lazyredraw
 	set synmaxcol=200
 " }}}
-"----------------------------------------------------
-"--- Função para trocar o tema de cores           ---
-"----------------------------------------------------
+"------------------------------------------
+"--- Função para trocar o tema de cores ---
+"------------------------------------------
 " {{{
-	silent! colorscheme noctis
+	let s:colorscheme_file = stdpath('data') . '\nvim-colorscheme.txt'
+	if filereadable(s:colorscheme_file)
+		let s:last_scheme = readfile(s:colorscheme_file)[0]
+		execute 'silent! colorscheme ' . s:last_scheme
+	else
+		silent! colorscheme noctis
+	endif
+
+	function! PersistColorscheme()
+		call writefile([g:colors_name], s:colorscheme_file)
+	endfunction
+
 	function! ToggleColorscheme()
 		if g:colors_name == 'noctis'
+			colorscheme noctis_azureus
+		elseif g:colors_name == 'noctis_azureus'
+			colorscheme noctis_bordo
+		elseif g:colors_name == 'noctis_bordo'
 			colorscheme noctis_minimus
 		elseif g:colors_name == 'noctis_minimus'
+			colorscheme noctis_uva
+		elseif g:colors_name == 'noctis_uva'
+			colorscheme noctis_viola
+		elseif g:colors_name == 'noctis_viola'
 			colorscheme noctis_lux
 		elseif g:colors_name == 'noctis_lux'
+			colorscheme noctis_lilac
+		elseif g:colors_name == 'noctis_lilac'
+			colorscheme noctis_hibernus
+		elseif g:colors_name == 'noctis_hibernus'
 			colorscheme noctis
 		endif
 		hi LineNr guifg=#ffffff ctermfg=lightCyan
+		call PersistColorscheme()
 	endfunction
 	nmap <silent><leader>/ :call ToggleColorscheme()<cr>:echo g:colors_name<cr>
 " }}}
