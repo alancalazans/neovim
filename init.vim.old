@@ -24,80 +24,49 @@
 "--- Suporte a cores ---
 "-----------------------
 " {{{
+	" NeoVim já suporta termguicolors nativamente
 	set termguicolors
-	set background=dark
 " }}}
 "-------------------------------------
 "--- Suporte ao itálico verdadeiro ---
 "-------------------------------------
 " {{{
-	set noautochdir
-	set nostartofline
-	set autoread
-	set ai
-	set ruler
-	set showmatch
-	set updatetime=300
-	set scrolloff=4
+	" NeoVim não precisa de t_ZH/t_ZR, o suporte a itálico
+	" é nativo via termguicolors e emuladores modernos.
+	set noautochdir " Definir diretorio atual automaticamente
+	set nostartofline " Não resetar o cursor para o inicio da linha
+	set autoread " Ler arquivo automaticamente caso ele for modificado externamente
+	set ai " Ao criar nova linha, usa indentação da linha anterior
+	" set nocompatible - Removido: NeoVim é sempre 'nocompatible'
+	set ruler " show the cursor position all the time
+	set showmatch " Faz o highlight do parênteses, colechetes ou chave correspondente
 " }}}
 "-----------------------------------------
-"---             LUALINE               ---
-"---   Statusline moderno (lualine)    ---
+"---            LIGTHLINE              ---
+"--- Configuration for landscape Theme ---
 "-----------------------------------------
 " {{{
-	set laststatus=2
-	set noshowmode
-	set noruler
-	set showtabline=2
-	set fillchars+=eob:\ ,vert:│
-
-	lua << EOF
-	vim.api.nvim_create_autocmd("VimEnter", {
-		once = true,
-		callback = function()
-			local ok, lualine = pcall(require, "lualine")
-			if ok then
-				lualine.setup {
-					options = {
-						theme = "powerline",
-						icons_enabled = true,
-						component_separators = { left = "", right = "" },
-						section_separators  = { left = "", right = "" },
-					},
-					sections = {
-						lualine_a = { "mode" },
-						lualine_b = { "branch", "diff" },
-						lualine_c = { "filename" },
-						lualine_x = { "diagnostics", "filetype" },
-						lualine_y = { "progress" },
-						lualine_z = { "location" },
-					},
-				}
-			end
-		end,
-	})
-EOF
-" }}}
-"---------------------------------
-"--- Indent Blankline (guias)  ---
-"---------------------------------
-" {{{
-	lua << EOF
-	vim.api.nvim_create_autocmd("VimEnter", {
-		once = true,
-		callback = function()
-			local ok, ibl = pcall(require, "ibl")
-			if ok then
-				ibl.setup { scope = { enabled = false } }
-			end
-		end,
-	})
-EOF
+	let g:lightline = {
+	\   'active': {
+	\     'left': [ [ 'mode', 'paste' ],
+	\             [ 'readonly', 'filename', 'modified', ] ],
+	\     'right': [ [ 'lineinfo' ],
+	\              [ 'percent' ],
+	\              [ 'tagbar', 'fileformat', 'fileencoding', 'filetype'] ],
+	\   },
+	\   'separator': { 'left': '【', 'right': '】' },
+	\   'component': {
+	\     'lineinfo': '%l\%L [%p%%], %c, %n',
+	\     'readonly': '%{&readonly?"\ue0a2":""}',
+	\   }
+	\ }
 " }}}
 "-------------------------------------------------------
 "--- Mudar cor da barra de status dependendo do modo ---
 "-------------------------------------------------------
 " {{{
+	" Ao entrar em modo insert ele muda a cor da barra de status
+	" altera a cor da linha de status dependendo do modo
 	au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=none
 	au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 " }}}
@@ -117,6 +86,7 @@ EOF
 "--- Encoding ---
 "----------------
 " {{{
+	" NeoVim já usa UTF-8 por padrão, mas não faz mal declarar
 	set encoding=utf-8
 	set fileencoding=utf-8
 " }}}
@@ -124,6 +94,8 @@ EOF
 "--- Configuração de fonte ---
 "-----------------------------
 " {{{
+	" NeoVim em terminal não usa guifont (a fonte é do emulador de terminal).
+	" Se usar um frontend GUI como Neovide, descomente e ajuste:
 	"set guifont=MonoLisa\ Medium:h12
 " }}}
 "---------------------------------
@@ -187,7 +159,9 @@ EOF
 "--- https://github.com/terryma/vim-multiple-cursors#installation ---
 "--------------------------------------------------------------------
 " {{{
+	" As ligações de teclas, desative-as e reatribua-as da maneira que desejar:
 	"let g:multi_cursor_use_default_mapping=0
+	" Default mapping
 	"let g:multi_cursor_start_word_key      = '<C-n>'
 	"let g:multi_cursor_select_all_word_key = '<A-n>'
 	"let g:multi_cursor_start_key           = 'g<C-n>'
@@ -196,6 +170,22 @@ EOF
 	"let g:multi_cursor_prev_key            = '<C-p>'
 	"let g:multi_cursor_skip_key            = '<C-x>'
 	"let g:multi_cursor_quit_key            = '<Esc>'
+" }}}
+"---------------------------------
+"--- Opções da linha de status ---
+"---------------------------------
+" {{{
+	" [1][+][RO] ~/.vimrc [vim] [utf-8] 34, 0x22 0-15 13%"
+	set laststatus=2 " Quando exibir a linha de status: 2=always
+	set statusline= " Limpa a linha de status
+	set statusline+=[%n] " Número do buffer atual
+	set statusline+=%m%r\ " [+] Quando o arquivo for modificado, [RO] para apenas leitura
+	set statusline+=%f\ " Nome do arquivo
+	set statusline+=[%{strlen(&ft)?&ft:'none'}] " Tipo do arquivo
+	set statusline+=[%{strlen(&fenc)?&fenc:&enc}] " Codificação
+	set statusline+=%= " Alinha tudo a seguir à direita
+	set statusline+=%b,0x%-8B\ " ASCII e número hexadecimal do caractere sob o cursor
+	set statusline+=%-4.(%l-%c%)\ %<%P " Linha-coluna do cursor e percentual do arquivo
 " }}}
 "------------------------------------------------
 "--- Autocompletar html, css, javascript, php ---
@@ -221,10 +211,11 @@ EOF
 	au FileType php set omnifunc=phpcomplete#CompletePHP
 	au FileType c set omnifunc=ccomplete#Complete
 	au FileType zig set omnifunc=zigcomplete#Complete
+	" adiciona omnifunc para demais formatos
 	if has("autocmd") && exists("+omnifunc")
 		autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
 	endif
-	setlocal sm
+	setlocal sm " Destaca Abertura e fechamento {} [] ()
 " }}}
 "------------------------------------------------
 "--- Definindo sintaxe para algumas extenções ---
@@ -240,14 +231,27 @@ EOF
 	au BufRead,BufNewFile *.ex setf erlang
 	au BufRead,BufNewFile *.zig setf zig
 	au BufRead,BufNewFile *.cob,*.cbl,*.cpy setf cobol
-	au BufRead,BufNewFile *.config setfiletype xml
+" }}}
+"----------------------------------------------------------
+"--- Opções de GUI removidas (guioptions não existe     ---
+"--- no NeoVim terminal). Se usar frontend GUI como     ---
+"--- Neovide, configure conforme a documentação dele.   ---
+"----------------------------------------------------------
+"----------------------------------------------------------------------------
+"--- Essa opção faz com que o <Backspace> se mova e delete nesses locais: ---
+"--- indent - permite passar sobre autoindentação.                        ---
+"--- eol - permite passar sobre o line-break, juntando duas linhas.       ---
+"--- start - permite passar sobre o ponto de inserção.                    ---
+"----------------------------------------------------------------------------
+" {{{
+	set backspace=indent,eol,start
 " }}}
 "-----------------------------------------------
 "--- Numeração de linhas e busca de palavras ---
 "-----------------------------------------------
 " {{{
-	set nu
-	set is hls is scs
+	set nu "linhas numeradas
+	set is hls is scs "para busca
 " }}}
 "----------------------------------
 "--- Ativa coloração de sintaxe ---
@@ -259,20 +263,20 @@ EOF
 "--- Backups ---
 "---------------
 " {{{
-	set nobackup
-	set noswapfile
-	set nowritebackup
+	set nobackup "desabilita os bkps
+	set noswapfile "evita arquivos temporarios
+	set nowritebackup "evita arquivos tmp que começam com ~ ou termina com .swp
 " }}}
 "------------------------------------
 "--- Identação e quebra de linhas ---
 "------------------------------------
 " {{{
-	set linebreak
-	set ci
-	set tabstop=2
-	set shiftwidth=2
-	set softtabstop=2
-	set noexpandtab
+	set linebreak " Quebra a linha sem quebrar a palavra
+	set ci "recuo
+	set tabstop=2 " tab = 2 brancos
+	set shiftwidth=2 " Quando o autoindent faz um tab, ele é do tamanho de 2
+	set softtabstop=2 " Tecla Backspace volta 2 espaços quando estiver numa identação
+	set noexpandtab " cria tabs no lugar de espaços
 	let g:status_tab = 'tab'
 	function! ToggleStatusTab()
 		if g:status_tab=='tab'
@@ -481,6 +485,7 @@ EOF
 "--------------------------------------------------
 "--- Movimentação de bloco de texto selecionado ---
 "--------------------------------------------------
+" Move bloco de texto selecionado pra cima
 " {{{
 	function! MoveUp()
 		let end=line("'>")
@@ -542,6 +547,12 @@ EOF
 "--------------------------------------------
 " {{{
 	vmap <c-d> :<c-u>call Duplicate()<cr>
+" }}}
+"------------------------------------------
+"--- Fechamento automático de tags HTML ---
+"------------------------------------------
+" {{{
+	"imap ><tab>> <esc>mt?<\w<cr>:let @/=""<cr>lyiw`ta</><esc>P`tli
 " }}}
 "-------------------
 "--- Abreviações ---
@@ -645,59 +656,97 @@ EOF
 "--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
 "-------------------------------------------------------
 " {{{
-	let s:plug_url  = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	let s:plug_dir  = stdpath('data') . '\site\autoload'
-	let s:plug_path = s:plug_dir . '\plug.vim'
-	if empty(glob(s:plug_path))
-		call mkdir(s:plug_dir, 'p')
-		execute 'silent !powershell -NoProfile -Command "iwr -useb ' . s:plug_url . ' -OutFile ''' . s:plug_path . '''"'
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
+	" Instale o vim-plug para NeoVim:
+	" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+	" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	" Mapeamentos do auto-pairs
+	" Isso evita que ele interfira na digitação normal
+" }}}
+"-------------------------------------------------------
+"--- Desativando mapeamentos do auto-pairs evitando  ---
+"--- a interferência na digitação normal             ---
+"-------------------------------------------------------
+" {{{
+	let g:AutoPairsMapSpace = 0 " Mapeamento do SPACE
+	let g:AutoPairsMapBS = 0    " Mapeamento do BACKSPACE
+	let g:AutoPairsMapCR = 0    " Mapeamento do ENTER
+" }}}
+"-----------
+"--- ALE ---
+"-----------
+" Desabilitando recursos {{{
+	let g:ale_completion_enabled = 0
+	let g:ale_set_balloons = 0"
 " }}}
 "---------------
 "--- PLUGINS ---
 "---------------
 " {{{
-	call plug#begin(stdpath('data') . '\plugged')
-		Plug 'sheerun/vim-polyglot'
-		Plug 'nvim-lualine/lualine.nvim'
-		Plug 'nvim-tree/nvim-web-devicons'
-		Plug 'lukas-reineke/indent-blankline.nvim'
-		Plug 'talha-akram/noctis.nvim'
+	call plug#begin('~/AppData/Local/nvim/plugged')
+		"------------------
+		"--- Appearance ---
+		"------------------
+		" {{{
+			" Temas {{{
+		    Plug 'tomasr/molokai'
+		    Plug 'jaredgorski/spacecamp'
+		    Plug 'morhetz/gruvbox'
+		    Plug 'sainnhe/gruvbox-material'
+			" }}}
+			Plug 'vim-airline/vim-airline'
+			Plug 'gko/vim-coloresque'
+			Plug 'ryanoasis/vim-devicons'
+		" }}}
+		"-----------------
+		"--- Utilities ---
+		"-----------------
+		" {{{
+			Plug 'mattn/emmet-vim'
+			Plug 'jiangmiao/auto-pairs'
+			Plug 'MarcWeber/vim-addon-mw-utils'
+			Plug 'tomtom/tlib_vim'
+			Plug 'garbas/vim-snipmate'
+			"Plug 'sheerun/vim-polyglot'
+			Plug 'preservim/nerdtree'
+			Plug 'Xuyuanp/nerdtree-git-plugin'
+			Plug 'ap/vim-css-color'
+			Plug 'thaerkh/vim-indentguides'
+			Plug 'vim-scripts/DrawIt'
+		" }}}
+		"-----------------------------------------
+		"--- Completion / linters / formatters ---
+		"-----------------------------------------
+		" {{{
+		Plug 'dense-analysis/ale'
+		"Plug 'prabirshrestha/vim-lsp'
+		Plug 'alaviss/nim.nvim'
 		Plug 'neovim/nvim-lspconfig'
-		Plug 'williamboman/mason.nvim'
-		Plug 'williamboman/mason-lspconfig.nvim'
-		Plug 'stevearc/conform.nvim'
-		Plug 'nvim-tree/nvim-tree.lua'
-		Plug 'L3MON4D3/LuaSnip'
-		Plug 'rafamadriz/friendly-snippets'
-		Plug 'hrsh7th/nvim-cmp'
-		Plug 'hrsh7th/cmp-nvim-lsp'
-		Plug 'saadparwaiz1/cmp_luasnip'
-		Plug 'mattn/emmet-vim'
-		Plug 'ap/vim-css-color'
-		Plug 'vim-scripts/DrawIt'
+		"Plug 'nvim-treesitter/nvim-treesitter'
+		" }}}
 	call plug#end()
 " }}}
 "----------------------------------
 "--- Otimizações de performance ---
 "----------------------------------
 " {{{
-	set lazyredraw
-	set synmaxcol=200
+	set lazyredraw    " Evita redesenhos intermediários
+	set synmaxcol=200 " Limita syntax highlighting a 200 colunas
 " }}}
 "----------------------------------------------------
 "--- Função para trocar o tema de cores           ---
+"--- A primeira linha refere-se ao esquema padrão ---
 "----------------------------------------------------
 " {{{
-	silent! colorscheme noctis
+	colorscheme molokai
 	function! ToggleColorscheme()
-		if g:colors_name == 'noctis'
-			colorscheme noctis_minimus
-		elseif g:colors_name == 'noctis_minimus'
-			colorscheme noctis_lux
-		elseif g:colors_name == 'noctis_lux'
-			colorscheme noctis
+		if g:colors_name == 'molokai'
+			colorscheme spacecamp
+		elseif g:colors_name == 'spacecamp'
+			colorscheme gruvbox
+		elseif g:colors_name == 'gruvbox'
+			colorscheme gruvbox-material
+		elseif g:colors_name == 'gruvbox-material'
+			colorscheme molokai
 		endif
 		hi LineNr guifg=#ffffff ctermfg=lightCyan
 	endfunction
@@ -733,125 +782,66 @@ EOF
 	nmap <silent><leader>u :call ToggleDrawIt()<cr>:echo g:di<cr>
 " }}}
 "----------------
-"--- NVIM-TREE ---
+"--- NERDTree ---
 "----------------
 " {{{
-	lua << EOF
-	local ok, nvim_tree = pcall(require, "nvim-tree")
-	if ok then
-		nvim_tree.setup()
-		vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
-	end
-EOF
+	nmap <leader>n :NERDTreeToggle<cr>
+	let NERDTreeShowHidden = 1
+	let NERDTreeMinimalUI = 1
+	let NERDTreeDirArrows = 1
+	let NERDTreeIgnore = []
+	let NERDTreeStatusline = ''
+	let g:NERDTreeGitStatusIndicatorMapCustom = {
+	\ "Modified"  : "✹",
+	\ "Staged"    : "✚",
+	\ "Untracked" : "✭",
+	\ "Renamed"   : "➜",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "✖",
+	\ "Dirty"     : "✗",
+	\ "Clean"     : "✔︎",
+	\ 'Ignored'   : '☒',
+	\ "Unknown"   : "?"
+	\ }
+" }}}
+"-----------
+"--- ALE ---
+"-----------
+" {{{
+	let g:ale_completion_enabled = 1
+	let g:ale_sign_error = '❌'
+	let g:ale_sign_warning = '⚠️'
+" }}}
+"----------------
+"--- SnipMate ---
+"----------------
+" {{{
+	"let g:snipMate = { 'snippet_version': 1 }
+	imap <c-j> <Plug>snipMateNextOrTrigger
 " }}}
 "-----------------
-"--- MASON + LSP ---
+"--- Lspconfig ---
 "-----------------
 " {{{
-	lua << EOF
-	local ok_mason, mason = pcall(require, "mason")
-	local ok_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
-	if ok_mason then mason.setup() end
-	vim.diagnostic.config({ virtual_text = true })
-	local on_lsp = function(client, bufnr)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = bufnr })
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr })
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { buffer = bufnr })
-	end
-	if ok_lspconfig then
-		mason_lspconfig.setup({
-			ensure_installed = { "ts_ls", "lua_ls", "ruff" },
-			automatic_installation = true,
-			handlers = {
-				function(server_name)
-					vim.lsp.config[server_name] = { on_attach = on_lsp }
-					vim.lsp.enable(server_name)
-				end,
-			},
-		})
-	end
-	vim.lsp.config.html = { on_attach = on_lsp }
-	vim.lsp.config.cssls = { on_attach = on_lsp }
-	pcall(function() vim.lsp.enable("html") end)
-	pcall(function() vim.lsp.enable("cssls") end)
-EOF
-" }}}
-"------------------
-"--- NVIM-CMP ---
-"------------------
-" {{{
-	lua << EOF
-	local ok, cmp = pcall(require, "cmp")
-	if ok then
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					local ok_ls, luasnip = pcall(require, "luasnip")
-					if ok_ls then luasnip.lsp_expand(args.body) end
-				end,
-			},
-			sources = {
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-			},
-			mapping = {
-				["<Tab>"] = cmp.mapping.select_next_item(),
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-			},
-		})
-	end
-EOF
-" }}}
-"------------------
-"--- CONFORM ---
-"------------------
-" {{{
-	lua << EOF
-	local ok, conform = pcall(require, "conform")
-	if ok then
-		conform.setup({
-			formatters_by_ft = {
-				python = { "ruff_format" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				html = { "prettier" },
-				css = { "prettier" },
-			},
-			format_on_save = {
-				timeout_ms = 3000,
-			},
-		})
-	end
-EOF
-" }}}
-"------------------
-"--- LUASNIP ---
-"------------------
-" {{{
-	lua << EOF
-	local ok, ls = pcall(require, "luasnip")
-	if ok then
-		ls.config.set_config({
-			history = true,
-			updateevents = "TextChanged,TextChangedI",
-		})
-		local ok_vscode, loader = pcall(require, "luasnip.loaders.from_vscode")
-		if ok_vscode then loader.lazy_load() end
-		vim.keymap.set({"i", "s"}, "<C-l>", function()
-			if ls.expand_or_jumpable() then ls.expand_or_jump() end
-		end, { silent = true })
-		vim.keymap.set({"i", "s"}, "<C-h>", function()
-			if ls.jumpable(-1) then ls.jump(-1) end
-		end, { silent = true })
-	end
-EOF
+	"lua <<EOF
+	"require'lspconfig'.nim_langserver.setup{
+	"  settings = {
+	"    nim = {
+	"      nimsuggestPath = "~/.nimble/bin"
+	"    }
+	"  }
+	"}
+	"require'lspconfig'.nimls.setup{
+	"  cmd = { "nimlangserver" },
+	"  filetypes = { "nim" },
+	"  root_dir = require'lspconfig'.util.root_pattern(".git", "nim.cfg", "config.nims"),
+	"  settings = {
+	"    nimls = {
+	"      suggest = { useNimsuggest = true }
+	"    }
+	"  }
+	"}
+	"EOF
 " }}}
 "---------------------------
 "--- Folding / Unfolding ---
@@ -860,7 +850,7 @@ EOF
 	setlocal foldmethod=indent
 	set nofoldenable
 	set foldlevel=99
-	set fillchars=fold:\ "
+	set fillchars=fold:\ "The backslash escapes a space
 	set foldtext=CustomFoldText()
 	function! CustomFoldText()
 		let indentation = indent(v:foldstart - 1)
@@ -881,7 +871,14 @@ EOF
 "--- Configuração COBOL ---
 "--------------------------
 " {{{
-	let g:cobol_legacy_code = 0
+	"let g:cobol_legacy_code = 1
+	"let cobol_error_lines = 1
+" }}}
+"-------------------------
+"--- COBOL FORMAT FREE ---
+"-------------------------
+" {{{
+	let g:cobol_legacy_code = 0  " 0 = Formato Livre, 1 = Formato Fixo
 	function! DetectCobolFormat()
 	    let l:first_lines = getline(1, 10)
 	    for l:line in l:first_lines
@@ -894,5 +891,6 @@ EOF
 	    let g:cobol_legacy_code = 1
 	    setlocal filetype=cobol
 	endfunction
+	" Detecta automaticamente FORMAT FREE no arquivo
 	autocmd BufRead,BufNewFile *.cob,*.cbl,*.cpy call DetectCobolFormat()
 " }}}
