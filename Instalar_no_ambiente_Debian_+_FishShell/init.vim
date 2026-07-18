@@ -187,7 +187,7 @@ EOF
 "--- https://github.com/terryma/vim-multiple-cursors#installation ---
 "--------------------------------------------------------------------
 " {{{
-	"let g:multi_cursor_use_default_mapping=0
+	"let g:multi_cursor_use_default_mapping = 0
 	"let g:multi_cursor_start_word_key      = '<C-n>'
 	"let g:multi_cursor_select_all_word_key = '<A-n>'
 	"let g:multi_cursor_start_key           = 'g<C-n>'
@@ -336,9 +336,9 @@ EOF
 "--- Mostra ou não a identacão ---
 "---------------------------------
 " {{{
-	set listchars=tab:¦\ ,trail:·,eol:¬
-	set list
-	nmap <leader>i :set list!<cr>
+	"set listchars=tab:¦\ ,trail:·,eol:¬
+	"set list
+	"nmap <leader>i :set list!<cr>
 " }}}
 "--------------------------------------------------
 "--- Backspace no modo de visão apaga a seleção ---
