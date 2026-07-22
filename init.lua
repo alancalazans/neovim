@@ -114,7 +114,7 @@ vim.opt.wildignore = "*.o,*.obj,*.bak,*.exe,*.dll,*.com,*.class,*.au,*.wav,*.ps,
 --  Encoding
 --  ----------------
 vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+-- vim.opt.fileencoding = "utf-8"
 
 --  -----------------------------
 --  Configuração de fonte
@@ -654,18 +654,18 @@ vim.keymap.set("", "<c-a>", "<esc>ggvG")
 --  -------------------------------------------------------
 --  VIM-PLUG
 --  -------------------------------------------------------
-local plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-local plug_dir = vim.fn.stdpath("data") .. "\\site\\autoload"
-local plug_path = plug_dir .. "\\plug.vim"
-if vim.fn.empty(vim.fn.glob(plug_path)) == 1 then
-    vim.fn.mkdir(plug_dir, "p")
-    vim.fn.system({ "powershell", "-NoProfile", "-Command", "iwr", "-useb", plug_url, "-OutFile", plug_path })
-    vim.api.nvim_create_autocmd("VimEnter", {
-        callback = function()
-            vim.cmd("PlugInstall --sync | source $MYVIMRC")
-        end,
-    })
-end
+-- local plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+-- local plug_dir = vim.fn.stdpath("data") .. "\\site\\autoload"
+-- local plug_path = plug_dir .. "\\plug.vim"
+-- if vim.fn.empty(vim.fn.glob(plug_path)) == 1 then
+--    vim.fn.mkdir(plug_dir, "p")
+--    vim.fn.system({ "powershell", "-NoProfile", "-Command", "iwr", "-useb", plug_url, "-OutFile", plug_path })
+--    vim.api.nvim_create_autocmd("VimEnter", {
+--        callback = function()
+--            vim.cmd("PlugInstall --sync | source $MYVIMRC")
+--        end,
+--    })
+-- end
 
 --  ---------------
 --  PLUGINS
