@@ -118,7 +118,7 @@ EOF
 "----------------
 " {{{
 	set encoding=utf-8
-	set fileencoding=utf-8
+"	set fileencoding=utf-8
 " }}}
 "-----------------------------
 "--- Configuração de fonte ---
@@ -645,14 +645,14 @@ EOF
 "--- VIM-PLUG (https://github.com/junegunn/vim-plug) ---
 "-------------------------------------------------------
 " {{{
-	let s:plug_url  = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	let s:plug_dir  = stdpath('data') . '\site\autoload'
-	let s:plug_path = s:plug_dir . '\plug.vim'
-	if empty(glob(s:plug_path))
-		call mkdir(s:plug_dir, 'p')
-		execute 'silent !powershell -NoProfile -Command "iwr -useb ' . s:plug_url . ' -OutFile ''' . s:plug_path . '''"'
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
+"	let s:plug_url  = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"	let s:plug_dir  = stdpath('data') . '\site\autoload'
+"	let s:plug_path = s:plug_dir . '\plug.vim'
+"	if empty(glob(s:plug_path))
+"		call mkdir(s:plug_dir, 'p')
+"		execute 'silent !powershell -NoProfile -Command "iwr -useb ' . s:plug_url . ' -OutFile ''' . s:plug_path . '''"'
+"		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"	endif
 " }}}
 "---------------
 "--- PLUGINS ---
