@@ -30,4 +30,5 @@ cp .\init.vim ~\AppData\Local\nvim\
 cp -r snippets ~\AppData\Local\nvim\
 ```
 
+- Instale o `Git for Windows/x64 Setup` (Standalone Installer) deste [site](https://git-scm.com/install/windows).
 - Abra o ***Neovim*** (mantenha no modo normal) e digite ***:PlugInstall + \<ENTER\>*** para instalar os Plugins.
